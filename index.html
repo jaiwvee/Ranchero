@@ -165,106 +165,76 @@
     
     <script type="text/javascript">
         
-            /* Immutable Global Functions */
-            function appendUISongs() {
-                
-                // Empty UI Track List
-                document.getElementById('selector').innerHTML = '';
-                
+        /* Immutable Global Functions */
+        function appendUISongs() {
+
+            // Empty UI Track List
+            document.getElementById('selector').innerHTML = '';
+
+            // Define Variables
+            var track_title;
+            var track_artist;
+            var track_album;
+            var track_explicit;
+            var track_node;
+
+            // UI Track Appendation Loop
+            for (var i = 0; i < musicStore.list.length; i += 1) {
+
                 // Define Variables
-                var track_title;
-                var track_artist;
-                var track_album;
-                var track_explicit;
-                var track_node;
-                
-                // UI Track Appendation Loop
-                for (var i = 0; i < musicStore.list.length; i += 1) {
-                    
-                    // Define Variables
-                    song = musicStore.getSong(i);
-                    
-                    // DOM-Attached Variable Definitions
-                    track_title = document.createElement('div');
-                    track_title.classList.add('song-title');
-                    track_title.innerText = song.title;
-                    track_artist = document.createElement('div');
-                    track_artist.classList.add('song-artist');
-                    track_artist.innerText = song.artist;
-                    track_album = document.createElement('div');
-                    track_album.classList.add('song-album');
-                    track_album.innerText = song.album;
-                    track_node = document.createElement('div');
-                    track_node.classList.add('list-item');
-                    track_node.appendChild(track_title);
-                    track_node.appendChild(track_artist);
-                    track_node.appendChild(track_album);
-                    
-                    // Add Vulgar If Required
-                    if (song.vulgar) {
-                        track_explicit = document.createElement('div');
-                        track_explicit.classList.add('explicit-indicator');
-                        track_explicit.innerText = 'EXPLICIT';
-                        track_node.appendChild(track_explicit);
-                    }
-                    
-                    // Append Track To DOM
-                    document.getElementById('selector').appendChild(track_node);
-                    
+                song = musicStore.getSong(i);
+
+                // DOM-Attached Variable Definitions
+                track_title = document.createElement('div');
+                track_title.classList.add('song-title');
+                track_title.innerText = song.title;
+                track_artist = document.createElement('div');
+                track_artist.classList.add('song-artist');
+                track_artist.innerText = song.artist;
+                track_album = document.createElement('div');
+                track_album.classList.add('song-album');
+                track_album.innerText = song.album;
+                track_node = document.createElement('div');
+                track_node.classList.add('list-item');
+                track_node.appendChild(track_title);
+                track_node.appendChild(track_artist);
+                track_node.appendChild(track_album);
+
+                // Add Vulgar If Required
+                if (song.vulgar) {
+                    track_explicit = document.createElement('div');
+                    track_explicit.classList.add('explicit-indicator');
+                    track_explicit.innerText = 'EXPLICIT';
+                    track_node.appendChild(track_explicit);
                 }
-                
-                // Song Input Responder Callback
-                function songCallback() {
-                    
-                    // Define Variables
-                    var items = Array.prototype.slice.call(document.getElementsByClassName('list-item'));
-                    var item = event.target.parentNode;
-                    var index = items.indexOf(item);
-                    
-                    // Set Flag
-                    musicStore.setFlag(index);
-                    
-                    // Define Song Reference Variable
-                    var song = new SongMetadataStore();
-                    
-                    // Import Song From Store
-                    song.importSong(musicStore.getSong(index));
-                    
-                    // DOM Manipulation
-                    document.getElementById('audio').setAttribute('src', song.source);
-                    document.getElementById('audio').play();
-                    document.getElementById('pause').style.display = 'block';
-                    document.getElementById('play').style.display = 'none';
-                    document.getElementById('song-title').innerText = song.title;
-                    document.getElementById('song-artist').innerText = song.artist;
-                    document.getElementById('prev').classList.remove('disabled');
-                    document.getElementById('next').classList.remove('disabled');
-                    document.getElementById('program').style.display = 'none';
-                    document.getElementById('version').style.display = 'none';
-                    document.getElementById('tracer').style.display = 'block';
-                    document.getElementById('song-elapsed-numericator').style.display = 'block';
-                    document.getElementById('song-length-numericator').style.display = 'block';
-                    
-                }
-                
-                // Song Input Responder Creation
-                songResponders = new InputResponders(document.getElementsByClassName('list-item'));
-                
-                // Song Input Responder Config
-                songResponders.setCatalyst('click');
-                
-                // Song Input Responder Config
-                songResponders.setCallback(songCallback);
-                
-                // Song Input Responder Config
-                songResponders.activate();
-                
-            } // sample; not used in this project
-            function reloadUI($song) {
-                
+
+                // Append Track To DOM
+                document.getElementById('selector').appendChild(track_node);
+
+            }
+
+            // Song Input Responder Callback
+            function songCallback() {
+
+                // Define Variables
+                var items = Array.prototype.slice.call(document.getElementsByClassName('list-item'));
+                var item = event.target.parentNode;
+                var index = items.indexOf(item);
+
+                // Set Flag
+                musicStore.setFlag(index);
+
+                // Define Song Reference Variable
                 var song = new SongMetadataStore();
-                song.importSong($song);
-                
+
+                // Import Song From Store
+                song.importSong(musicStore.getSong(index));
+
+                // DOM Manipulation
+                document.getElementById('audio').setAttribute('src', song.source);
+                document.getElementById('audio').play();
+                document.getElementById('pause').style.display = 'block';
+                document.getElementById('play').style.display = 'none';
                 document.getElementById('song-title').innerText = song.title;
                 document.getElementById('song-artist').innerText = song.artist;
                 document.getElementById('prev').classList.remove('disabled');
@@ -274,1033 +244,108 @@
                 document.getElementById('tracer').style.display = 'block';
                 document.getElementById('song-elapsed-numericator').style.display = 'block';
                 document.getElementById('song-length-numericator').style.display = 'block';
-            
-            } // sample; not used in this project
-        
-        </script> <!-- global functions -->
-        <script type="text/javascript">
-            
-            /* Init Configuration */
-            (function () {
-                
-                // ... e.g. muleStore.sortBy('name'); & appendUIMules();
-                
-            }());
-            
-            /* DOMNode Modifiers */
-            (function () {
-                
-                // ... e.g. document.getElementById('button').style.opacity = 0.5;
-                
-            }());
-            
-            /* Input Responders */
-            (function () {
-                
-                var int; // reference (inspector)
-                
-                // Input Response Instancializers    
-                var createMuleButtonResponder = new InputResponder(document.getElementById('create-mule-button')); // (1)
-                var retainMuleButtonResponder = new InputResponder(document.getElementById('retain-mule-button')); // (2)
-                var deleteMuleButtonResponder = new InputResponder(document.getElementById('delete-mule-button')); // (3)
-                
-                // Input Response Callback Methods
-                function createMuleButtonCallback() {
-                    
-                    // Create new mule entry in sidebar
-                    // Listen for 'enter' keypress; mule name is editable until 'enter' key is heard
-                    // Add mule to unsynced localStorage variable, then sync it
-                    
-                } // (1)
-                function retainMuleButtonCallback() {
-                    
-                    // Possibly remove this in favor of autosave
-                    // Get the current 'muleStore' variable (or whatever is used for unsynced changes)
-                    // And save it with the current data from current right and left window panes.
-                    
-                } // (2)
-                function deleteMuleButtonCallback() {
-                    
-                    // Get the index of the current mule from the .selected in sidebar
-                    // Make sure user is sure! Remove that index from the unsynced 'muleStore' variable
-                    // Remove the content from the active right-window fields; remove entry from left-window
-                    // Sync with localStorage
-                    
-                } // (3)
-                
-                // Input Response Catalysts
-                createMuleButtonResponder.setCatalyst('click'); // (1)
-                retainMuleButtonResponder.setCatalyst('click'); // (2)
-                deleteMuleButtonResponder.setCatalyst('click'); // (3)
-                
-                // Input Response Callback Assigners
-                createMuleButtonResponder.setCallback(createMuleButtonCallback); // (1)
-                retainMuleButtonResponder.setCallback(retainMuleButtonCallback); // (2)
-                deleteMuleButtonResponder.setCallback(deleteMuleButtonCallback); // (3)
-                
-                // Input Response Activators
-                createMuleButtonResponder.activate(); // (1)
-                retainMuleButtonResponder.activate(); // (2)
-                deleteMuleButtonResponder.activate(); // (3)
-                
-                
-                
-                
-                
-                
-                
-                
-                // Input Response Callback Methods
-                function prevButtonCallback() {
-                    prevButtonResponder.sleep(0.5);
-                    var audio = document.getElementById('audio');
-                    if (audio.getAttribute('src') !== '') {
-                        audio.pause();
-                        audio.currentTime = 0;
-                    }
-                    var index = musicStore.flag - 1;
-                    index = (index < 0) ? 0 : index;
-                    musicStore.setFlag(index);
-                    var song = new SongMetadataStore();
-                    song.importSong(musicStore.getSong(index));
-                    audio.setAttribute('src', song.source);
-                    audio.play();
-                    document.getElementById('pause').style.display = 'block';
-                    document.getElementById('play').style.display = 'none';
-                    reloadUI(song);
-                }
-                function playButtonCallback() {
-                    var audio = document.getElementById('audio');
-                    var index = musicStore.flag;
-                    var song = new SongMetadataStore();
-                    song.importSong(musicStore.getSong(index));
-                    if (audio.getAttribute('src') === '') {
-                        audio.setAttribute('src', song.source);
-                    }
-                    audio.play();
-                    document.getElementById('pause').style.display = 'block';
-                    document.getElementById('play').style.display = 'none';
-                    reloadUI(song);
-                }
-                function pauseButtonCallback() {
-                    document.getElementById('audio').pause();
-                    document.getElementById('pause').style.display = 'none';
-                    document.getElementById('play').style.display = 'block';
-                }
-                function nextButtonCallback() {
-                    nextButtonResponder.sleep(0.5);
-                    var audio = document.getElementById('audio');
-                    if (audio.getAttribute('src') !== '') {
-                        audio.pause();
-                        audio.currentTime = 0;
-                    }
-                    var index = musicStore.flag + 1;
-                    index = (index > musicStore.size) ? 0 : index;
-                    musicStore.setFlag(index);
-                    var song = new SongMetadataStore();
-                    song.importSong(musicStore.getSong(index));
-                    audio.setAttribute('src', song.source);
-                    audio.play();
-                    document.getElementById('pause').style.display = 'block';
-                    document.getElementById('play').style.display = 'none';
-                    reloadUI(song);
-                }
-                function dragOverCallback() {
-                    event.stopPropagation();
-                    event.preventDefault();
-                }
-                function dragDropCallback() {
-                    
-                    event.stopPropagation();
-                    event.preventDefault();
-                    
-                    var file = event.dataTransfer.files[0];
-                    var title = file.name;
-                        
-                    // Disable Key Responders
-                    keyDownResponder.deactivate();
-                    keyUpResponder.deactivate();
 
-                    // Enable Inspector Key Responders
-                    importerKeyDownResponder.activate();
-                    importerKeyUpResponder.activate();
-                    importerDoneResponder.activate();
-                    importerCancelResponder.activate();
+            }
 
-                    // Enable Inspector Change Responders
-                    importerTitleChangeResponder.activate();
-                    importerArtistChangeResponder.activate();
-                    importerAlbumChangeResponder.activate();
+            // Song Input Responder Creation
+            songResponders = new InputResponders(document.getElementsByClassName('list-item'));
 
-                    // Define Variables
-                    var endpath = title;
-                    var basepath = '/Users/Jai/Music/Library/';
+            // Song Input Responder Config
+            songResponders.setCatalyst('click');
 
-                    // DOM Manipulation
-                    document.getElementById('importer-title').value = title;
-                    document.getElementById('importer-artist').value = '';
-                    document.getElementById('importer-album').value = '';
-                    document.getElementById('importer-root-path').value = basepath;
-                    document.getElementById('importer-end-path').value = endpath;
+            // Song Input Responder Config
+            songResponders.setCallback(songCallback);
 
-                    // Show importer UI
-                    document.getElementById('importer').style.display = 'block';
+            // Song Input Responder Config
+            songResponders.activate();
 
-                    // Adjust Scrolls
-                    document.getElementById('importer-root-path').scrollLeft = document.getElementById('importer-root-path').scrollWidth;
-                    document.getElementById('importer-end-path').scrollLeft = document.getElementById('importer-end-path').scrollWidth;
-                
-                }
-                function dragEnterCallback() {
-                    event.stopPropagation();
-                    event.preventDefault();
-                    document.getElementById('importer').style.display = 'block';
-                }
-                function dragLeaveCallback() {
-                    event.stopPropagation();
-                    event.preventDefault();
-                    document.getElementById('importer').style.display = 'none';
-                }
-                function keyDownCallback(event) {
-                    
-                    // Song Input Responder Callback
-                    function songCallback(e) {
-                        
-                        // Disable Key Responders
-                        keyDownResponder.deactivate();
-                        keyUpResponder.deactivate();
-                        
-                        // Enable Inspector Key Responders
-                        inspectorKeyDownResponder.activate();
-                        inspectorKeyUpResponder.activate();
-                        inspectorDoneResponder.activate();
-                        inspectorCancelResponder.activate();
-                        
-                        // Enable Inspector Change Responders
-                        inspectorTitleChangeResponder.activate();
-                        inspectorArtistChangeResponder.activate();
-                        inspectorAlbumChangeResponder.activate();
+        } // sample; not used in this project
+        function reloadUI($song) {
 
-                        // Define Variables
-                        var items = Array.prototype.slice.call(document.getElementsByClassName('list-item'));
-                        var item = e.target.parentNode;
-                        var index = items.indexOf(item);
-                        var song = new SongMetadataStore();
-                        
-                        // Reference
-                        int = index;
-                            
-                        // Import Song Metadata From Store
-                        song.importSong(musicStore.getSong(index));
+            var song = new SongMetadataStore();
+            song.importSong($song);
 
-                        // Define Variables
-                        var last = song.source.lastIndexOf('.');
-                        var type = song.source.slice(last, song.source.length);
-                        var path = song.source;
-                        path = path.split('/');
-                        var endpath = path[path.length - 3] + '/' + path[path.length - 2] + '/' + path[path.length - 1];
-                        var basepath = '';
-                        for (var i = 0; i < path.length - 3; i += 1) {
-                            basepath += path[i] + '/';
-                        }
-                            
-                        // DOM Manipulation
-                        document.getElementById('inspector-title').value = song.title + type;
-                        document.getElementById('inspector-artist').value = song.artist;
-                        document.getElementById('inspector-album').value = song.album;
-                        document.getElementById('inspector-root-path').value = basepath;
-                        document.getElementById('inspector-end-path').value = endpath;
-                        document.getElementById('inspector-explicit-checkbox').checked = song.vulgar;
-                        
-                        // Show Inspector UI
-                        document.getElementById('analyzer').style.display = 'block';
-                        
-                        // Adjust Scrolls
-                        document.getElementById('inspector-root-path').scrollLeft = document.getElementById('inspector-root-path').scrollWidth;
-                        document.getElementById('inspector-end-path').scrollLeft = document.getElementById('inspector-end-path').scrollWidth;
+            document.getElementById('song-title').innerText = song.title;
+            document.getElementById('song-artist').innerText = song.artist;
+            document.getElementById('prev').classList.remove('disabled');
+            document.getElementById('next').classList.remove('disabled');
+            document.getElementById('program').style.display = 'none';
+            document.getElementById('version').style.display = 'none';
+            document.getElementById('tracer').style.display = 'block';
+            document.getElementById('song-elapsed-numericator').style.display = 'block';
+            document.getElementById('song-length-numericator').style.display = 'block';
 
-                    }
-                    
-                    // Key Responders
-                    function spaceKeyPress() {
-                        
-                        // Prevent Scrolling
-                        event.preventDefault();
-                        
-                        // Define Variables
-                        var index = musicStore.flag;
-                        var song = new SongMetadataStore();
-                        
-                        // Import Song From Store
-                        song.importSong(musicStore.getSong(index));
-                        
-                        // Add Audio Source Attribute If No Source Exists
-                        if (document.getElementById('audio').getAttribute('src') === '') {
-                            document.getElementById('audio').setAttribute('src', song.source);
-                        }
-                        
-                        // Play/Pause Audio If Playing/Paused
-                        if (document.getElementById('audio').paused) {
-                            document.getElementById('audio').play();
-                            document.getElementById('pause').style.display = 'block';
-                            document.getElementById('play').style.display = 'none';
-                        } else {
-                            document.getElementById('audio').pause();
-                            document.getElementById('pause').style.display = 'none';
-                            document.getElementById('play').style.display = 'block';
-                        }
-                        
-                        
-                        document.getElementById('song-title').innerText = song.title;
-                        document.getElementById('song-artist').innerText = song.artist;
-                        document.getElementById('prev').classList.remove('disabled');
-                        document.getElementById('next').classList.remove('disabled');
-                        document.getElementById('program').style.display = 'none';
-                        document.getElementById('version').style.display = 'none';
-                        document.getElementById('tracer').style.display = 'block';
-                        document.getElementById('song-elapsed-numericator').style.display = 'block';
-                        document.getElementById('song-length-numericator').style.display = 'block';
-                        
-                    }
-                    function enterKeyPress() {
-                        
-                        console.log('Pressed [enter] key.');
-                        
-                        // Add Audio Source Attribute If No Source Exists
-                        if (document.getElementById('audio').getAttribute('src') !== '') {
-                            document.getElementById('audio').pause();
-                            document.getElementById('audio').currentTime = 0;
-                        }
-                        
-                        // Define Variable
-                        var index = musicStore.flag + 1;
-                        
-                        // Reset Index If > Library Size
-                        if (index > musicStore.size) {
-                            index = 0;
-                        }
-                        
-                        // Set Flag
-                        musicStore.setFlag(index);
-                        
-                        // Define Song Reference Variable
-                        var song = new SongMetadataStore();
-                        
-                        // Import Song From Store
-                        song.importSong(musicStore.getSong(index));
-                        
-                        // DOM Manipulation
-                        document.getElementById('audio').setAttribute('src', song.source);
-                        document.getElementById('audio').play();
-                        document.getElementById('pause').style.display = 'block';
-                        document.getElementById('play').style.display = 'none';
-                        
-                        document.getElementById('song-title').innerText = song.title;
-                        document.getElementById('song-artist').innerText = song.artist;
-                        document.getElementById('prev').classList.remove('disabled');
-                        document.getElementById('next').classList.remove('disabled');
-                        document.getElementById('program').style.display = 'none';
-                        document.getElementById('version').style.display = 'none';
-                        document.getElementById('tracer').style.display = 'block';
-                        document.getElementById('song-elapsed-numericator').style.display = 'block';
-                        document.getElementById('song-length-numericator').style.display = 'block';
-                        
-                    }
-                    function back_KeyPress() {
-                        
-                        // Add Audio Source Attribute If No Source Exists
-                        if (document.getElementById('audio').getAttribute('src') !== '') {
-                            document.getElementById('audio').pause();
-                            document.getElementById('audio').currentTime = 0;
-                        }
-                        
-                        // Define Variable
-                        var index = musicStore.flag - 1;
-                        
-                        // Reset Index If < Library Size
-                        if (index < 0) {
-                            index = 0;
-                        }
-                        
-                        // Set Flag
-                        musicStore.setFlag(index);
-                        
-                        // Define Song Reference Variable
-                        var song = new SongMetadataStore();
-                        
-                        // Import Song From Store
-                        song.importSong(musicStore.getSong(index));
-                        
-                        // DOM Manipulation
-                        document.getElementById('audio').setAttribute('src', song.source);
-                        document.getElementById('audio').play();
-                        document.getElementById('pause').style.display = 'block';
-                        document.getElementById('play').style.display = 'none';
-                        
-                        document.getElementById('song-title').innerText = song.title;
-                        document.getElementById('song-artist').innerText = song.artist;
-                        document.getElementById('prev').classList.remove('disabled');
-                        document.getElementById('next').classList.remove('disabled');
-                        document.getElementById('program').style.display = 'none';
-                        document.getElementById('version').style.display = 'none';
-                        document.getElementById('tracer').style.display = 'block';
-                        document.getElementById('song-elapsed-numericator').style.display = 'block';
-                        document.getElementById('song-length-numericator').style.display = 'block';
-                        
-                    }
-                    function shiftKeyPress() {
-                        
-                        document.body.className === 'light' ? document.body.className = 'dark' : document.body.className = 'light';
-                    
-                    }
-                    function cmmndKeyPress() {
-                        
-                        songResponders.deactivate();
-                        songResponders.setCallback(songCallback);
-                        songResponders.activate();
-                    
-                    }
-                    function eKeyPress() {
-                        
-                        //alert(JSON.stringify(musicStore.list));
-                        prompt('Library Export:', JSON.stringify(musicStore.list));
-                        
-                    }
-                    function iKeyPress() {
-                        
-                        var temp_library = prompt('Library Import');
-                        
-                        localStorage.setItem('tracks_temp', temp_library);
-                        
-                        function importSongs() {
-                            
-                        }
-                        
-                        if (temp_library !== '') {
-                            try {
-                                var song_count = JSON.parse(localStorage.getItem('tracks_temp')).length;
-                                var r = confirm("Found " + song_count + " songs. Would you like to use the new library now?");
-                            } catch (e) {
-                                alert('Unable to build library (found 0 songs).');
-                            }
-                            if (r) {
-                            
-                                localStorage.setItem('tracks', temp_library);
-                                musicStore = new MusicLibraryStore('tracks');
-                                appendUISongs();
-                                alert('Library successfully imported.');
-                            
-                            }
-                        } else {
-                            
-                        }
-                        
-                    }
-                    function uArrowKeyPress() {
-                        
-                        // Not Yet Implemented
-                        
-                    }
-                    function dArrowKeyPress() {
-                        
-                        // Not Yet Implemented
-                    
-                    }
-                    function lArrowKeyPress() {
-                        
-                        // Define Variables
-                        var duration = document.getElementById('audio').duration;
-                        var currentTime = document.getElementById('audio').currentTime;
-                        var increments = 10;
-                        var section = duration / increments;
-                        var offsetInt = currentTime / section;
-                        var placement = Math.floor(offsetInt) * section - 1;
-                        
-                        // Offset Current Time By +10%
-                        document.getElementById('audio').currentTime = placement;
-                        
-                    }
-                    function rArrowKeyPress() {
-                        
-                        // Define Variables
-                        var duration = document.getElementById('audio').duration;
-                        var currentTime = document.getElementById('audio').currentTime;
-                        var increments = 10;
-                        var section = duration / increments;
-                        var offsetInt = currentTime / section;
-                        var placement = Math.ceil(offsetInt) * section + 1;
-                        
-                        // Offset Current Time By -10%
-                        document.getElementById('audio').currentTime = placement;
-                        
-                    }
-                    
-                    // Key Readers
-                    if (event.keyCode === 32) { spaceKeyPress(); }
-                    if (event.keyCode === 13) { enterKeyPress(); }
-                    if (event.keyCode === 8 ) { back_KeyPress(); }
-                    if (event.keyCode === 16) { shiftKeyPress(); }
-                    if (event.keyCode === 91) { cmmndKeyPress(); }
-                    if (event.keyCode === 69) { eKeyPress(); }
-                    if (event.keyCode === 73) { iKeyPress(); }
-                    if (event.keyCode === 38) { uArrowKeyPress(); }
-                    if (event.keyCode === 40) { dArrowKeyPress(); }
-                    if (event.keyCode === 37) { lArrowKeyPress(); }
-                    if (event.keyCode === 39) { rArrowKeyPress(); }
-                    
-                }
-                function keyUpCallback(event) {
-                    
-                    // Key Responders
-                    function cmmndKeyPress() {
-                    
-                        songResponders.deactivate();
-                        songResponders.setCallback(songCallback);
-                        songResponders.activate();
-                    
-                    }
-                
-                    // Song Input Responder Callback
-                    function songCallback(e) {
+        } // sample; not used in this project
 
-                        // Define Variables
-                        var items = Array.prototype.slice.call(document.getElementsByClassName('list-item'));
-                        var item = e.target.parentNode;
-                        var index = items.indexOf(item);
+    </script> <!-- global functions -->
+    <script type="text/javascript">
 
-                        // Set Flag
-                        musicStore.setFlag(index);
+        /* Init Configuration */
+        (function () {
 
-                        // Define Song Reference Variable
-                        var song = new SongMetadataStore();
+            // ... e.g. muleStore.sortBy('name'); & appendUIMules();
 
-                        // Import Song From Store
-                        song.importSong(musicStore.getSong(index));
+        }());
 
-                        // DOM Manipulation
-                        document.getElementById('audio').setAttribute('src', song.source);
-                        document.getElementById('audio').play();
-                        document.getElementById('pause').style.display = 'block';
-                        document.getElementById('play').style.display = 'none';
-                        
-                        document.getElementById('song-title').innerText = song.title;
-                        document.getElementById('song-artist').innerText = song.artist;
-                        document.getElementById('prev').classList.remove('disabled');
-                        document.getElementById('next').classList.remove('disabled');
-                        document.getElementById('program').style.display = 'none';
-                        document.getElementById('version').style.display = 'none';
-                        document.getElementById('tracer').style.display = 'block';
-                        document.getElementById('song-elapsed-numericator').style.display = 'block';
-                        document.getElementById('song-length-numericator').style.display = 'block';
+        /* DOMNode Modifiers */
+        (function () {
 
-                    }
-                    
-                    if (event.keyCode === 91) { cmmndKeyPress(); }
-                
-                }
-                function audioTimeUpdateCallback() {
-                    
-                    // Time Formatter
-                    function format(duration) {
-                        var sec, min;
-                        sec = Math.floor(duration);
-                        min = Math.floor(sec / 60);
-                        sec = Math.floor(sec % 60);
-                        sec = sec >= 10 ? sec : '0' + sec;
-                        return min + ':' + sec;
-                    }
-                    
-                    // Define Audio Reference Variable
-                    var audio = document.getElementById('audio');
-                    
-                    // DOM Manipulation
-                    document.getElementById('song-elapsed-numericator').innerText = format(audio.currentTime);
-                    document.getElementById('song-length-numericator').innerText = format(audio.duration);
-                    document.getElementById('tracer-shell').value = (audio.currentTime / audio.duration * 1000).toFixed(1);
-                    document.getElementById('tracer-fill').style.width = (audio.currentTime / audio.duration * 100).toFixed(1) + '%';
-                    
-                    
-                }
-                function audioLoadErrorCallback() {
-                    
-                    // Temp Fix
-                    if (document.getElementById('audio').getAttribute('src') !== '') {
-                        alert('Unable to locate song. Use \u2318 + CLICK to inspect metadata.');
-                        var index = musicStore.flag;
-                        document.getElementsByClassName('list-item')[index].classList.add('error');
-                    }
-                    
-                    return false;
-                
-                }
-                function audioPlaybackEndCallback() {
-                    
-                    // Define Variable
-                    var index = musicStore.flag + 1;
-                    
-                    // Reset Index If > Library Size
-                    if (index > musicStore.size) {
-                        index = 0;
-                    }
-                    
-                    // Set Flag
-                    musicStore.setFlag(index);
-                    
-                    // Define Song Reference Variable
-                    var song = new SongMetadataStore();
-                    
-                    // Import Song From Store
-                    song.importSong(musicStore.getSong(index));
-                    
-                    // DOM Manipulation
-                    document.getElementById('audio').setAttribute('src', song.source);
-                    document.getElementById('audio').play();
-                    document.getElementById('pause').style.display = 'block';
-                    document.getElementById('play').style.display = 'none';
-                    
-                    document.getElementById('song-title').innerText = song.title;
-                    document.getElementById('song-artist').innerText = song.artist;
-                    document.getElementById('prev').classList.remove('disabled');
-                    document.getElementById('next').classList.remove('disabled');
-                    document.getElementById('program').style.display = 'none';
-                    document.getElementById('version').style.display = 'none';
-                    document.getElementById('tracer').style.display = 'block';
-                    document.getElementById('song-elapsed-numericator').style.display = 'none';
-                    document.getElementById('song-length-numericator').style.display = 'none';
-                    
-                }
-                function progressMousedownCallback() {
-                    
-                    audioTimeUpdateResponder.deactivate();
-                
-                }
-                function volumeMousedownCallback() {
-                
-                    
-                
-                }
-                function progressMouseupCallback() {
-                    
-                    // DOM Manipulation
-                    document.getElementById('audio').currentTime = document.getElementById('tracer-shell').value / 1000 * audio.duration;
-                    
-                    audioTimeUpdateResponder.activate();
-                
-                }
-                function volumeMouseupCallback() {
-                
-                    document.getElementById('audio').volume = document.getElementById('volume-shell').value / 10;
-                
-                }
-                function progressChangeCallback() {
-                    
-                    // DOM Manipulation
-                    document.getElementById('tracer-fill').style.width = document.getElementById('tracer-shell').value / 1000 * 100 + '%';
-                
-                }
-                function volumeChangeCallback() {
-                
-                    document.getElementById('volume-fill').style.width = document.getElementById('volume-shell').value * 10 + '%';
-                    document.getElementById('audio').volume = document.getElementById('volume-shell').value / 10;
-                
-                }
-                function nameLabelCallback() {
-                    musicStore.sortBy('title');
-                    musicStore.save();
-                    appendUISongs();
-                }
-                function artistLabelCallback() {
-                    musicStore.sortBy('artist');
-                    musicStore.save();
-                    appendUISongs();
-                }
-                function albumLabelCallback() {
-                    musicStore.sortBy('album');
-                    musicStore.save();
-                    appendUISongs();
-                }
-                function inspectorDoneCallback() {
-                    
-                    if (document.getElementById('inspector-delete-checkbox').checked) {
-                        
-                        document.getElementById('inspector-delete-checkbox').checked = false;
+            // ... e.g. document.getElementById('button').style.opacity = 0.5;
 
-                        musicStore.delSong(int);
-                        musicStore.sortBy(musicStore.sort);
-                        musicStore.save();
-                        appendUISongs();
+        }());
 
-                        document.getElementById('analyzer').style.display = 'none';
-                        
-                        inspectorKeyDownResponder.deactivate();
-                        inspectorKeyUpResponder.deactivate();
-                        
-                        keyDownResponder.activate();
-                        keyUpResponder.activate();
+        /* Input Responders */
+        (function () {
 
-                    } else {
-                
-                        var songs = document.getElementsByClassName('list-item');
-                        var song = new SongMetadataStore();
-                        var title = document.getElementById('inspector-title').value;
-                        title = title.slice(0, title.lastIndexOf('.'));
-                        song.setTitle(title);
-                        song.setArtist(document.getElementById('inspector-artist').value);
-                        song.setAlbum(document.getElementById('inspector-album').value);
-                        song.setSource(document.getElementById('inspector-root-path').value + document.getElementById('inspector-end-path').value);
-                        song.setVulgar(document.getElementById('inspector-explicit-checkbox').checked);
-                        musicStore.setSong(int, song);
-                        musicStore.sortBy(musicStore.sort);
-                        musicStore.save();
-                        appendUISongs();
-                        document.getElementById('inspector-explicit-checkbox').checked = false;
-                        document.getElementById('inspector-delete-checkbox').checked = false;
-                        document.getElementById('analyzer').style.display = 'none';
-                        inspectorKeyDownResponder.deactivate();
-                        inspectorKeyUpResponder.deactivate();
-                        keyDownResponder.activate();
-                        keyUpResponder.activate();
-                        
-                    }
-                
-                }
-                function inspectorCancelCallback() {
-                    
-                    // Song Input Responder Callback
-                    function songCallback(e) {
+            var int; // reference (inspector)
 
-                        // Define Variables
-                        var items = Array.prototype.slice.call(document.getElementsByClassName('list-item'));
-                        var item = e.target.parentNode;
-                        var index = items.indexOf(item);
+            // Input Response Instancializers    
+            var createMuleButtonResponder = new InputResponder(document.getElementById('create-mule-button')); // (1)
+            var retainMuleButtonResponder = new InputResponder(document.getElementById('retain-mule-button')); // (2)
+            var deleteMuleButtonResponder = new InputResponder(document.getElementById('delete-mule-button')); // (3)
 
-                        // Set Flag
-                        musicStore.setFlag(index);
+            // Input Response Callback Methods
+            function createMuleButtonCallback() {
 
-                        // Define Song Reference Variable
-                        var song = new SongMetadataStore();
+                // Create new mule entry in sidebar
+                // Listen for 'enter' keypress; mule name is editable until 'enter' key is heard
+                // Add mule to unsynced localStorage variable, then sync it
 
-                        // Import Song From Store
-                        song.importSong(musicStore.getSong(index));
+            } // (1)
+            function retainMuleButtonCallback() {
 
-                        // DOM Manipulation
-                        document.getElementById('audio').setAttribute('src', song.source);
-                        document.getElementById('audio').play();
-                        document.getElementById('pause').style.display = 'block';
-                        document.getElementById('play').style.display = 'none';
-                        
-                        document.getElementById('song-title').innerText = song.title;
-                        document.getElementById('song-artist').innerText = song.artist;
-                        document.getElementById('prev').classList.remove('disabled');
-                        document.getElementById('next').classList.remove('disabled');
-                        document.getElementById('program').style.display = 'none';
-                        document.getElementById('version').style.display = 'none';
-                        document.getElementById('tracer').style.display = 'block';
-                        document.getElementById('song-elapsed-numericator').style.display = 'block';
-                        document.getElementById('song-length-numericator').style.display = 'block';
+                // Possibly remove this in favor of autosave
+                // Get the current 'muleStore' variable (or whatever is used for unsynced changes)
+                // And save it with the current data from current right and left window panes.
 
-                    }
-                
-                    document.getElementById('inspector-explicit-checkbox').checked = false;
-                    document.getElementById('inspector-delete-checkbox').checked = false;
-                    document.getElementById('analyzer').style.display = 'none';
-                    
-                    songResponders.deactivate();
-                    songResponders.setCallback(songCallback);
-                    songResponders.activate();
-                    
-                    inspectorKeyDownResponder.deactivate();
-                    inspectorKeyUpResponder.deactivate();
-                    
-                    keyDownResponder.activate();
-                    keyUpResponder.activate();
-                
-                }
-                function inspectorKeyDownCallback() {
-                    
-                    function enterKeyPress() {
-                        
-                        console.log('Pressed [enter] key. (analyzer)');
-                        
-                        event.preventDefault();
-                        document.getElementById('inspector-done').classList.add('active');
-                    
-                    }
-                    function escKeyPress() {
-                    
-                        event.preventDefault();
-                        document.getElementById('inspector-cancel').classList.add('active');
-                    
-                    }
-                    
-                    if (event.keyCode === 13) { enterKeyPress(); }
-                    if (event.keyCode === 27) { escKeyPress(); }
-                
-                }
-                function inspectorKeyUpCallback() {
-                
-                    event.preventDefault();
-                    
-                    function enterKeyPress() {
-                        
-                        console.log('Pressed [enter] key. (analyzer)');
-                        
-                        document.getElementById('inspector-done').classList.remove('active');
-                        setTimeout(function () {
-                            
-                            if (document.getElementById('inspector-delete-checkbox').checked) {
-                        
-                                document.getElementById('inspector-delete-checkbox').checked = false;
+            } // (2)
+            function deleteMuleButtonCallback() {
 
-                                musicStore.delSong(int);
-                                musicStore.sortBy(musicStore.sort);
-                                musicStore.save();
-                                appendUISongs();
+                // Get the index of the current mule from the .selected in sidebar
+                // Make sure user is sure! Remove that index from the unsynced 'muleStore' variable
+                // Remove the content from the active right-window fields; remove entry from left-window
+                // Sync with localStorage
 
-                                document.getElementById('analyzer').style.display = 'none';
-                                inspectorKeyDownResponder.deactivate();
-                                inspectorKeyUpResponder.deactivate();
-                                keyDownResponder.activate();
-                                keyUpResponder.activate();
+            } // (3)
 
-                            } else {
-                            
-                                var songs = document.getElementsByClassName('list-item');
-                                var song = new SongMetadataStore();
-                                var title = document.getElementById('inspector-title').value;
-                                title = title.slice(0, title.lastIndexOf('.'));
-                                song.setTitle(title);
-                                song.setArtist(document.getElementById('inspector-artist').value);
-                                song.setAlbum(document.getElementById('inspector-album').value);
-                                song.setSource(document.getElementById('inspector-root-path').value + document.getElementById('inspector-end-path').value);
-                                song.setVulgar(document.getElementById('inspector-explicit-checkbox').checked);
-                                musicStore.setSong(int, song);
-                                musicStore.sortBy(musicStore.sort);
-                                musicStore.save();
-                                appendUISongs();
-                                document.getElementById('inspector-explicit-checkbox').checked = false;
-                                document.getElementById('inspector-delete-checkbox').checked = false;
-                                document.getElementById('analyzer').style.display = 'none';
-                                inspectorKeyDownResponder.deactivate();
-                                inspectorKeyUpResponder.deactivate();
-                                keyDownResponder.activate();
-                                keyUpResponder.activate();
-                                
-                            }
-                        
-                        }, 100);
-                    
-                    }
-                    function escKeyPress() {
-                    
-                        document.getElementById('inspector-cancel').classList.remove('active');
-                        setTimeout(function () {
-                            
-                            // Song Input Responder Callback
-                            function songCallback(e) {
+            // Input Response Catalysts
+            createMuleButtonResponder.setCatalyst('click'); // (1)
+            retainMuleButtonResponder.setCatalyst('click'); // (2)
+            deleteMuleButtonResponder.setCatalyst('click'); // (3)
 
-                                // Define Variables
-                                var items = Array.prototype.slice.call(document.getElementsByClassName('list-item'));
-                                var item = e.target.parentNode;
-                                var index = items.indexOf(item);
+            // Input Response Callback Assigners
+            createMuleButtonResponder.setCallback(createMuleButtonCallback); // (1)
+            retainMuleButtonResponder.setCallback(retainMuleButtonCallback); // (2)
+            deleteMuleButtonResponder.setCallback(deleteMuleButtonCallback); // (3)
 
-                                // Set Flag
-                                musicStore.setFlag(index);
+            // Input Response Activators
+            createMuleButtonResponder.activate(); // (1)
+            retainMuleButtonResponder.activate(); // (2)
+            deleteMuleButtonResponder.activate(); // (3)
 
-                                // Define Song Reference Variable
-                                var song = new SongMetadataStore();
+        }());
 
-                                // Import Song From Store
-                                song.importSong(musicStore.getSong(index));
-
-                                // DOM Manipulation
-                                document.getElementById('audio').setAttribute('src', song.source);
-                                document.getElementById('audio').play();
-                                document.getElementById('pause').style.display = 'block';
-                                document.getElementById('play').style.display = 'none';
-
-                                document.getElementById('song-title').innerText = song.title;
-                                document.getElementById('song-artist').innerText = song.artist;
-                                document.getElementById('prev').classList.remove('disabled');
-                                document.getElementById('next').classList.remove('disabled');
-                                document.getElementById('program').style.display = 'none';
-                                document.getElementById('version').style.display = 'none';
-                                document.getElementById('tracer').style.display = 'block';
-                                document.getElementById('song-elapsed-numericator').style.display = 'block';
-                                document.getElementById('song-length-numericator').style.display = 'block';
-
-                            }
-                            
-                            document.getElementById('inspector-explicit-checkbox').checked = false;
-                            document.getElementById('inspector-delete-checkbox').checked = false;
-                            document.getElementById('analyzer').style.display = 'none';
-                            
-                            songResponders.deactivate();
-                            songResponders.setCallback(songCallback);
-                            songResponders.activate();
-                            
-                            inspectorKeyDownResponder.deactivate();
-                            inspectorKeyUpResponder.deactivate();
-                            keyDownResponder.activate();
-                            keyUpResponder.activate();
-                        
-                        }, 100);
-                    
-                    }
-                    
-                    if (event.keyCode === 13) { enterKeyPress(); }
-                    if (event.keyCode === 27) { escKeyPress(); }
-                
-                }
-                function inspectorTitleChangeCallback() {
-                    document.getElementById('inspector-end-path').value = 
-                        document.getElementById('inspector-artist').value + '/' +
-                        document.getElementById('inspector-album').value + '/' +
-                        document.getElementById('inspector-title').value;
-                    document.getElementById('inspector-end-path').scrollLeft = document.getElementById('inspector-end-path').scrollWidth;
-                }
-                function inspectorArtistChangeCallback() {
-                    document.getElementById('inspector-end-path').value = 
-                        document.getElementById('inspector-artist').value + '/' +
-                        document.getElementById('inspector-album').value + '/' +
-                        document.getElementById('inspector-title').value;
-                    document.getElementById('inspector-end-path').scrollLeft = document.getElementById('inspector-end-path').scrollWidth;
-                }
-                function inspectorAlbumChangeCallback() {
-                    document.getElementById('inspector-end-path').value = 
-                        document.getElementById('inspector-artist').value + '/' +
-                        document.getElementById('inspector-album').value + '/' +
-                        document.getElementById('inspector-title').value;
-                    document.getElementById('inspector-end-path').scrollLeft = document.getElementById('inspector-end-path').scrollWidth;
-                }
-                function importerDoneCallback() {
-                    
-                    var song = new SongMetadataStore();
-                    var title = document.getElementById('importer-title').value;
-                    title = title.slice(0, title.lastIndexOf('.'));
-                    song.setTitle(title);
-                    song.setArtist(document.getElementById('importer-artist').value);
-                    song.setAlbum(document.getElementById('importer-album').value);
-                    song.setSource(document.getElementById('importer-root-path').value + document.getElementById('importer-end-path').value);
-                    song.setVulgar(document.getElementById('importer-explicit-checkbox').checked);
-                    musicStore.addSong(song);
-                    musicStore.sortBy(musicStore.sort);
-                    musicStore.save();
-                    appendUISongs();
-                    
-                    document.getElementById('importer-explicit-checkbox').checked = false;
-                    document.getElementById('importer-artist').value = '';
-                    document.getElementById('importer-album').value = '';
-                    document.getElementById('importer').style.display = 'none';
-                    
-                    importerKeyDownResponder.deactivate();
-                    importerKeyUpResponder.deactivate();
-                    
-                    keyDownResponder.activate();
-                    keyUpResponder.activate();
-                
-                }
-                function importerCancelCallback() {
-                
-                    document.getElementById('importer-explicit-checkbox').checked = false;
-                    document.getElementById('importer-artist').value = '';
-                    document.getElementById('importer-album').value = '';
-                    document.getElementById('importer').style.display = 'none';
-                    
-                    importerKeyDownResponder.deactivate();
-                    importerKeyUpResponder.deactivate();
-                    
-                    keyDownResponder.activate();
-                    keyUpResponder.activate();
-                
-                }
-                function importerKeyDownCallback() {
-                    
-                    function enterKeyPress() {
-                        
-                        console.log('Pressed [enter] key. (importer)');
-                        
-                        event.preventDefault();
-                        document.getElementById('importer-done').classList.add('active');
-                    
-                    }
-                    function escKeyPress() {
-                    
-                        event.preventDefault();
-                        document.getElementById('importer-cancel').classList.add('active');
-                    
-                    }
-                    
-                    if (event.keyCode === 13) { enterKeyPress(); }
-                    if (event.keyCode === 27) { escKeyPress(); }
-                
-                }
-                function importerKeyUpCallback() {
-                
-                    event.preventDefault();
-                    
-                    function enterKeyPress() {
-                        
-                        console.log('Pressed [enter] key. (importer)');
-                        
-                        document.getElementById('importer-done').classList.remove('active');
-                        setTimeout(function () {
-                            
-                            var song = new SongMetadataStore();
-                            var title = document.getElementById('importer-title').value;
-                            title = title.slice(0, title.lastIndexOf('.'));
-                            song.setTitle(title);
-                            song.setArtist(document.getElementById('importer-artist').value);
-                            song.setAlbum(document.getElementById('importer-album').value);
-                            song.setSource(document.getElementById('importer-root-path').value + document.getElementById('importer-end-path').value);
-                            song.setVulgar(document.getElementById('importer-explicit-checkbox').checked);
-                            musicStore.addSong(song);
-                            musicStore.sortBy(musicStore.sort);
-                            musicStore.save();
-                            appendUISongs();
-
-                            document.getElementById('importer-explicit-checkbox').checked = false;
-                            document.getElementById('importer-artist').value = '';
-                            document.getElementById('importer-album').value = '';
-                            document.getElementById('importer').style.display = 'none';
-                            
-                            importerKeyDownResponder.deactivate();
-                            importerKeyUpResponder.deactivate();
-
-                            keyDownResponder.activate();
-                            keyUpResponder.activate();
-                        
-                        }, 100);
-                    
-                    }
-                    function escKeyPress() {
-                    
-                        document.getElementById('importer-cancel').classList.remove('active');
-                        setTimeout(function () {
-                            
-                            document.getElementById('importer-explicit-checkbox').checked = false;
-                            document.getElementById('importer-artist').value = '';
-                            document.getElementById('importer-album').value = '';
-                            document.getElementById('importer').style.display = 'none';
-                            
-                            importerKeyDownResponder.deactivate();
-                            importerKeyUpResponder.deactivate();
-                            
-                            keyDownResponder.activate();
-                            keyUpResponder.activate();
-                        
-                        }, 100);
-                    
-                    }
-                    
-                    if (event.keyCode === 13) { enterKeyPress(); }
-                    if (event.keyCode === 27) { escKeyPress(); }
-                
-                }
-                
-            }());
-            
-        </script> <!-- applicate engine -->
+    </script> <!-- applicate engine -->
     
       <!-- Block Standard Template
 
