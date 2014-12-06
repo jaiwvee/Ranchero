@@ -9,7 +9,9 @@
     Known Bugs
     - 
     To Do List
-    - None
+    - Consider removing 'save changes'
+      button in favor of auto-save
+      functionality
     Bug Fixes
     - None
     Improvements
@@ -298,25 +300,54 @@
                 var int; // reference (inspector)
                 
                 // Input Response Instancializers    
-                var createMuleButtonResponder = new InputResponder(document.getElementById('create-mule-button'));
-                var retainMuleButtonResponder = new InputResponder(document.getElementById('retain-mule-button'));
-                var deleteMuleButtonResponder = new InputResponder(document.getElementById('delete-mule-button'));
+                var createMuleButtonResponder = new InputResponder(document.getElementById('create-mule-button')); // (1)
+                var retainMuleButtonResponder = new InputResponder(document.getElementById('retain-mule-button')); // (2)
+                var deleteMuleButtonResponder = new InputResponder(document.getElementById('delete-mule-button')); // (3)
                 
                 // Input Response Callback Methods
-                
-                    // function editInventoryButtonCallback() {}
+                function createMuleButtonCallback() {
+                    
+                    // Create new mule entry in sidebar
+                    // Listen for 'enter' keypress; mule name is editable until 'enter' key is heard
+                    // Add mule to unsynced localStorage variable, then sync it
+                    
+                } // (1)
+                function retainMuleButtonCallback() {
+                    
+                    // Possibly remove this in favor of autosave
+                    // Get the current 'muleStore' variable (or whatever is used for unsynced changes)
+                    // And save it with the current data from current right and left window panes.
+                    
+                } // (2)
+                function deleteMuleButtonCallback() {
+                    
+                    // Get the index of the current mule from the .selected in sidebar
+                    // Make sure user is sure! Remove that index from the unsynced 'muleStore' variable
+                    // Remove the content from the active right-window fields; remove entry from left-window
+                    // Sync with localStorage
+                    
+                } // (3)
                 
                 // Input Response Catalysts
-                
-                    // editInventoryButtonResponder.setCatalyst('click');
+                createMuleButtonResponder.setCatalyst('click'); // (1)
+                retainMuleButtonResponder.setCatalyst('click'); // (2)
+                deleteMuleButtonResponder.setCatalyst('click'); // (3)
                 
                 // Input Response Callback Assigners
-                
-                    // editInventoryButtonResponder.setCallback(editInventoryButtonCallback);
+                createMuleButtonResponder.setCallback(createMuleButtonCallback); // (1)
+                retainMuleButtonResponder.setCallback(retainMuleButtonCallback); // (2)
+                deleteMuleButtonResponder.setCallback(deleteMuleButtonCallback); // (3)
                 
                 // Input Response Activators
+                createMuleButtonResponder.activate(); // (1)
+                retainMuleButtonResponder.activate(); // (2)
+                deleteMuleButtonResponder.activate(); // (3)
                 
-                    // editInventoryButtonResponder.activate();
+                
+                
+                
+                
+                
                 
                 
                 // Input Response Callback Methods
