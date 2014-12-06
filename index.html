@@ -56,7 +56,7 @@
                         <div id="left-interface-window-mule-list-item-count">9</div>
                     </div>
                 </div>
-                <div id="new-mule-button">new mule</div>
+                <div id="create-mule-button">new mule</div>
                 <div id="attribution">Designed by Jai in California</div>
             </div>
             <div id="right-interface-darker-panel">
@@ -141,8 +141,8 @@
                         <div class="slot"></div>
                     </div>
                 </div>
-                <div id ="save-mule-button">save changes</div>
-                <div id ="kill-mule-button">delete mule</div>
+                <div id ="retain-mule-button">save changes</div>
+                <div id ="delete-mule-button">delete mule</div>
             </div>
         </div> <!-- mules window interface -->
         <div id="block-interface">
@@ -297,58 +297,26 @@
                 
                 var int; // reference (inspector)
                 
-                // Input Response Instancializers
-                var editInventoryButtonResponder = new InputResponder(document.getElementById('edit-storage-button'));
-                var doneInventoryButtonResponder = new InputResponder(document.getElementById('done-storage-button'));
-                var addMuleButtonResponder = new InputResponder(document.getElementById('new-mule-button'));
-                var saveMuleButtonResponder = new InputResponder(document.getElementById('save-mule-button'));
-                var killMuleButtonResponder = new InputResponder(document.getElementById('kill-mule-button'));
+                // Input Response Instancializers    
+                var createMuleButtonResponder = new InputResponder(document.getElementById('create-mule-button'));
+                var retainMuleButtonResponder = new InputResponder(document.getElementById('retain-mule-button'));
+                var deleteMuleButtonResponder = new InputResponder(document.getElementById('delete-mule-button'));
                 
                 // Input Response Callback Methods
-                function editInventoryButtonCallback() {
-                    
-                    /* Explicit DOMNode Modifiers */
-                    document.querySelector('#edit-storage-button').style.display = 'none';
-                    document.querySelector('#done-storage-button').style.display = 'block';
-                    
-                    /* Implicit DOMNode Modifiers */
-                    function addEditClassToElement(element) {
-                        element.classList.add('edit');
-                    }
-                    var items = document.querySelectorAll('.slot');
-                    for (var i = 0; i < items.length; i++) {
-                        addEditClassToElement(items[i]);
-                    }
-                    
-                }
-                function doneInventoryButtonCallback() {
-                    
-                    /* Explicit DOMNode Modifiers */
-                    document.querySelector('#done-storage-button').style.display = 'none';
-                    document.querySelector('#edit-storage-button').style.display = 'block';
-                    
-                    /* Implicit DOMNode Modifiers */
-                    function removeEditClassFromElement(element) {
-                        element.classList.remove('edit');
-                    }
-                    var items = document.querySelectorAll('.slot');
-                    for (var i = 0; i < items.length; i++) {
-                        removeEditClassFromElement(items[i]);
-                    }
-                    
-                }
+                
+                    // function editInventoryButtonCallback() {}
                 
                 // Input Response Catalysts
-                editInventoryButtonResponder.setCatalyst('click');
-                doneInventoryButtonResponder.setCatalyst('click');
+                
+                    // editInventoryButtonResponder.setCatalyst('click');
                 
                 // Input Response Callback Assigners
-                editInventoryButtonResponder.setCallback(editInventoryButtonCallback);
-                doneInventoryButtonResponder.setCallback(doneInventoryButtonCallback);
+                
+                    // editInventoryButtonResponder.setCallback(editInventoryButtonCallback);
                 
                 // Input Response Activators
-                editInventoryButtonResponder.activate();
-                doneInventoryButtonResponder.activate();
+                
+                    // editInventoryButtonResponder.activate();
                 
                 
                 // Input Response Callback Methods
