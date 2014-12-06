@@ -137,7 +137,7 @@ body {
     margin: 3px 7px 0 0;
 }
 
-#new-mule-button {
+#create-mule-button {
     font-family: Avenir-Light;
     border: 1px solid #757F8A;
     text-align: center;
@@ -152,13 +152,13 @@ body {
     box-sizing: border-box;
     background: #6A737D;
 }
-#new-mule-button:hover {
+#create-mule-button:hover {
     cursor: pointer;
 }
-#new-mule-button:active {
+#create-mule-button:active {
     background: #5e666e;
 }
-#save-mule-button {
+#retain-mule-button {
     font-family: Avenir-Light;
     border: 1px solid #6A6E73;
     text-align: center;
@@ -174,13 +174,13 @@ body {
     box-sizing: border-box;
     background: #5E6266;
 }
-#save-mule-button:hover {
+#retain-mule-button:hover {
     cursor: pointer;
 }
-#save-mule-button:active {
+#retain-mule-button:active {
     background: #525457;
 }
-#kill-mule-button {
+#delete-mule-button {
     font-family: Avenir-Light;
     border: 1px solid #6A6E73;
     text-align: center;
@@ -196,10 +196,10 @@ body {
     box-sizing: border-box;
     background: #5E6266;
 }
-#kill-mule-button:hover {
+#delete-mule-button:hover {
     cursor: pointer;
 }
-#kill-mule-button:active {
+#delete-mule-button:active {
     background: #525457;
 }
 
