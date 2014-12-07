@@ -36,11 +36,6 @@
 </head>
 <body>
     
-    <!-- dom construction -->
-    <!-- global variables -->
-    <!-- global functions -->
-    <!-- applicate engine -->
-    
     <sector name="PROJECTRANCHERO">
         <div id="mules-interface" class="noselect">
             <div id="left-interface-lighter-panel">
@@ -48,16 +43,7 @@
                     <div id="left-interface-window-title-heavy">Mule Tracker</div>
                     <div id="left-interface-window-title-light">by Redwindon</div>
                 </div>
-                <div id="left-interface-window-mule-list">
-                    <div id="left-interface-window-mule-list-item" class="selected">
-                        <div id="left-interface-window-mule-list-item-name">Redwindon</div>
-                        <div id="left-interface-window-mule-list-item-count">14</div>
-                    </div>
-                    <div id="left-interface-window-mule-list-item">
-                        <div id="left-interface-window-mule-list-item-name">xGoldy</div>
-                        <div id="left-interface-window-mule-list-item-count">9</div>
-                    </div>
-                </div>
+                <div id="left-interface-window-mule-list"></div>
                 <div id="create-mule-button">new mule</div>
                 <div id="attribution">Designed by Jai in California</div>
             </div>
@@ -151,115 +137,121 @@
         
         </div> <!-- block module interface -->
     </sector> <!-- DOM construction -->
-    <script type="text/javascript">  
-        
-        /* Mutable Global Variables */
-        var muleStore = new MuleLibraryStore('mules');
-        
-    </script> <!-- global variables -->
     <script type="text/javascript">
         
-        // ...
+        /* Mutable Global Variables */
+        var MULES = new ObjectLibrary('MULES');
         
-    </script><!-- global functions -->
+            var mule1 = new PropertyStore();
+            mule1.setProp(mule1, 'name', 'xHowl');
+            mule1.setProp(mule1, 'slots_filled', 7);
+            mule1.setProp(mule1, 'slots_empty', 9);
+            mule1.setProp(mule1, 'email', 'jaiwvee@gmail.com');
+            mule1.setProp(mule1, 'password', 'brisingr21472147');
+            mule1.setProp(mule1, 'blocks', {
+                DOOMBOW: 1,
+                CORALBOW: 1,
+                POTIONOFLIFE: 32
+            });
+            MULES.addItem(mule1);
+            var mule2 = new PropertyStore();
+            mule2.setProp(mule2, 'name', 'JoeEimer');
+            mule2.setProp(mule2, 'slots_filled', 48);
+            mule2.setProp(mule2, 'slots_empty', 27);
+            mule2.setProp(mule2, 'email', 'rotmg.account@web.de');
+            mule2.setProp(mule2, 'password', 'brisingr2147');
+            mule2.setProp(mule2, 'blocks', {
+                POTIONOFSPEED: 17,
+                POTIONOFMANA: 12
+            });
+            MULES.addItem(mule2);
+            //MULES.reset();
+            //console.log(MULES);
+        
+        /* Immutable Global Variables */
+        
+    </script> <!-- global variables -->
     
     <script type="text/javascript">
         
         /* Immutable Global Functions */
-        function appendUISongs() {
-
-            // Empty UI Track List
-            document.getElementById('selector').innerHTML = '';
-
-            // Define Variables
-            var track_title;
-            var track_artist;
-            var track_album;
-            var track_explicit;
-            var track_node;
-
-            // UI Track Appendation Loop
-            for (var i = 0; i < musicStore.list.length; i += 1) {
-
-                // Define Variables
-                song = musicStore.getSong(i);
-
-                // DOM-Attached Variable Definitions
-                track_title = document.createElement('div');
-                track_title.classList.add('song-title');
-                track_title.innerText = song.title;
-                track_artist = document.createElement('div');
-                track_artist.classList.add('song-artist');
-                track_artist.innerText = song.artist;
-                track_album = document.createElement('div');
-                track_album.classList.add('song-album');
-                track_album.innerText = song.album;
-                track_node = document.createElement('div');
-                track_node.classList.add('list-item');
-                track_node.appendChild(track_title);
-                track_node.appendChild(track_artist);
-                track_node.appendChild(track_album);
-
-                // Add Vulgar If Required
-                if (song.vulgar) {
-                    track_explicit = document.createElement('div');
-                    track_explicit.classList.add('explicit-indicator');
-                    track_explicit.innerText = 'EXPLICIT';
-                    track_node.appendChild(track_explicit);
+        function DOMInjectMuleList() {
+            
+            // Empty the container
+            (function () {
+                document.getElementById('left-interface-window-mule-list').innerHTML = '';
+            }());
+            
+            // Append the mules
+            (function () {
+                var litem_node, name_node, count_node, name, count;
+                for (var i = 0; i < MULES.size; i++) {
+                    mule = MULES.getItem(i);
+                    litem_node = document.createElement('div');
+                    name_node = document.createElement('div');
+                    count_node = document.createElement('div');
+                    litem_node.id = 'left-interface-window-mule-list-item';
+                    name_node.id = 'left-interface-window-mule-list-item-name';
+                    count_node.id = 'left-interface-window-mule-list-item-count';
+                    litem_node.classList.add('left-interface-window-mule-list-item');
+                    name_node.classList.add('left-interface-window-mule-list-item-name');
+                    count_node.classList.add('left-interface-window-mule-list-item-count');
+                    name_node.innerText = mule.name;
+                    count_node.innerText = mule.slots_filled;
+                    litem_node.appendChild(name_node);
+                    litem_node.appendChild(count_node);
+                    if (i === 0) {
+                        litem_node.classList.add('selected');
+                        document.getElementById('right-interface-window-title-heavy').innerText = mule.name;
+                        document.getElementById('right-interface-window-title-light').innerHTML = '&ndash; ' + mule.slots_empty + ' slots available';
+                        document.getElementById('right-interface-window-left-di-list-item-input-email').value = mule.email;
+                        document.getElementById('right-interface-window-left-di-list-item-input-password').value = mule.password;
+                        document.getElementById('right-interface-window-right-di-list-item-output-available').value = mule.slots_empty;
+                        document.getElementById('right-interface-window-right-di-list-item-output-used').value = mule.slots_filled;
+                    }
+                    document.getElementById('left-interface-window-mule-list').appendChild(litem_node);
                 }
-
-                // Append Track To DOM
-                document.getElementById('selector').appendChild(track_node);
-
-            }
-
-            // Song Input Responder Callback
-            function songCallback() {
-
-                // Define Variables
-                var items = Array.prototype.slice.call(document.getElementsByClassName('list-item'));
-                var item = event.target.parentNode;
-                var index = items.indexOf(item);
-
-                // Set Flag
-                musicStore.setFlag(index);
-
-                // Define Song Reference Variable
-                var song = new SongMetadataStore();
-
-                // Import Song From Store
-                song.importSong(musicStore.getSong(index));
-
-                // DOM Manipulation
-                document.getElementById('audio').setAttribute('src', song.source);
-                document.getElementById('audio').play();
-                document.getElementById('pause').style.display = 'block';
-                document.getElementById('play').style.display = 'none';
-                document.getElementById('song-title').innerText = song.title;
-                document.getElementById('song-artist').innerText = song.artist;
-                document.getElementById('prev').classList.remove('disabled');
-                document.getElementById('next').classList.remove('disabled');
-                document.getElementById('program').style.display = 'none';
-                document.getElementById('version').style.display = 'none';
-                document.getElementById('tracer').style.display = 'block';
-                document.getElementById('song-elapsed-numericator').style.display = 'block';
-                document.getElementById('song-length-numericator').style.display = 'block';
-
-            }
-
-            // Song Input Responder Creation
-            songResponders = new InputResponders(document.getElementsByClassName('list-item'));
-
-            // Song Input Responder Config
-            songResponders.setCatalyst('click');
-
-            // Song Input Responder Config
-            songResponders.setCallback(songCallback);
-
-            // Song Input Responder Config
-            songResponders.activate();
-
-        } // sample; not used in this project
+            }());
+            
+            // Define callbacks
+            (function () {
+                function muleListItemButtonCallback() {
+                    var items = Array.prototype.slice.call(document.getElementById('left-interface-window-mule-list').children);
+                    if (event.target.id === 'left-interface-window-mule-list-item-name') {
+                        document.getElementsByClassName('selected')[0].classList.remove('selected');
+                        var item = event.target.parentNode;
+                        var index = items.indexOf(event.target.parentNode);
+                        event.target.parentNode.classList.add('selected');
+                    } else if (event.target.id === 'left-interface-window-mule-list-item') {
+                        document.getElementsByClassName('selected')[0].classList.remove('selected');
+                        var item = event.target;
+                        var index = items.indexOf(event.target);
+                        event.target.classList.add('selected');
+                    } else {
+                        return;
+                    }
+                    MULES.setProp(MULES, 'flag', index);
+                    var mule = new PropertyStore();
+                    mule.importItem(mule, MULES.getItem(index));
+                    document.getElementById('right-interface-window-title-heavy').innerText = mule.name;
+                    document.getElementById('right-interface-window-title-light').innerHTML = '&ndash; ' + mule.slots_empty + ' slots available';
+                    document.getElementById('right-interface-window-left-di-list-item-input-email').value = mule.email;
+                    document.getElementById('right-interface-window-left-di-list-item-input-password').value = mule.password;
+                    document.getElementById('right-interface-window-right-di-list-item-output-available').value = mule.slots_empty;
+                    document.getElementById('right-interface-window-right-di-list-item-output-used').value = mule.slots_filled;
+                }
+                muleListItemButtonResponders = new InputResponders(document.getElementsByClassName('left-interface-window-mule-list-item'));
+                muleListItemButtonResponders.setCatalyst('click');
+                muleListItemButtonResponders.setCallback(muleListItemButtonCallback);
+                muleListItemButtonResponders.activate();
+            }());
+        }
+        
+        
+        // AUTO-CALL FOR TESTING ONLY:
+          DOMInjectMuleList();
+        
+        
         function reloadUI($song) {
 
             var song = new SongMetadataStore();
@@ -280,24 +272,15 @@
     </script> <!-- global functions -->
     <script type="text/javascript">
 
-        /* Init Configuration */
+        /* Load Preparation */
         (function () {
 
             // ... e.g. muleStore.sortBy('name'); & appendUIMules();
 
         }());
 
-        /* DOMNode Modifiers */
-        (function () {
-
-            // ... e.g. document.getElementById('button').style.opacity = 0.5;
-
-        }());
-
         /* Input Responders */
         (function () {
-
-            var int; // reference (inspector)
 
             // Input Response Instancializers    
             var createMuleButtonResponder = new InputResponder(document.getElementById('create-mule-button')); // (1)

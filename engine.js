@@ -12,24 +12,7 @@
 /*global console*/
 /*global alert*/
 
-// Constructors
-function MuleLibraryStore(name) {
-    'use strict';
-    this.name = name || ''; // Default Value
-    this.list = JSON.parse(localStorage.getItem(name)) || []; // Default Value
-    this.size = this.list.length || 0; // Default Value
-    this.flag = 0; // Default Value
-    this.sort = null; // Default Value
-}  // stores a mule library in local storage
-function MuleMetadataStore(name) {
-    'use strict';
-    this.name = name || ''; // Default Value
-    this.email = ''; // Default Value
-    this.password = ''; // Default Value
-    this.slots_used = 0; // Default Value
-    this.slots_open = 16; // Default Value
-    return this;
-}  // stores song metadata in session storage
+/* Constructors */
 function InputResponder(target) {
     'use strict';
     this.target = target; // Default Value;
@@ -43,9 +26,69 @@ function InputResponders(target) {
     this.callback = null; // Default Value
 }  // responds to inputs with specified callbacks
 
-// Prototypes
-// ... // prototypes for mulelibrarystore
-// ... // prototypes for mulemetadatastore
+function ObjectLibrary(name) {
+    'use strict';
+    this.name = name || '';  // default value
+    this.list = JSON.parse(localStorage.getItem(name)) || []; // default value
+    this.size = this.list.length || 0; // default value
+    this.flag = 0; // default value
+    this.sort = null; // default value
+}  // stores a reference to a library of objects 
+function PropertyStore(name) {
+    'use strict';
+    this.name = name || ''; // default value
+    return this;
+}  // stores a reference to singular object data
+
+/* Prototypes */
+(function () {
+    'use strict';
+    ObjectLibrary.prototype.setProp = function (object, property, value) {
+        Object.defineProperty(object, property, {value: value});
+    };
+    ObjectLibrary.prototype.getItem = function (itemID) {
+        return this.list[itemID] || null;
+    };
+    ObjectLibrary.prototype.setItem = function (itemID, item) {
+        this.list[itemID] = item;
+    };
+    ObjectLibrary.prototype.addItem = function (item) {
+        this.list.push(item);
+        this.size += 1;
+    };
+    ObjectLibrary.prototype.delItem = function (itemID) {
+        this.list.splice(itemID, 1);
+        this.size -= 1;
+    };
+    ObjectLibrary.prototype.sort = function (property) {
+        this.list.sort(function (a, b) {
+            return a[property].localeCompare(b[property]);
+        });
+        this.sort = property;
+    };
+    ObjectLibrary.prototype.save = function () {
+        localStorage.setItem(this.name, JSON.stringify(this.list));
+    };
+    ObjectLibrary.prototype.reset = function () {
+        localStorage.setItem(this.name, JSON.stringify([]));
+    };
+}());  // prototypes for objectlibrary
+(function () {
+    'use strict';
+    var i;
+    PropertyStore.prototype.setProp = function (object, property, value) {
+        Object.defineProperty(object, property, {value: value});
+    };
+    PropertyStore.prototype.importItem = function (object, item) {
+        var properties = Object.getOwnPropertyNames(item);
+        for (i = 0; i < properties.length; i += 1) {
+            Object.defineProperty(object, properties[i], {
+                value: (Object.getOwnPropertyDescriptor(item, properties[i])).value
+            });
+        }
+    };
+}());  // prototypes for propertystore
+
 (function () {
     'use strict';
     // InputResponder Lib. Basic Constructor Methods

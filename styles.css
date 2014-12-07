@@ -338,6 +338,15 @@ body {
     top: 124px;
     height: 106px;
     width: 406px;
+    
+    
+    
+    /* delete me to show storage again */
+    display: none;
+    
+    
+    
+    
 }
 
 #block-container {
@@ -362,7 +371,7 @@ body {
     width: 44px;
 }
 .slot:hover {
-    background: #505457 url('../img/cross.png');
+    background: #505457 url('resources/img/cross.png');
     background-size: contain;
     cursor: pointer;
 }
