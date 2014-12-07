@@ -44,7 +44,12 @@ function PropertyStore(name) {
 (function () {
     'use strict';
     ObjectLibrary.prototype.setProp = function (object, property, value) {
-        Object.defineProperty(object, property, {value: value});
+        Object.defineProperty(object, property, {
+            configurable: true,
+            enumerable: true,
+            writable: true,
+            value: value
+        });
     };
     ObjectLibrary.prototype.getItem = function (itemID) {
         return this.list[itemID] || null;
@@ -60,7 +65,7 @@ function PropertyStore(name) {
         this.list.splice(itemID, 1);
         this.size -= 1;
     };
-    ObjectLibrary.prototype.sort = function (property) {
+    ObjectLibrary.prototype.sortBy = function (property) {
         this.list.sort(function (a, b) {
             return a[property].localeCompare(b[property]);
         });
@@ -77,13 +82,21 @@ function PropertyStore(name) {
     'use strict';
     var i;
     PropertyStore.prototype.setProp = function (object, property, value) {
-        Object.defineProperty(object, property, {value: value});
+        Object.defineProperty(object, property, {
+            configurable: true,
+            enumerable: true,
+            writable: true,
+            value: value
+        });
     };
     PropertyStore.prototype.importItem = function (object, item) {
         var properties = Object.getOwnPropertyNames(item);
         for (i = 0; i < properties.length; i += 1) {
             Object.defineProperty(object, properties[i], {
-                value: (Object.getOwnPropertyDescriptor(item, properties[i])).value
+                value: (Object.getOwnPropertyDescriptor(item, properties[i])).value,
+                configurable: true,
+                enumerable: true,
+                writable: true
             });
         }
     };

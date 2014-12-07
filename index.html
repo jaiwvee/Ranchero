@@ -56,18 +56,18 @@
                     <div id="right-interface-window-left-di-list-item">
                         <div id="right-interface-window-left-di-list-item-label">Email:</div>
                         <input id="right-interface-window-left-di-list-item-input-email" value="N/A">
-                        <div id="di-list-item-action-button">copy</div>
+                        <div id="di-list-item-action-button" class="email">copy</div>
                     </div>
                     <div id="right-interface-window-left-di-list-item">
                         <div id="right-interface-window-left-di-list-item-label">Password:</div>
                         <input id="right-interface-window-left-di-list-item-input-password" value="N/A">
-                        <div id="di-list-item-action-button">copy</div>
+                        <div id="di-list-item-action-button" class="password">copy</div>
                     </div>
                 </div>
                 <div id="right-interface-window-right-di-list">
                     <div id="right-interface-window-right-di-list-item">
-                        <div id="right-interface-window-right-di-list-item-label">Slots Available:</div>
-                        <output id="right-interface-window-right-di-list-item-output-available">N/A</output>
+                        <div id="right-interface-window-right-di-list-item-label">Total Slots:</div>
+                        <input id="right-interface-window-right-di-list-item-input-total" value="N/A">
                     </div>
                     <div id="right-interface-window-right-di-list-item">
                         <div id="right-interface-window-right-di-list-item-label">Slots Used:</div>
@@ -129,7 +129,7 @@
                         <div class="slot"></div>
                     </div>
                 </div>
-                <div id ="retain-mule-button">save changes</div>
+                <div id ="rename-mule-button">rename mule</div>
                 <div id ="delete-mule-button">delete mule</div>
             </div>
         </div> <!-- mules window interface -->
@@ -142,36 +142,9 @@
         /* Mutable Global Variables */
         var MULES = new ObjectLibrary('MULES');
         
-            var mule1 = new PropertyStore();
-            mule1.setProp(mule1, 'name', 'xHowl');
-            mule1.setProp(mule1, 'slots_filled', 7);
-            mule1.setProp(mule1, 'slots_empty', 9);
-            mule1.setProp(mule1, 'email', 'jaiwvee@gmail.com');
-            mule1.setProp(mule1, 'password', 'brisingr21472147');
-            mule1.setProp(mule1, 'blocks', {
-                DOOMBOW: 1,
-                CORALBOW: 1,
-                POTIONOFLIFE: 32
-            });
-            MULES.addItem(mule1);
-            var mule2 = new PropertyStore();
-            mule2.setProp(mule2, 'name', 'JoeEimer');
-            mule2.setProp(mule2, 'slots_filled', 48);
-            mule2.setProp(mule2, 'slots_empty', 27);
-            mule2.setProp(mule2, 'email', 'rotmg.account@web.de');
-            mule2.setProp(mule2, 'password', 'brisingr2147');
-            mule2.setProp(mule2, 'blocks', {
-                POTIONOFSPEED: 17,
-                POTIONOFMANA: 12
-            });
-            MULES.addItem(mule2);
-            //MULES.reset();
-            //console.log(MULES);
-        
         /* Immutable Global Variables */
         
     </script> <!-- global variables -->
-    
     <script type="text/javascript">
         
         /* Immutable Global Functions */
@@ -184,7 +157,18 @@
             
             // Append the mules
             (function () {
-                var litem_node, name_node, count_node, name, count;
+                MULES.sortBy('name');
+                MULES.save();
+                if (MULES.list.length < 1) {
+                    document.querySelector('#right-interface-window-title-group').style.display = 'none';
+                    document.querySelector('#right-interface-window-left-di-list').style.display = 'none';
+                    document.querySelector('#right-interface-window-right-di-list').style.display = 'none';
+                } else {
+                    document.querySelector('#right-interface-window-title-group').style.display = 'block';
+                    document.querySelector('#right-interface-window-left-di-list').style.display = 'block';
+                    document.querySelector('#right-interface-window-right-di-list').style.display = 'block';
+                }
+                var mule, litem_node, name_node, count_node, name, count;
                 for (var i = 0; i < MULES.size; i++) {
                     mule = MULES.getItem(i);
                     litem_node = document.createElement('div');
@@ -203,17 +187,17 @@
                     if (i === 0) {
                         litem_node.classList.add('selected');
                         document.getElementById('right-interface-window-title-heavy').innerText = mule.name;
-                        document.getElementById('right-interface-window-title-light').innerHTML = '&ndash; ' + mule.slots_empty + ' slots available';
+                        document.getElementById('right-interface-window-title-light').innerHTML = '&ndash; ' + Number(mule.slots_total-mule.slots_filled) + ' slots available';
                         document.getElementById('right-interface-window-left-di-list-item-input-email').value = mule.email;
                         document.getElementById('right-interface-window-left-di-list-item-input-password').value = mule.password;
-                        document.getElementById('right-interface-window-right-di-list-item-output-available').value = mule.slots_empty;
+                        document.getElementById('right-interface-window-right-di-list-item-input-total').value = mule.slots_total;
                         document.getElementById('right-interface-window-right-di-list-item-output-used').value = mule.slots_filled;
                     }
                     document.getElementById('left-interface-window-mule-list').appendChild(litem_node);
                 }
             }());
             
-            // Define callbacks
+            // Renew responders
             (function () {
                 function muleListItemButtonCallback() {
                     var items = Array.prototype.slice.call(document.getElementById('left-interface-window-mule-list').children);
@@ -234,11 +218,11 @@
                     var mule = new PropertyStore();
                     mule.importItem(mule, MULES.getItem(index));
                     document.getElementById('right-interface-window-title-heavy').innerText = mule.name;
-                    document.getElementById('right-interface-window-title-light').innerHTML = '&ndash; ' + mule.slots_empty + ' slots available';
+                    document.getElementById('right-interface-window-title-light').innerHTML = '&ndash; ' + Number(mule.slots_total-mule.slots_filled) + ' slots available';
                     document.getElementById('right-interface-window-left-di-list-item-input-email').value = mule.email;
                     document.getElementById('right-interface-window-left-di-list-item-input-password').value = mule.password;
-                    document.getElementById('right-interface-window-right-di-list-item-output-available').value = mule.slots_empty;
-                    document.getElementById('right-interface-window-right-di-list-item-output-used').value = mule.slots_filled;
+                    document.getElementById('right-interface-window-right-di-list-item-input-total').value = mule.slots_total;
+                    document.getElementById('right-interface-window-right-di-list-item-output-used').innerText = mule.slots_filled;
                 }
                 muleListItemButtonResponders = new InputResponders(document.getElementsByClassName('left-interface-window-mule-list-item'));
                 muleListItemButtonResponders.setCatalyst('click');
@@ -247,27 +231,8 @@
             }());
         }
         
-        
         // AUTO-CALL FOR TESTING ONLY:
-          DOMInjectMuleList();
-        
-        
-        function reloadUI($song) {
-
-            var song = new SongMetadataStore();
-            song.importSong($song);
-
-            document.getElementById('song-title').innerText = song.title;
-            document.getElementById('song-artist').innerText = song.artist;
-            document.getElementById('prev').classList.remove('disabled');
-            document.getElementById('next').classList.remove('disabled');
-            document.getElementById('program').style.display = 'none';
-            document.getElementById('version').style.display = 'none';
-            document.getElementById('tracer').style.display = 'block';
-            document.getElementById('song-elapsed-numericator').style.display = 'block';
-            document.getElementById('song-length-numericator').style.display = 'block';
-
-        } // sample; not used in this project
+        DOMInjectMuleList();
 
     </script> <!-- global functions -->
     <script type="text/javascript">
@@ -284,47 +249,188 @@
 
             // Input Response Instancializers    
             var createMuleButtonResponder = new InputResponder(document.getElementById('create-mule-button')); // (1)
-            var retainMuleButtonResponder = new InputResponder(document.getElementById('retain-mule-button')); // (2)
+            var renameMuleButtonResponder = new InputResponder(document.getElementById('rename-mule-button')); // (2)
             var deleteMuleButtonResponder = new InputResponder(document.getElementById('delete-mule-button')); // (3)
+            var muleEmailChangeResponder = new InputResponder(document.getElementById('right-interface-window-left-di-list-item-input-email')); // (4)
+            var mulePcodeChangeResponder = new InputResponder(document.getElementById('right-interface-window-left-di-list-item-input-password')); // (5)
+            var muleSlotsChangeResponder = new InputResponder(document.getElementById('right-interface-window-right-di-list-item-input-total')); // (6)
+            var listCopyButtonAResponder = new InputResponder(document.querySelector('#di-list-item-action-button.email')); // (7)
+            var listCopyButtonBResponder = new InputResponder(document.querySelector('#di-list-item-action-button.password')); // (8)
 
             // Input Response Callback Methods
             function createMuleButtonCallback() {
 
-                // Create new mule entry in sidebar
-                // Listen for 'enter' keypress; mule name is editable until 'enter' key is heard
-                // Add mule to unsynced localStorage variable, then sync it
+                document.getElementById('right-interface-window-title-heavy').innerText = '';
+                document.getElementById('right-interface-window-title-light').innerHTML = '';
+                document.getElementById('right-interface-window-left-di-list-item-input-email').value = '';
+                document.getElementById('right-interface-window-left-di-list-item-input-password').value = '';
+                document.getElementById('right-interface-window-right-di-list-item-input-total').value = 16;
+                document.getElementById('right-interface-window-right-di-list-item-output-used').value = 0;
+                
+                var mule, litem_node, name_node, count_node, name, count;
+                litem_node = document.createElement('div');
+                name_node = document.createElement('input');
+                count_node = document.createElement('div');
+                litem_node.id = 'left-interface-window-mule-list-item';
+                name_node.id = 'left-interface-window-mule-list-item-name';
+                count_node.id = 'left-interface-window-mule-list-item-count';
+                litem_node.classList.add('left-interface-window-mule-list-item');
+                name_node.classList.add('left-interface-window-mule-list-item-name');
+                count_node.classList.add('left-interface-window-mule-list-item-count');
+                name_node.value = 'Mule Name';
+                litem_node.appendChild(name_node);
+                litem_node.appendChild(count_node);
+                document.getElementById('left-interface-window-mule-list').appendChild(litem_node);
+                name_node.focus();
+                name_node.select();
+                function completeMuleAddition() {
+                    var oldInput = document.querySelector('input#left-interface-window-mule-list-item-name');
+                    var muleName = oldInput.value;
+                    var newDiv = document.createElement('div');
+                    newDiv.id = 'left-interface-window-mule-list-item-name';
+                    newDiv.classList.add('left-interface-window-mule-list-item-name');
+                    newDiv.innerText = muleName;
+                    oldInput.parentNode.insertBefore(newDiv, oldInput.firstChild);
+                    oldInput.parentNode.removeChild(oldInput);
+                    var mule3 = new PropertyStore(muleName);
+                    mule3.setProp(mule3, 'slots_filled', 0);
+                    mule3.setProp(mule3, 'slots_total', 16);
+                    mule3.setProp(mule3, 'email', '');
+                    mule3.setProp(mule3, 'password', '');
+                    mule3.setProp(mule3, 'blocks', {});
+                    MULES.addItem(mule3);
+                    MULES.save();
+                    DOMInjectMuleList();
+                }
+                document.querySelector('input#left-interface-window-mule-list-item-name').addEventListener('blur', completeMuleAddition, false);
+                document.querySelector('input#left-interface-window-mule-list-item-name').addEventListener('keydown', function (event) {
+                    if (event.keyCode === 13) {
+                        document.querySelector('input#left-interface-window-mule-list-item-name').blur();
+                    } else if (event.keyCode === 9) {
+                        // tab
+                    } else {
+                        return;
+                    }
+                });
+                
+                // Activate blur listener
+                // Activate 'enter' listener
+                // Activate 'tab' listener
+                
+                // THIS IS BY NO MEANS FINISHED; ONLY BEGUN
 
             } // (1)
-            function retainMuleButtonCallback() {
+            function renameMuleButtonCallback() {
 
                 // Possibly remove this in favor of autosave
                 // Get the current 'muleStore' variable (or whatever is used for unsynced changes)
                 // And save it with the current data from current right and left window panes.
 
-            } // (2)
+            } // (2) UNCODED
             function deleteMuleButtonCallback() {
 
                 // Get the index of the current mule from the .selected in sidebar
                 // Make sure user is sure! Remove that index from the unsynced 'muleStore' variable
                 // Remove the content from the active right-window fields; remove entry from left-window
                 // Sync with localStorage
-
+                
+                var items = Array.prototype.slice.call(document.getElementById('left-interface-window-mule-list').children);
+                var item = document.querySelector('.selected');
+                var index = items.indexOf(item);
+                if (item.previousElementSibling) {
+                    item.previousElementSibling.classList.add('selected');
+                } else if (item.nextElementSibling) {
+                    item.nextElementSibling.classList.add('selected');
+                } else {
+                    // ...
+                }
+                item.classList.remove('selected');
+                item.parentNode.removeChild(item);
+                MULES.delItem(index);
+                DOMInjectMuleList();
+                
             } // (3)
+            function muleEmailChangeCallback() {
+                
+                var items = Array.prototype.slice.call(document.getElementById('left-interface-window-mule-list').children);
+                var item = document.querySelector('.selected');
+                var index = items.indexOf(item);
+                var mule = new PropertyStore();
+                mule.importItem(mule, MULES.getItem(index));
+                var value = document.getElementById('right-interface-window-left-di-list-item-input-email').value;
+                mule.setProp(mule, 'email', value);
+                MULES.setItem(index, mule);
+                MULES.save();
+                document.getElementById('right-interface-window-left-di-list-item-input-email').blur();
+                
+            } // (4)
+            function mulePcodeChangeCallback() {
+                
+                var items = Array.prototype.slice.call(document.getElementById('left-interface-window-mule-list').children);
+                var item = document.querySelector('.selected');
+                var index = items.indexOf(item);
+                var mule = new PropertyStore();
+                mule.importItem(mule, MULES.getItem(index));
+                var value = document.getElementById('right-interface-window-left-di-list-item-input-password').value;
+                mule.setProp(mule, 'password', value);
+                MULES.setItem(index, mule);
+                MULES.save();
+                document.getElementById('right-interface-window-left-di-list-item-input-password').blur();
+                
+            } // (5)
+            function muleSlotsChangeCallback() {
+                
+                var items = Array.prototype.slice.call(document.getElementById('left-interface-window-mule-list').children);
+                var item = document.querySelector('.selected');
+                var index = items.indexOf(item);
+                var mule = new PropertyStore();
+                mule.importItem(mule, MULES.getItem(index));
+                var value = document.getElementById('right-interface-window-right-di-list-item-input-total').value;
+                mule.setProp(mule, 'slots_total', value);
+                MULES.setItem(index, mule);
+                MULES.save();
+                document.getElementById('right-interface-window-right-di-list-item-input-total').blur();
+                document.getElementById('right-interface-window-title-light').innerHTML = '&ndash; ' + Number(mule.slots_total-mule.slots_filled) + ' slots available';
+                
+            } // (6)
+            function listCopyButtonACallback() {
+                document.querySelector('#right-interface-window-left-di-list-item-input-email').focus();
+                document.querySelector('#right-interface-window-left-di-list-item-input-email').select();
+            } // (7)
+            function listCopyButtonBCallback() {
+                document.querySelector('#right-interface-window-left-di-list-item-input-password').focus();
+                document.querySelector('#right-interface-window-left-di-list-item-input-password').select();
+            } // (8)
 
             // Input Response Catalysts
             createMuleButtonResponder.setCatalyst('click'); // (1)
-            retainMuleButtonResponder.setCatalyst('click'); // (2)
+            renameMuleButtonResponder.setCatalyst('click'); // (2)
             deleteMuleButtonResponder.setCatalyst('click'); // (3)
+            muleEmailChangeResponder.setCatalyst('change'); // (4)
+            mulePcodeChangeResponder.setCatalyst('change'); // (5)
+            muleSlotsChangeResponder.setCatalyst('change'); // (6)
+            listCopyButtonAResponder.setCatalyst('click'); // (7)
+            listCopyButtonBResponder.setCatalyst('click'); // (8)
 
             // Input Response Callback Assigners
             createMuleButtonResponder.setCallback(createMuleButtonCallback); // (1)
-            retainMuleButtonResponder.setCallback(retainMuleButtonCallback); // (2)
+            renameMuleButtonResponder.setCallback(renameMuleButtonCallback); // (2)
             deleteMuleButtonResponder.setCallback(deleteMuleButtonCallback); // (3)
+            muleEmailChangeResponder.setCallback(muleEmailChangeCallback); // (4)
+            mulePcodeChangeResponder.setCallback(mulePcodeChangeCallback); // (5)
+            muleSlotsChangeResponder.setCallback(muleSlotsChangeCallback); // (6)
+            listCopyButtonAResponder.setCallback(listCopyButtonACallback); // (7)
+            listCopyButtonBResponder.setCallback(listCopyButtonBCallback); // (8)
 
             // Input Response Activators
             createMuleButtonResponder.activate(); // (1)
-            retainMuleButtonResponder.activate(); // (2)
+            renameMuleButtonResponder.activate(); // (2)
             deleteMuleButtonResponder.activate(); // (3)
+            muleEmailChangeResponder.activate(); // (4)
+            mulePcodeChangeResponder.activate(); // (5)
+            muleSlotsChangeResponder.activate(); // (6)
+            listCopyButtonAResponder.activate(); // (7)
+            listCopyButtonBResponder.activate(); // (8)
 
         }());
 
