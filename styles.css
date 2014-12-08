@@ -24,7 +24,7 @@ body {
     width: 100%;
 }
 
-#mules-interface {
+#interface {
     margin-left: -400px;
     margin-top: -300px;
     left: 50%;
@@ -36,7 +36,7 @@ body {
     display: block;
 }
 
-#left-interface-lighter-panel {
+#left-panel {
     height: 600px;
     width: 256px;
     left: 0;
@@ -45,7 +45,8 @@ body {
     position: absolute;
     display: block;
 }
-#right-interface-darker-panel {
+
+#right-panel {
     height: 600px;
     width: 544px;
     z-index: 0;
@@ -56,248 +57,293 @@ body {
     display: block;
 }
 
-#left-interface-window-title-group {
+#left-title-group {
     position: relative;
     height: 20px;
     width: auto;
-    left: 18px;
     top: 13px;
-}
-#right-interface-window-title-group {
-    position: absolute;
-    text-align: center;
-    height: 17px;
-    width: 544px;
-    top: 15px;
+    left: 18px;
 }
 
-#left-interface-window-title-heavy {
-    font-family: Avenir-Heavy;
+#left-heavy-title {
+    font-family: 
+        Avenir-Heavy,
+        Arial;
     font-size: 13px;
-    color: #FFFFFF;
     float: left;
-}
-#right-interface-window-title-heavy {
-    font-family: Avenir-Heavy;
-    font-size: 12px;
     color: #FFFFFF;
 }
 
-#left-interface-window-title-light {
-    font-family: Avenir-Book;
-    font-size: 13px;
-    float: left;
+#left-light-title {
     margin-left: 4px;
+    font-family: 
+        Avenir-Book,
+        Arial;
+    font-size: 13px;
+    float: left;
     color: #757F8A;
 }
-#right-interface-window-title-light {
-    font-family: Avenir-Book;
-    font-size: 12px;
-    color: #757A80;
+
+#right-title-group {
+    position: absolute;
+    text-align: center;
+    top: 15px;
+    width: 544px;
+    height: 17px;
 }
 
-#left-interface-window-mule-list {
+#right-heavy-title {
+    font-family: 
+        Avenir-Heavy,
+        Arial;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+#right-light-title {
+    font-family: 
+        Avenir-Book,
+        Arial;
+    color: #757A80;
+    font-size: 12px;
+}
+
+#mule-list {
     position: relative;
+    background: none;
     left: 11px;
     top: 33px;
 }
 
-#left-interface-window-mule-list-item {
-    border: 1px solid transparent;
+#mule-list-item {
+    border: 
+        1px solid transparent;
     box-sizing: border-box;
     height: 23px;
     width: 234px;
 }
-#left-interface-window-mule-list-item:hover {
+
+#mule-list-item:hover {
     cursor: pointer;
 }
-#left-interface-window-mule-list-item.selected {
-    border: 1px solid #6A737D;
+
+#mule-list-item.selected {
+    border: 
+        1px solid #6A737D;
     border-radius: 8px;
     background: #5F6770;
 }
-#left-interface-window-mule-list-item.selected 
-#left-interface-window-mule-list-item-count {
+
+#mule-list-item-name {
+    margin: 3px 0 0 7px;
+    line-height: 16px;
+    float: left;
+    font-family: 
+        Avenir-Light,
+        Arial;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+input#mule-list-item-name {
+    margin: 2px 0 0 7px;
+    background: none;
+    font-family: 
+        Avenir-Light,
+        Arial;
+    float: left;
+    padding: 0;
+    font-size: 12px;
+    color: #4A90E2;
+    border: none;
+}
+
+input#mule-list-item-name:focus {
+    outline: none;
+}
+
+#mule-list-item-count {
+    line-height: 16px;
+    margin-right: 7px;
+    margin-top: 3px;
+    font-family: 
+        Avenir-Light,
+        Arial;
+    font-size: 12px;
+    float: right;
+    color: #808A96;
+    display: none;
+}
+
+#mule-list-item.selected
+#mule-list-item-count {
     display: block;
 }
 
-#left-interface-window-mule-list-item-name {
-    font-family: Avenir-Light;
-    font-size: 12px;
-    float: left;
-    color: #FFFFFF;
-    margin: 3px 0 0 7px;
-}
-input#left-interface-window-mule-list-item-name {
-    font-family: Avenir-Light;
-    background: transparent;
-    border: none;
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
-    float: left;
-    color: #4A90E2;
-    margin: 3px 0 0 7px;
-}
-input#left-interface-window-mule-list-item-name:focus {
-    outline: none;
-}
-#left-interface-window-mule-list-item-count {
-    font-family: Avenir-Light;
-    font-size: 12px;
-    float: right;
-    display: none;
-    color: #808A96;
-    margin: 3px 7px 0 0;
-}
 
-#create-mule-button {
-    font-family: Avenir-Light;
-    border: 1px solid #757F8A;
-    text-align: center;
-    border-radius: 8px;
-    position: relative;
-    left: 95px;
-    top: 56px;
-    height: 16px;
-    width: 57px;
-    font-size: 10px;
-    color: #FFFFFF;
-    box-sizing: border-box;
-    background: #6A737D;
-}
-#create-mule-button:hover {
-    cursor: pointer;
-}
-#create-mule-button:active {
-    background: #5e666e;
-}
-#rename-mule-button {
-    font-family: Avenir-Light;
-    border: 1px solid #6A6E73;
-    text-align: center;
-    border-radius: 8px;
-    position: absolute;
-    bottom: 38px;
-    left: 40px;
-    height: 16px;
-    width: 71px;
-    float: left;
-    font-size: 10px;
-    color: #FFFFFF;
-    box-sizing: border-box;
-    background: #5E6266;
-}
-#rename-mule-button:hover {
-    cursor: pointer;
-}
-#rename-mule-button:active {
-    background: #525457;
-}
-#delete-mule-button {
-    font-family: Avenir-Light;
-    border: 1px solid #6A6E73;
-    text-align: center;
-    border-radius: 8px;
-    position: absolute;
-    bottom: 38px;
-    left: 119px;
-    height: 16px;
-    width: 67px;
-    float: left;
-    font-size: 10px;
-    color: #FFFFFF;
-    box-sizing: border-box;
-    background: #5E6266;
-}
-#delete-mule-button:hover {
-    cursor: pointer;
-}
-#delete-mule-button:active {
-    background: #525457;
-}
-
-#attribution {
-    font-family: Avenir-Light;
-    position: absolute;
-    text-align: center;
-    bottom: 39px;
-    left: 39px;
-    width: 178px;
-    line-height: 14px;
-    font-size: 10px;
-    color: #757F8A;
-}
-
-#right-interface-window-left-di-list {
+#left-di-list {
     position: absolute;
     left: 40px;
     top: 58px;
 }
-#right-interface-window-right-di-list {
+
+#right-di-list {
     position: absolute;
     left: 310px;
     top: 58px;
 }
 
-#right-interface-window-left-di-list-item {
-    font-family: Avenir-Light;
-    margin-bottom: 8px;
-    font-size: 12px;
-    line-height: 16px;
+#create-mule-button {
+    box-sizing: border-box;
+    border: 
+        1px solid #757F8A;
+    font-family: 
+        Avenir-Light,
+        Arial;
+    border-radius: 8px;
+    position: relative;
+    background: #6A737D;
+    text-align: center;
+    font-size: 10px;
+    color: #FFFFFF;
     height: 16px;
-}
-#right-interface-window-right-di-list-item {
-    font-family: Avenir-Light;
-    margin-bottom: 8px;
-    font-size: 12px;
-    line-height: 16px;
-    height: 16px;
+    width: 57px;
+    left: 95px;
+    top: 56px;
 }
 
-#right-interface-window-left-di-list-item-label {
-    font-family: Avenir-Light;
+#create-mule-button:hover {
+    cursor: pointer;
+}
+
+#create-mule-button:active {
+    background: #5e666e;
+}
+
+#rename-mule-button {
+    box-sizing: border-box;
+    font-family: 
+        Avenir-Light,
+        Arial;
+    border: 
+        1px solid #6A6E73;
+    background: #5E6266;
+    text-align: center;
+    border-radius: 8px;
+    position: absolute;
+    font-size: 10px;
+    color: #FFFFFF;
+    bottom: 38px;
+    height: 16px;
+    width: 72px;
+    float: left;
+    left: 40px;
+}
+
+#rename-mule-button:hover {
+    cursor: pointer;
+}
+
+#rename-mule-button:active {
+    background: #525457;
+}
+
+#delete-mule-button {
+    box-sizing: border-box;
+    font-family: 
+        Avenir-Light,
+        Arial;
+    border: 
+        1px solid #6A6E73;
+    border-radius: 8px;
+    position: absolute;
+    background: #5E6266;
+    text-align: center;
+    font-size: 10px;
+    color: #FFFFFF;
+    bottom: 38px;
+    height: 16px;
+    left: 120px;
+    width: 67px;
+    float: left;
+}
+
+#delete-mule-button:hover {
+    cursor: pointer;
+}
+
+#delete-mule-button:active {
+    background: #525457;
+}
+
+#attribution {
+    position: absolute;
+    text-align: center;
+    bottom: 39px;
+    width: 178px;
+    left: 39px;
+    font-family: 
+        Avenir-Light,
+        Arial;
+    line-height: 14px;
+    font-size: 10px;
+    color: #757F8A;
+}
+
+#di-list-item {
+    margin-bottom: 8px;
+    font-family: 
+        Avenir-Light,
+        Arial;
+    height: 16px;
+    line-height: 16px;
+    font-size: 12px;
+}
+
+#di-list-item-label {
+    font-family: 
+        Avenir-Light,
+        Arial;
     color: #FFFFFF;
     font-size: 12px;
     float: left;
 }
-#right-interface-window-right-di-list-item-label {
-    font-family: Avenir-Light;
-    color: #FFFFFF;
-    font-size: 12px;
-    float: left;
-}
 
-#right-interface-window-left-di-list-item-input-email {
-    font-family: Avenir-Light;
+#di-list-item-input-email {
     -webkit-appearance: none;
+    font-family: 
+        Avenir-Light,
+        Arial;
     background: none;
     line-height: 17px;
     margin-left: 6px;
     font-size: 12px;
     color: #4A90E2;
+    outline: none;
+    border: none;
     height: 16px;
     width: 101px;
     float: left;
-    outline: none;
-    border: none;
 }
-#right-interface-window-left-di-list-item-input-password {
-    font-family: Avenir-Light;
+
+#di-list-item-input-password {
     -webkit-appearance: none;
+    font-family: 
+        Avenir-Light,
+        Arial;
     background: none;
     line-height: 17px;
     margin-left: 6px;
     font-size: 12px;
     color: #4A90E2;
+    outline: none;
+    border: none;
     height: 16px;
     width: 80px;
     float: left;
-    outline: none;
-    border: none;
 }
 
-#right-interface-window-right-di-list-item-input-total {
+#di-list-item-input-total {
     font-family: Avenir-Light;
     -webkit-appearance: none;
     background: none;
@@ -305,12 +351,13 @@ input#left-interface-window-mule-list-item-name:focus {
     margin-left: 6px;
     font-size: 12px;
     color: #4A90E2;
-    height: 16px;
-    float: left;
     outline: none;
     border: none;
+    height: 16px;
+    float: left;
 }
-#right-interface-window-right-di-list-item-output-used {
+
+#di-list-item-output-used {
     font-family: Avenir-Light;
     -webkit-appearance: none;
     background: none;
@@ -318,31 +365,32 @@ input#left-interface-window-mule-list-item-name:focus {
     margin-left: 6px;
     font-size: 12px;
     color: #4A90E2;
-    height: 16px;
-    float: left;
     outline: none;
     border: none;
+    height: 16px;
+    float: left;
 }
 
 #di-list-item-action-button {
     font-family: Avenir-Light;
     border: 1px solid #6A6E73;
+    box-sizing: border-box;
+    background: #5E6266;
     text-align: center;
     border-radius: 8px;
     line-height: 14px;
+    margin-left: 6px;
+    font-size: 10px;
+    color: #FFFFFF;
     height: 16px;
     width: 34px;
     float: left;
-    font-size: 10px;
-    color: #FFFFFF;
-    margin-left: 6px;
-    box-sizing: border-box;
-    background: #5E6266;
 }
 
 #di-list-item-action-button:hover {
     cursor: pointer;
 }
+
 #di-list-item-action-button:active {
     background: #525457;
 }
@@ -353,12 +401,20 @@ input#left-interface-window-mule-list-item-name:focus {
     border-radius: 3px;
     background: #505457;
     position: absolute;
+    height: 106px;
+    width: 406px;
     z-index: 0;
     left: 69px;
     top: 124px;
-    height: 106px;
-    width: 406px;
-    display: none; /* delete me to show storage again */
+    
+    
+    
+    /* delete me to show storage again */
+    display: none;
+    
+    
+    
+    
 }
 
 #block-container {
