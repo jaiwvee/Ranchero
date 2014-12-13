@@ -9,9 +9,8 @@
     Known Bugs
     - 
     To Do List
-    - Consider removing 'save changes'
-      button in favor of auto-save
-      functionality
+    - Cleanup
+    - Fix bloodbow styles 
     Bug Fixes
     - None
     Improvements
@@ -24,14 +23,14 @@
 <head>
     
     <!-- Document Title -->
-    <title> Mule Tracker - Release 1.0.0.001 </title>
+    <title> Mule Tracker - Release 1.0 </title>
 
+    <!-- JavaScript Import -->
+    <script src="engine.js"></script>
+    
     <!-- StyleSheet Import -->
     <link rel="stylesheet" href="styles.css"/>
     <link rel="stylesheet" href="blocks.css"/>
-
-    <!-- JavaScript Import -->
-    <script type="text/javascript" src="engine.js"></script>
 
 </head>
 <body>
@@ -74,71 +73,13 @@
                         <output id="di-list-item-output-used">N/A</output>
                     </div>
                 </div>
-                
-                <div id="right-interface-window-storage">
-                    <div id="block-container">
-                        <div class="slot occupied">
-                            
-                            <div class="block bows_UT_DOOMBOW">
-        
-                                <div class="pixel x6y0"></div>
-                                <div class="pixel x7y0"></div>
-
-                                <div class="pixel x5y1"></div>
-                                <div class="pixel x7y1"></div>
-
-                                <div class="pixel x4y2"></div>
-                                <div class="pixel x7y2"></div>
-
-                                <div class="pixel x3y3"></div>
-                                <div class="pixel x6y3"></div>
-                                <div class="pixel x7y3"></div>
-
-                                <div class="pixel x2y4"></div>
-                                <div class="pixel x4y4"></div>
-                                <div class="pixel x5y4"></div>
-
-                                <div class="pixel x1y5"></div>
-                                <div class="pixel x4y5"></div>
-                                <div class="pixel x5y5"></div>
-
-                                <div class="pixel x0y6"></div>
-                                <div class="pixel x3y6"></div>
-
-                                <div class="pixel x0y7"></div>
-                                <div class="pixel x1y7"></div>
-                                <div class="pixel x2y7"></div>
-                                <div class="pixel x3y7"></div>
-                                
-                            </div>
-                            
-                        </div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                    </div>
-                </div>
-                
+                <div id="item-storage"></div>
+                <div id="add-item-button">add item</div>
+                <div id="del-item-button">delete item</div>
                 <div id ="rename-mule-button">rename mule</div>
                 <div id ="delete-mule-button">delete mule</div>
-                
             </div>
         </div> <!-- mules window interface -->
-        <div id="block-interface">
-        
-        </div> <!-- block module interface -->
     </sector> <!-- DOM construction -->
     <script type="text/javascript">
         
@@ -151,91 +92,3718 @@
     <script type="text/javascript">
         
         /* Immutable Global Functions */
-        function DOMInjectMuleList() {
+        function _$(query) {
+            if (document.querySelectorAll(query).length > 1) {
+                return document.querySelectorAll(query);
+            } else {
+                return document.querySelector(query);
+            }
+        }
+
+        /* Mutable Global Functions */
+        function DOMInjectMuleList(selectedIndex) {
             
-            // Empty the container
+            var litem_node,
+                name_node,
+                count_node,
+                name,
+                count,
+                mule;
+            
+            function blockButtonCallback() {
+                if (_$('.active')) {
+                    if (event.target.classList[0] === 'slot') {
+                        if (event.target === _$('.active')) {
+                            _$('#del-item-button').style.display = 'none';
+                            _$('.active').classList.remove('active');
+                        } else {
+                            _$('#del-item-button').style.display = 'block';
+                            _$('.active').classList.remove('active');
+                            event.target.classList.add('active');
+                        }
+                    } else if (event.target.classList[0] === 'block') {
+                        if (event.target.parentNode === _$('.active')) {
+                            _$('#del-item-button').style.display = 'none';
+                            _$('.active').classList.remove('active');
+                        } else {
+                            _$('#del-item-button').style.display = 'block';
+                            _$('.active').classList.remove('active');
+                            event.target.parentNode.classList.add('active');
+                        }
+                    } else if (event.target.tagName === 'DIV') {
+                        if (event.target.parentNode.parentNode === _$('.active')) {
+                            _$('#del-item-button').style.display = 'none';
+                            _$('.active').classList.remove('active');
+                        } else {
+                            _$('#del-item-button').style.display = 'block';
+                            _$('.active').classList.remove('active');
+                            event.target.parentNode.parentNode.classList.add('active');
+                        }
+                    }
+                } else {
+                    if (event.target.classList[0] === 'slot') {
+                        event.target.classList.add('active');
+                    } else if (event.target.classList[0] === 'block') {
+                        event.target.parentNode.classList.add('active');
+                    } else if (event.target.tagName === 'DIV') {
+                        event.target.parentNode.parentNode.classList.add('active');
+                    }
+                    _$('#del-item-button').style.display = 'block';
+                }
+            }
+            function litemButtonCallback() {
+                _$('#add-item-button').style.display = 'block';
+                _$('#left-di-list').style.display = 'block';
+                _$('#right-title-group').style.display = 'block';
+                _$('#right-di-list').style.display = 'block';
+                _$('#rename-mule-button').style.display = 'block';
+                _$('#delete-mule-button').style.display = 'block';
+                _$('#item-storage').style.display = 'block';
+                var items = Array.prototype.slice.call(_$('#mule-list').children);
+                if (event.target.id === 'mule-list-item-name') {
+                    if (_$('.selected')) {
+                        _$('.selected').classList.remove('selected');
+                    }
+                    var item = event.target.parentNode;
+                    var index = items.indexOf(event.target.parentNode);
+                    event.target.parentNode.classList.add('selected');
+                } else if (event.target.id === 'mule-list-item') {
+                    if (_$('.selected')) {
+                        _$('.selected').classList.remove('selected');
+                    }
+                    var item = event.target;
+                    var index = items.indexOf(event.target);
+                    event.target.classList.add('selected');
+                } else {
+                    return;
+                }
+                MULES.setProp(MULES, 'flag', index);
+                var mule = new PropertyStore();
+                mule.importItem(mule, MULES.getItem(index));
+                _$('#right-heavy-title').innerText = mule.name;
+                _$('#right-light-title').innerHTML = '&ndash; ';
+                _$('#right-light-title').innerHTML += mule.slots_total-mule.blocks.length;
+                _$('#right-light-title').innerHTML += ' slots available';
+                _$('#di-list-item-input-email').value = mule.email;
+                _$('#di-list-item-input-password').value = mule.password;
+                _$('#di-list-item-input-total').value = mule.slots_total;
+                _$('#di-list-item-output-used').value = mule.blocks.length;
+                _$('#item-storage').innerHTML = (function () {
+                    var markup = '',
+                        block;
+                    for (var i = 0; i < mule.blocks.length; i++) {
+                        block = mule.blocks[i];
+                        markup += getBlock(block);
+                    }                   
+                    return markup;                            
+                }());
+                blockButtonResponders = new InputResponders(_$('.slot'));
+                blockButtonResponders.setCatalyst('click');
+                blockButtonResponders.setCallback(blockButtonCallback);
+                if (_$('.slot')) {
+                    blockButtonResponders.activate();
+                }
+            }
+            
             (function () {
-                document.getElementById('mule-list').innerHTML = '';
-            }());
-            
-            // Append the mules
+                _$('#mule-list').innerHTML = '';
+                function changeRightPanelDisplayStyle(style) {
+                    _$('#add-item-button').style.display = style;
+                    _$('#left-di-list').style.display = style;
+                    _$('#right-title-group').style.display = style;
+                    _$('#right-di-list').style.display = style;
+                    _$('#rename-mule-button').style.display = style;
+                    _$('#delete-mule-button').style.display = style;
+                    _$('#item-storage').style.display = style;
+                }
+                if (MULES.size < 1) {
+                    changeRightPanelDisplayStyle('none');
+                } else {
+                    changeRightPanelDisplayStyle('block');
+                }
+            }()); // display adjustments
             (function () {
                 MULES.sortBy('name');
                 MULES.save();
-                if (MULES.list.length < 1) {
-                    document.querySelector('#right-title-group').style.display = 'none';
-                    document.querySelector('#left-di-list').style.display = 'none';
-                    document.querySelector('#right-di-list').style.display = 'none';
-                } else {
-                    document.querySelector('#right-title-group').style.display = 'block';
-                    document.querySelector('#left-di-list').style.display = 'block';
-                    document.querySelector('#right-di-list').style.display = 'block';
-                }
-                var mule, litem_node, name_node, count_node, name, count;
-                for (var i = 0; i < MULES.size; i++) {
-                    mule = MULES.getItem(i);
-                    litem_node = document.createElement('div');
-                    name_node = document.createElement('div');
-                    count_node = document.createElement('div');
-                    litem_node.id = 'mule-list-item';
-                    name_node.id = 'mule-list-item-name';
-                    count_node.id = 'mule-list-item-count';
-                    litem_node.classList.add('mule-list-item');
-                    name_node.classList.add('mule-list-item-name');
-                    count_node.classList.add('mule-list-item-count');
-                    name_node.innerText = mule.name;
-                    count_node.innerText = mule.slots_filled + ' items';
-                    litem_node.appendChild(name_node);
-                    litem_node.appendChild(count_node);
-                    if (i === 0) {
-                        litem_node.classList.add('selected');
-                        document.getElementById('right-heavy-title').innerText = mule.name;
-                        document.getElementById('right-light-title').innerHTML = '&ndash; ' + Number(mule.slots_total-mule.slots_filled) + ' slots available';
-                        document.getElementById('di-list-item-input-email').value = mule.email;
-                        document.getElementById('di-list-item-input-password').value = mule.password;
-                        document.getElementById('di-list-item-input-total').value = mule.slots_total;
-                        document.getElementById('di-list-item-output-used').value = mule.slots_filled;
-                    }
-                    document.getElementById('mule-list').appendChild(litem_node);
-                }
-            }());
-            
-            // Renew responders
+            }()); // mules configuration
             (function () {
-                function muleListItemButtonCallback() {
-                    var items = Array.prototype.slice.call(document.getElementById('mule-list').children);
-                    if (event.target.id === 'mule-list-item-name') {
-                        document.getElementsByClassName('selected')[0].classList.remove('selected');
-                        var item = event.target.parentNode;
-                        var index = items.indexOf(event.target.parentNode);
-                        event.target.parentNode.classList.add('selected');
-                    } else if (event.target.id === 'mule-list-item') {
-                        document.getElementsByClassName('selected')[0].classList.remove('selected');
-                        var item = event.target;
-                        var index = items.indexOf(event.target);
-                        event.target.classList.add('selected');
-                    } else {
-                        return;
-                    }
-                    MULES.setProp(MULES, 'flag', index);
-                    var mule = new PropertyStore();
-                    mule.importItem(mule, MULES.getItem(index));
-                    document.getElementById('right-heavy-title').innerText = mule.name;
-                    document.getElementById('right-light-title').innerHTML = '&ndash; ' + Number(mule.slots_total-mule.slots_filled) + ' slots available';
-                    document.getElementById('di-list-item-input-email').value = mule.email;
-                    document.getElementById('di-list-item-input-password').value = mule.password;
-                    document.getElementById('di-list-item-input-total').value = mule.slots_total;
-                    document.getElementById('di-list-item-output-used').innerText = mule.slots_filled;
+                for (var i = 0; i < MULES.size; i++) {
+                    (function () {
+                        mule = MULES.getItem(i);
+                        count_node = document.createElement('div');
+                        count_node.id = 'mule-list-item-count';
+                        count_node.classList.add('mule-list-item-count');
+                        count_node.innerText = mule.blocks.length + ' items';
+                        name_node = document.createElement('div');
+                        name_node.id = 'mule-list-item-name';
+                        name_node.classList.add('mule-list-item-name');
+                        name_node.innerText = mule.name;
+                        litem_node = document.createElement('div');
+                        litem_node.id = 'mule-list-item';
+                        litem_node.classList.add('mule-list-item');
+                        litem_node.appendChild(name_node);
+                        litem_node.appendChild(count_node);
+                        if (typeof selectedIndex === 'number') {
+                            if (i === selectedIndex) {
+                                litem_node.classList.add('selected');
+                            }
+                        }
+                        _$('#mule-list').appendChild(litem_node);
+                    }()); // append nodes
+                    (function () {
+                        if (typeof selectedIndex === 'number') {
+                            if (i === selectedIndex) {
+                                _$('#right-heavy-title').innerText = mule.name;
+                                _$('#right-light-title').innerHTML = '&ndash; ';
+                                _$('#right-light-title').innerHTML += mule.slots_total-mule.blocks.length;
+                                _$('#right-light-title').innerHTML += ' slots available';
+                                _$('#di-list-item-input-email').value = mule.email;
+                                _$('#di-list-item-input-password').value = mule.password;
+                                _$('#di-list-item-input-total').value = mule.slots_total;
+                                _$('#di-list-item-output-used').value = mule.blocks.length;
+                                _$('#item-storage').innerHTML = (function () {
+                                    var markup = '',
+                                        block;
+                                    if (mule.blocks) {
+                                        for (var j = 0; j < mule.blocks.length; j++) {
+                                            block = mule.blocks[j];
+                                            markup += getBlock(block);
+                                        }
+                                    }
+                                    return markup;                            
+                                }());
+                            }
+                        } else {
+                            _$('#add-item-button').style.display = 'none';
+                            _$('#left-di-list').style.display = 'none';
+                            _$('#right-title-group').style.display = 'none';
+                            _$('#right-di-list').style.display = 'none';
+                            _$('#rename-mule-button').style.display = 'none';
+                            _$('#delete-mule-button').style.display = 'none';
+                            _$('#item-storage').style.display = 'none';
+                        }
+                    }()); // display nodes
                 }
-                muleListItemButtonResponders = new InputResponders(document.getElementsByClassName('mule-list-item'));
-                muleListItemButtonResponders.setCatalyst('click');
-                muleListItemButtonResponders.setCallback(muleListItemButtonCallback);
-                muleListItemButtonResponders.activate();
-            }());
+            }()); // element appendation
+            (function () {
+                if (MULES.size > 1) {
+                    litemButtonResponders = new InputResponders(_$('.mule-list-item'));
+                } else {
+                    litemButtonResponders = new InputResponder(_$('.mule-list-item'));
+                }
+                litemButtonResponders.setCatalyst('click');
+                litemButtonResponders.setCallback(litemButtonCallback);
+                litemButtonResponders.activate();
+            }()); // responder creations
+            (function () {
+                litemButtonResponders = new InputResponders(_$('.mule-list-item'));
+                litemButtonResponders.setCatalyst('click');
+                litemButtonResponders.setCallback(litemButtonCallback);
+                blockButtonResponders = new InputResponders(_$('.slot'));
+                blockButtonResponders.setCatalyst('click');
+                blockButtonResponders.setCallback(blockButtonCallback);
+                if (_$('.mule-list-item')) {litemButtonResponders.activate();}
+                if (_$('.slot')) {blockButtonResponders.activate();}   
+            }()); // responder creations
+            
         }
-        
-        // AUTO-CALL FOR TESTING ONLY:
-        DOMInjectMuleList();
+        function getBlock(blockName) {
+            function createSlot(pixels, name) {
+                var output = '<div class="slot">';
+                output += '<div class="block ' + name +'">';
+                for (var i = 0; i < pixels.length; i++) {
+                    output += '<div class="pixel ' + pixels[i] + '"></div>';
+                }
+                output += '</div></div>';
+                return output;
+            }
+            var blocks = {
+                
+                potion_of_defense: createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_DEFENSE'),
+                potion_of_attack: createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_ATTACK'),
+                potion_of_speed: createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_SPEED'),
+                potion_of_dexterity: createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_DEXTERITY'),
+                potion_of_vitality: createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_VITALITY'),
+                potion_of_wisdom: createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_WISDOM'),
+                potion_of_life: createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_LIFE'),
+                potion_of_mana: createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_MANA'),
+                
+                wine_cellar_incantation: createSlot([
+                    'x4y0',
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x6y1',
+                    'x2y2',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x2y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x6y3',
+                    'x7y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x4y6'
+                ], 'dungeonkeys_INCANTATION'),
+                tomb_of_the_ancients_key: createSlot([
+                    'x2y0',
+                    'x3y0',
+                    'x4y0',
+                    'x5y0',
+                    'x1y1',
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x6y1',
+                    'x0y2',
+                    'x1y2',
+                    'x2y2',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x6y3',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x4y6',
+                    'x2y7',
+                    'x3y7',
+                    'x4y7'
+                ], 'dungeonkeys_TOMB'),
+                ocean_trench_key: createSlot([
+                    'x3y0',
+                    'x4y0',
+                    'x5y0',
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x6y1',
+                    'x1y2',
+                    'x2y2',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x2y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x6y3',
+                    'x7y3',
+                    'x4y4',
+                    'x6y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x4y6',
+                    'x2y7',
+                    'x3y7',
+                    'x4y7'
+                ], 'dungeonkeys_TRENCH'),
+                snake_pit_key: createSlot([
+                    'x0y0',
+                    'x2y0',
+                    'x3y0',
+                    'x4y0',
+                    'x5y0',
+                    'x7y0',
+                    'x1y1',
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x6y1',
+                    'x1y2',
+                    'x2y2',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x0y3',
+                    'x3y3',
+                    'x4y3',
+                    'x7y3',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x4y6',
+                    'x2y7',
+                    'x3y7',
+                    'x4y7'
+                ], 'dungeonkeys_SNAKEPIT'),
+                undead_lair_key: createSlot([
+                    'x3y0',
+                    'x4y0',
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x2y2',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x3y3',
+                    'x4y3',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x4y6',
+                    'x2y7',
+                    'x3y7',
+                    'x4y7'
+                ], 'dungeonkeys_UNDEAD'),
+                
+                steel_dagger: createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T0_STEEL'),
+                dirk: createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T1_DIRK'),
+                blue_steel_dagger: createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T2_BLUESTEEL'),
+                dusky_rose_dagger: createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T3_DUSKYROSE'),
+                silver_dagger: createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T4_SILVER'),
+                golden_dagger: createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T5_GOLDEN'),
+                obsidian_dagger: createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T6_OBSIDIAN'),
+                mithril_dagger: createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T7_MITHRIL'),
+                fire_dagger: createSlot([
+                    'x5y0',
+                    'x2y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x2y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T8_FIRE'),
+                ragetalon_dagger: createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T9_RAGETALON'),
+                emeraldshard_dagger: createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T10_EMERALDSHARD'),
+                agateclaw_dagger: createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T11_AGATECLAW'),
+                dagger_of_foul_malevolence: createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T12_FOULMALEVOLENCE'),
+                poison_fang_dagger: createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x6y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6'
+                ], 'daggers_UT_POISONFANG'),
+                bone_dagger: createSlot([
+                    'x6y0',
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x2y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_UT_BONE'),
+                spirit_dagger: createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x2y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_UT_SPIRIT'),
+                dirk_of_cronus: createSlot([
+                    'x4y1',
+                    'x6y1',
+                    'x7y1',
+                    'x2y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x6y3',
+                    'x1y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x2y6',
+                    'x3y6',
+                    'x1y7',
+                    'x4y7'
+                ], 'daggers_UT_CRONUS'),
+                
+                shortbow: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T0_SHORT'),
+                reinforced_bow: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T1_REINFORCED'),
+                crossbow: createSlot([
+                    'x2y0',
+                    'x3y0',
+                    'x4y0',
+                    'x5y0',
+                    'x7y0',
+                    'x2y1',
+                    'x6y1',
+                    'x2y2',
+                    'x5y2',
+                    'x7y2',
+                    'x2y3',
+                    'x4y3',
+                    'x7y3',
+                    'x2y4',
+                    'x3y4',
+                    'x7y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x7y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'bows_T2_CROSS'),
+                greywood_bow: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T3_GREYWOOD'),
+                ironwood_bow: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T4_IRONWOOD'),
+                fire_bow: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x7y3',
+                    'x2y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x4y5',
+                    'x0y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7',
+                    'x3y7'
+                ], 'bows_T5_FIRE'),
+                double_bow: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x4y4',
+                    'x5y4',
+                    'x1y5',
+                    'x4y5',
+                    'x0y6',
+                    'x3y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T6_DOUBLE'),
+                heavy_crossbow: createSlot([
+                    'x2y0',
+                    'x3y0',
+                    'x4y0',
+                    'x5y0',
+                    'x2y1',
+                    'x6y1',
+                    'x3y2',
+                    'x5y2',
+                    'x7y2',
+                    'x4y3',
+                    'x7y3',
+                    'x3y4',
+                    'x5y4',
+                    'x7y4',
+                    'x1y5',
+                    'x2y5',
+                    'x6y5',
+                    'x7y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'bows_T7_HEAVYCROSS'),
+                golden_bow: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T8_GOLDEN'),
+                verdant_bow: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T9_VERDANT'),
+                bow_of_fey_magic: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T10_FEY'),
+                bow_of_innocent_blood: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T11_INNOCENT'),
+                bow_of_covert_havens: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T12_COVERT'),
+                leaf_bow: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x7y3',
+                    'x2y4',
+                    'x5y4',
+                    'x1y5',
+                    'x4y5',
+                    'x0y6',
+                    'x3y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7',
+                    'x3y7'
+                ], 'bows_UT_LEAF'),
+                coral_bow: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x7y3',
+                    'x2y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x4y5',
+                    'x5y5',
+                    'x0y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7',
+                    'x3y7'
+                ], 'bows_UT_CORAL'),
+                doom_bow: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x7y3',
+                    'x2y4',
+                    'x4y4',
+                    'x5y4',
+                    'x1y5',
+                    'x4y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7',
+                    'x3y7'
+                ], 'bows_UT_DOOM'),
+                
+                energy_staff: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T0_ENERGY'),
+                firebrand_staff: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T1_FIREBRAND'),
+                comet_staff: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T2_COMET'),
+                serpentine_staff: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T3_SERPENTINE'),
+                meteor_staff: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T4_METEOR'),
+                slayer_staff: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T5_SLAYER'),
+                avenger_staff: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T6_AVENGER'),
+                staff_of_destruction: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T7_DESTRUCTION'),
+                staff_of_horror: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T8_HORROR'),
+                staff_of_necrotic_arcana: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T9_NECROTIC'),
+                staff_of_diabolic_secrets: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T10_DIABOLIC'),
+                staff_of_astral_knowledge: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T11_ASTRAL'),
+                staff_of_the_cosmic_whole: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T12_COSMIC'),
+                staff_of_the_crystal_serpent: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_UT_CRYSTAL'),
+                staff_of_extreme_prejudice: createSlot([
+                    'x3y0',
+                    'x6y0',
+                    'x7y0',
+                    'x3y1',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x6y4',
+                    'x7y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_UT_PREJUDICE'),
+                
+                fire_wand: createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T0_FIRE'),
+                force_wand: createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T1_FORCE'),
+                power_wand: createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T2_POWER'),
+                missile_wand: createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T3_MISSILE'),
+                eldritch_wand: createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T4_ELDRITCH'),
+                hells_fire_wand: createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T5_HELLSFIRE'),
+                wand_of_dark_magic: createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T6_DARKMAGIC'),
+                wand_of_arcane_flame: createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T7_ARCANE'),
+                wand_of_death: createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T8_DEATH'),
+                wand_of_deep_sorcery: createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T9_DEEPSORC'),
+                wand_of_shadow: createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T10_SHADOW'),
+                wand_of_ancient_warning: createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T11_ANCIENT'),
+                wand_of_recompense: createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T12_RECOMPENSE'),
+                sprite_wand: createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_UT_SPRITE'),
+                st_abrahams_wand: createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x2y1',
+                    'x3y1',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x2y2',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x5y5',
+                    'x6y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_UT_ABRAHAM'),
+                
+                hydra_skin_armor: createSlot([
+                    'x0y0',
+                    'x1y0',
+                    'x2y0',
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x0y1',
+                    'x1y1',
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x0y2',
+                    'x1y2',
+                    'x2y2',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x0y3',
+                    'x1y3',
+                    'x2y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x6y3',
+                    'x7y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6',
+                    'x3y7',
+                    'x4y7'
+                ], 'armors_T13_HYDRA')
+                
+            }
+            return blocks[blockName];
+        }
+        function getAllBlocks() {
+            function createSlot(pixels, name, realname) {
+                var output = '<div class="slot-alt">';
+                output += '<div class="block ' + name +'" id="' + realname + '">';
+                for (var i = 0; i < pixels.length; i++) {
+                    output += '<div class="pixel ' + pixels[i] + '"></div>';
+                }
+                output += '</div></div>';
+                return output;
+            }
+            var blocks = {
+                all: 
+                
+                /*createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_DEFENSE', 'potion_of_defense')
+                +createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_ATTACK', 'potion_of_attack')
+                +createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_SPEED', 'potion_of_speed')
+                +createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_DEXTERITY', 'potion_of_dexterity')
+                +createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_VITALITY', 'potion_of_vitality')
+                +createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_WISDOM', 'potion_of_wisdom')
+                +createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_LIFE', 'potion_of_life')
+                +createSlot([
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x2y3',
+                    'x4y3',
+                    'x5y3',
+                    'x1y4',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6'
+                ], 'statpotions_MANA', 'potion_of_mana')
+                
+                +createSlot([
+                    'x4y0',
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x6y1',
+                    'x2y2',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x2y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x6y3',
+                    'x7y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x4y6'
+                ], 'dungeonkeys_INCANTATION', 'wine_cellar_incantation')
+                +createSlot([
+                    'x2y0',
+                    'x3y0',
+                    'x4y0',
+                    'x5y0',
+                    'x1y1',
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x6y1',
+                    'x0y2',
+                    'x1y2',
+                    'x2y2',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x6y3',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x4y6',
+                    'x2y7',
+                    'x3y7',
+                    'x4y7'
+                ], 'dungeonkeys_TOMB', 'tomb_of_the_ancients_key')
+                +createSlot([
+                    'x3y0',
+                    'x4y0',
+                    'x5y0',
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x6y1',
+                    'x1y2',
+                    'x2y2',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x2y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x6y3',
+                    'x7y3',
+                    'x4y4',
+                    'x6y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x4y6',
+                    'x2y7',
+                    'x3y7',
+                    'x4y7'
+                ], 'dungeonkeys_TRENCH', 'ocean_trench_key')
+                +createSlot([
+                    'x0y0',
+                    'x2y0',
+                    'x3y0',
+                    'x4y0',
+                    'x5y0',
+                    'x7y0',
+                    'x1y1',
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x6y1',
+                    'x1y2',
+                    'x2y2',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x0y3',
+                    'x3y3',
+                    'x4y3',
+                    'x7y3',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x4y6',
+                    'x2y7',
+                    'x3y7',
+                    'x4y7'
+                ], 'dungeonkeys_SNAKEPIT', 'snake_pit_key')
+                +createSlot([
+                    'x3y0',
+                    'x4y0',
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x2y2',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x3y3',
+                    'x4y3',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x4y6',
+                    'x2y7',
+                    'x3y7',
+                    'x4y7'
+                ], 'dungeonkeys_UNDEAD', 'undead_lair_key')*/
+                
+                '<div class="wrapper-separator">'
+                +'<div class="main">Daggers </div>'
+                +'<div class="sub">- Rogue, Assassin, Trickster</div>'
+                +'</div>'
+                
+                +createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T0_STEEL', 'steel_dagger')
+                +createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T1_DIRK', 'dirk')
+                +createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T2_BLUESTEEL', 'blue_steel_dagger')
+                +createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T3_DUSKYROSE', 'dusky_rose_dagger')
+                +createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T4_SILVER', 'silver_dagger')
+                +createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T5_GOLDEN', 'golden_dagger')
+                +createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T6_OBSIDIAN', 'obsidian_dagger')
+                +createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T7_MITHRIL', 'mithril_dagger')
+                +createSlot([
+                    'x5y0',
+                    'x2y1',
+                    'x4y1',
+                    'x5y1',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x2y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T8_FIRE', 'fire_dagger')
+                +createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T9_RAGETALON', 'ragetalon_dagger')
+                +createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T10_EMERALDSHARD', 'emeraldshard_dagger')
+                +createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T11_AGATECLAW', 'agateclaw_dagger')
+                +createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_T12_FOULMALEVOLENCE', 'dagger_of_foul_malevolence')
+                +createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x6y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6'
+                ], 'daggers_UT_POISONFANG', 'poison_fang_dagger')
+                +createSlot([
+                    'x6y0',
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x2y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_UT_BONE', 'bone_dagger')
+                +createSlot([
+                    'x5y1',
+                    'x6y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x1y3',
+                    'x2y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x1y6',
+                    'x4y6'
+                ], 'daggers_UT_SPIRIT', 'spirit_dagger')
+                +createSlot([
+                    'x4y1',
+                    'x6y1',
+                    'x7y1',
+                    'x2y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x6y3',
+                    'x1y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x2y6',
+                    'x3y6',
+                    'x1y7',
+                    'x4y7'
+                ], 'daggers_UT_CRONUS', 'dirk_of_cronus')
+                
+                /*+'<div class="wrapper-separator">'
+                +'<div class="main">Bows </div>'
+                +'<div class="sub">- Archer, Huntress</div>'
+                +'</div>'
+                
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T0_SHORT', 'shortbow')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T1_REINFORCED', 'reinforced_bow')
+                +createSlot([
+                    'x2y0',
+                    'x3y0',
+                    'x4y0',
+                    'x5y0',
+                    'x7y0',
+                    'x2y1',
+                    'x6y1',
+                    'x2y2',
+                    'x5y2',
+                    'x7y2',
+                    'x2y3',
+                    'x4y3',
+                    'x7y3',
+                    'x2y4',
+                    'x3y4',
+                    'x7y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x6y5',
+                    'x7y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'bows_T2_CROSS', 'crossbow')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T3_GREYWOOD', 'greywood_bow')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T4_IRONWOOD', 'ironwood_bow')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x7y3',
+                    'x2y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x4y5',
+                    'x0y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7',
+                    'x3y7'
+                ], 'bows_T5_FIRE', 'fire_bow')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x4y4',
+                    'x5y4',
+                    'x1y5',
+                    'x4y5',
+                    'x0y6',
+                    'x3y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T6_DOUBLE', 'double_bow')
+                +createSlot([
+                    'x2y0',
+                    'x3y0',
+                    'x4y0',
+                    'x5y0',
+                    'x2y1',
+                    'x6y1',
+                    'x3y2',
+                    'x5y2',
+                    'x7y2',
+                    'x4y3',
+                    'x7y3',
+                    'x3y4',
+                    'x5y4',
+                    'x7y4',
+                    'x1y5',
+                    'x2y5',
+                    'x6y5',
+                    'x7y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'bows_T7_HEAVYCROSS', 'heavy_crossbow')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T8_GOLDEN', 'golden_bow')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T9_VERDANT', 'verdant_bow')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T10_FEY', 'bow_of_fey_magic')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T11_BLOOD', 'bow_of_innocent_blood')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x2y4',
+                    'x6y4',
+                    'x1y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7'
+                ], 'bows_T12_COVERT', 'bow_of_covert_havens')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x7y3',
+                    'x2y4',
+                    'x5y4',
+                    'x1y5',
+                    'x4y5',
+                    'x0y6',
+                    'x3y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7',
+                    'x3y7'
+                ], 'bows_UT_LEAF', 'leaf_bow')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x7y3',
+                    'x2y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x4y5',
+                    'x5y5',
+                    'x0y6',
+                    'x4y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7',
+                    'x3y7'
+                ], 'bows_UT_CORAL', 'coral_bow')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x7y1',
+                    'x4y2',
+                    'x7y2',
+                    'x3y3',
+                    'x6y3',
+                    'x7y3',
+                    'x2y4',
+                    'x4y4',
+                    'x5y4',
+                    'x1y5',
+                    'x4y5',
+                    'x5y5',
+                    'x0y6',
+                    'x3y6',
+                    'x0y7',
+                    'x1y7',
+                    'x2y7',
+                    'x3y7'
+                ], 'bows_UT_DOOM', 'doom_bow')
+                
+                +'<div class="wrapper-separator">'
+                +'<div class="main">Staves </div>'
+                +'<div class="sub">- Wizards, Necromancers, Mystics</div>'
+                +'</div>'
+                
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T0_ENERGY', 'energy_staff')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T1_FIREBRAND', 'firebrand_staff')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T2_COMET', 'comet_staff')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T3_SERPENTINE', 'serpentine_staff')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T4_METEOR', 'meteor_staff')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T5_SLAYER', 'slayer_staff')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T6_AVENGER', 'avenger_staff')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T7_DESTRUCTION', 'staff_of_destruction')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T8_HORROR', 'staff_of_horror')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T9_NECROTIC', 'staff_of_necrotic_arcana')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T10_DIABOLIC', 'staff_of_diabolic_secrets')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T11_ASTRAL', 'staff_of_astral_knowledge')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_T12_COSMIC', 'staff_of_the_cosmic_whole')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_UT_CRYSTAL', 'staff_of_the_crystal_serpent')
+                +createSlot([
+                    'x3y0',
+                    'x6y0',
+                    'x7y0',
+                    'x3y1',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x4y3',
+                    'x5y3',
+                    'x3y4',
+                    'x6y4',
+                    'x7y4',
+                    'x2y5',
+                    'x1y6',
+                    'x0y7'
+                ], 'staves_UT_PREJUDICE', 'staff_of_extreme_prejudice')
+                
+                +'<div class="wrapper-separator">'
+                +'<div class="main">Wands </div>'
+                +'<div class="sub">- Priests, Sorcerers</div>'
+                +'</div>'
+                
+                +createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'], 'wands_T0_FIRE', 'fire_wand')
+                +createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T1_FORCE', 'force_wand')
+                +createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T2_POWER', 'power_wand')
+                +createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T3_MISSILE', 'missile_wand')
+                +createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T4_ELDRITCH', 'eldritch_wand')
+                +createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T5_HELLSFIRE', 'hells_fire_wand')
+                +createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T6_DARKMAGIC', 'wand_of_dark_magic')
+                +createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T7_ARCANE', 'wand_of_arcane_flame')
+                +createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T8_DEATH', 'wand_of_death')
+                +createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T9_DEEPSORC', 'wand_of_deep_sorcery')
+                +createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T10_SHADOW', 'wand_of_shadow')
+                +createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T11_ANCIENT', 'wand_of_ancient_warning')
+                +createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_T12_RECOMPENSE', 'wand_of_recompense')
+                +createSlot([
+                    'x6y0',
+                    'x7y0',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_UT_SPRITE', 'sprite_wand')
+                +createSlot([
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x2y1',
+                    'x3y1',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x2y2',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x6y4',
+                    'x1y5',
+                    'x2y5',
+                    'x3y5',
+                    'x5y5',
+                    'x6y5',
+                    'x0y6',
+                    'x1y6',
+                    'x2y6',
+                    'x0y7',
+                    'x1y7'
+                ], 'wands_UT_ABRAHAM', 'st_abrahams_wand')
+                
+                +'<div class="wrapper-separator">'
+                +'<div class="main">Leather Armors </div>'
+                +'<div class="sub">- Rogue, Archer, Assassin, Huntress, Trickster, Ninja</div>'
+                +'</div>'
+                
+                +createSlot([
+                    'x0y0',
+                    'x1y0',
+                    'x2y0',
+                    'x5y0',
+                    'x6y0',
+                    'x7y0',
+                    'x0y1',
+                    'x1y1',
+                    'x2y1',
+                    'x3y1',
+                    'x4y1',
+                    'x5y1',
+                    'x6y1',
+                    'x7y1',
+                    'x0y2',
+                    'x1y2',
+                    'x2y2',
+                    'x3y2',
+                    'x4y2',
+                    'x5y2',
+                    'x6y2',
+                    'x7y2',
+                    'x0y3',
+                    'x1y3',
+                    'x2y3',
+                    'x3y3',
+                    'x4y3',
+                    'x5y3',
+                    'x6y3',
+                    'x7y3',
+                    'x2y4',
+                    'x3y4',
+                    'x4y4',
+                    'x5y4',
+                    'x2y5',
+                    'x3y5',
+                    'x4y5',
+                    'x5y5',
+                    'x2y6',
+                    'x3y6',
+                    'x4y6',
+                    'x5y6',
+                    'x3y7',
+                    'x4y7'
+                ], 'armors_T13_HYDRA', 'hydra_skin_armor')*/
+                
+            }
+            return blocks['all'];
+        }
 
     </script> <!-- global functions -->
     <script type="text/javascript">
@@ -243,7 +3811,7 @@
         /* Load Preparation */
         (function () {
 
-            // ... e.g. muleStore.sortBy('name'); & appendUIMules();
+            DOMInjectMuleList();
 
         }());
 
@@ -251,14 +3819,16 @@
         (function () {
 
             // Input Response Instancializers    
-            var createMuleButtonResponder = new InputResponder(document.getElementById('create-mule-button')); // (1)
-            var renameMuleButtonResponder = new InputResponder(document.getElementById('rename-mule-button')); // (2)
-            var deleteMuleButtonResponder = new InputResponder(document.getElementById('delete-mule-button')); // (3)
-            var muleEmailChangeResponder = new InputResponder(document.getElementById('di-list-item-input-email')); // (4)
-            var mulePcodeChangeResponder = new InputResponder(document.getElementById('di-list-item-input-password')); // (5)
-            var muleSlotsChangeResponder = new InputResponder(document.getElementById('di-list-item-input-total')); // (6)
-            var listCopyButtonAResponder = new InputResponder(document.querySelector('#di-list-item-action-button.email')); // (7)
-            var listCopyButtonBResponder = new InputResponder(document.querySelector('#di-list-item-action-button.password')); // (8)
+            var createMuleButtonResponder = new InputResponder(_$('#create-mule-button'));
+            var renameMuleButtonResponder = new InputResponder(_$('#rename-mule-button'));
+            var deleteMuleButtonResponder = new InputResponder(_$('#delete-mule-button'));
+            var muleEmailChangeResponder = new InputResponder(_$('#di-list-item-input-email'));
+            var mulePcodeChangeResponder = new InputResponder(_$('#di-list-item-input-password'));
+            var muleSlotsChangeResponder = new InputResponder(_$('#di-list-item-input-total'));
+            var listCopyButtonAResponder = new InputResponder(_$('#di-list-item-action-button.email'));
+            var listCopyButtonBResponder = new InputResponder(_$('#di-list-item-action-button.password'));
+            var createSlotButtonResponder = new InputResponder(_$('#add-item-button'));
+            var deleteSlotButtonResponder = new InputResponder(_$('#del-item-button'));
 
             // Input Response Callback Methods
             function createMuleButtonCallback() {
@@ -270,13 +3840,17 @@
                 litem_node.id = 'mule-list-item';
                 name_node.id = 'mule-list-item-name';
                 count_node.id = 'mule-list-item-count';
-                litem_node.classList.add('mule-list-item');
+                if (document.querySelector('.selected')) {
+                    document.querySelector('.selected').classList.remove('selected');
+                }
+                litem_node.classList.add('mule-list-item', 'selected');
                 name_node.classList.add('mule-list-item-name');
                 count_node.classList.add('mule-list-item-count');
-                name_node.value = 'Mule Name';
+                name_node.value = 'enter mule name';
+                name_node.maxLength = '10';
                 litem_node.appendChild(name_node);
                 litem_node.appendChild(count_node);
-                document.getElementById('mule-list').appendChild(litem_node);
+                _$('#mule-list').appendChild(litem_node);
                 name_node.focus();
                 name_node.select();
                 function completeMuleAddition() {
@@ -293,7 +3867,7 @@
                     mule3.setProp(mule3, 'slots_total', 16);
                     mule3.setProp(mule3, 'email', '');
                     mule3.setProp(mule3, 'password', '');
-                    mule3.setProp(mule3, 'blocks', {});
+                    mule3.setProp(mule3, 'blocks', []);
                     MULES.addItem(mule3);
                     MULES.save();
                     DOMInjectMuleList();
@@ -308,29 +3882,60 @@
                         return;
                     }
                 });
-                
-                // Activate blur listener
-                // Activate 'enter' listener
-                // Activate 'tab' listener
-                
-                // THIS IS BY NO MEANS FINISHED; ONLY BEGUN
 
-            } // (1)
+            }
             function renameMuleButtonCallback() {
-
-                // Possibly remove this in favor of autosave
-                // Get the current 'muleStore' variable (or whatever is used for unsynced changes)
-                // And save it with the current data from current right and left window panes.
-
-            } // (2) UNCODED
+                var mule, litem_node, name_node, count_node, name, count;
+                litem_node = _$('.selected');
+                litem_node.removeChild(litem_node.children[0]);
+                litem_node.removeChild(litem_node.children[0]);
+                name_node = document.createElement('input');
+                count_node = document.createElement('div');
+                name_node.id = 'mule-list-item-name';
+                count_node.id = 'mule-list-item-count';
+                var items = Array.prototype.slice.call(_$('#mule-list').children);
+                var item = document.querySelector('.selected');
+                var index = items.indexOf(item);
+                var mule = new PropertyStore();
+                mule.importItem(mule, MULES.getItem(index));
+                name_node.classList.add('mule-list-item-name');
+                count_node.classList.add('mule-list-item-count');
+                name_node.value = mule.name;
+                name_node.maxLength = '10';
+                litem_node.appendChild(name_node);
+                litem_node.appendChild(count_node);
+                name_node.focus();
+                name_node.select();
+                function completeMuleAddition() {
+                    var oldInput = document.querySelector('input#mule-list-item-name');
+                    var muleName = oldInput.value;
+                    var newDiv = document.createElement('div');
+                    newDiv.id = 'mule-list-item-name';
+                    newDiv.classList.add('mule-list-item-name');
+                    newDiv.innerText = muleName;
+                    oldInput.parentNode.insertBefore(newDiv, oldInput.firstChild);
+                    oldInput.parentNode.removeChild(oldInput);
+                    var mule4 = new PropertyStore();
+                    mule4.importItem(mule4, MULES.getItem(index));
+                    mule4.setProp(mule4, 'name', muleName);
+                    MULES.setItem(index, mule4);
+                    MULES.save();
+                    DOMInjectMuleList();
+                }
+                document.querySelector('input#mule-list-item-name').addEventListener('blur', completeMuleAddition, false);
+                document.querySelector('input#mule-list-item-name').addEventListener('keydown', function (event) {
+                    if (event.keyCode === 13) {
+                        document.querySelector('input#mule-list-item-name').blur();
+                    } else if (event.keyCode === 9) {
+                        // tab
+                    } else {
+                        return;
+                    }
+                });
+            }
             function deleteMuleButtonCallback() {
-
-                // Get the index of the current mule from the .selected in sidebar
-                // Make sure user is sure! Remove that index from the unsynced 'muleStore' variable
-                // Remove the content from the active right-window fields; remove entry from left-window
-                // Sync with localStorage
                 
-                var items = Array.prototype.slice.call(document.getElementById('mule-list').children);
+                var items = Array.prototype.slice.call(_$('#mule-list').children);
                 var item = document.querySelector('.selected');
                 var index = items.indexOf(item);
                 if (item.previousElementSibling) {
@@ -345,171 +3950,172 @@
                 MULES.delItem(index);
                 DOMInjectMuleList();
                 
-            } // (3)
+            }
             function muleEmailChangeCallback() {
                 
-                var items = Array.prototype.slice.call(document.getElementById('mule-list').children);
+                var items = Array.prototype.slice.call(_$('#mule-list').children);
                 var item = document.querySelector('.selected');
                 var index = items.indexOf(item);
                 var mule = new PropertyStore();
                 mule.importItem(mule, MULES.getItem(index));
-                var value = document.getElementById('di-list-item-input-email').value;
+                var value = _$('#di-list-item-input-email').value;
                 mule.setProp(mule, 'email', value);
                 MULES.setItem(index, mule);
                 MULES.save();
-                document.getElementById('di-list-item-input-email').blur();
+                _$('#di-list-item-input-email').blur();
                 
-            } // (4)
+            }
             function mulePcodeChangeCallback() {
                 
-                var items = Array.prototype.slice.call(document.getElementById('mule-list').children);
+                var items = Array.prototype.slice.call(_$('#mule-list').children);
                 var item = document.querySelector('.selected');
                 var index = items.indexOf(item);
                 var mule = new PropertyStore();
                 mule.importItem(mule, MULES.getItem(index));
-                var value = document.getElementById('di-list-item-input-password').value;
+                var value = _$('#di-list-item-input-password').value;
                 mule.setProp(mule, 'password', value);
                 MULES.setItem(index, mule);
                 MULES.save();
-                document.getElementById('di-list-item-input-password').blur();
+                _$('#di-list-item-input-password').blur();
                 
-            } // (5)
+            }
             function muleSlotsChangeCallback() {
                 
-                var items = Array.prototype.slice.call(document.getElementById('mule-list').children);
+                var items = Array.prototype.slice.call(_$('#mule-list').children);
                 var item = document.querySelector('.selected');
                 var index = items.indexOf(item);
                 var mule = new PropertyStore();
                 mule.importItem(mule, MULES.getItem(index));
-                var value = document.getElementById('di-list-item-input-total').value;
+                var value = _$('#di-list-item-input-total').value;
                 mule.setProp(mule, 'slots_total', value);
                 MULES.setItem(index, mule);
                 MULES.save();
-                document.getElementById('di-list-item-input-total').blur();
-                document.getElementById('right-light-title').innerHTML = '&ndash; ' + Number(mule.slots_total-mule.slots_filled) + ' slots available';
+                _$('#di-list-item-input-total').blur();
+                _$('#right-light-title').innerHTML = '&ndash; ' + Number(mule.slots_total-mule.blocks.length) + ' slots available';
                 
-            } // (6)
+            }
             function listCopyButtonACallback() {
                 document.addEventListener('keydown', function(e) {
                     console.log(e.keyCode);
                 }, false);
                 document.querySelector('#di-list-item-input-email').focus();
                 document.querySelector('#di-list-item-input-email').select();
-            } // (7)
+            }
             function listCopyButtonBCallback() {
                 document.querySelector('#di-list-item-input-password').focus();
                 document.querySelector('#di-list-item-input-password').select();
-            } // (8)
+            }
+            function createSlotButtonCallback() {
+                var wrapper = document.createElement('div');
+                wrapper.id = 'add-item-wrapper';
+                _$('#add-item-button').style.display = 'none';
+                _$('#left-di-list').style.display = 'none';
+                _$('#right-title-group').style.display = 'none';
+                _$('#right-di-list').style.display = 'none';
+                _$('#rename-mule-button').style.display = 'none';
+                _$('#delete-mule-button').style.display = 'none';
+                _$('#item-storage').style.display = 'none';
+                _$('#mule-list').style.display = 'none';
+                _$('#create-mule-button').style.display = 'none';
+                _$('#del-item-button').style.display = 'none';
+                var items = Array.prototype.slice.call(_$('#mule-list').children);
+                var item = document.querySelector('.selected');
+                var index = items.indexOf(item);
+                MULES.setProp(MULES, 'flag', index);
+                var mule = new PropertyStore();
+                mule.importItem(mule, MULES.getItem(index));
+                wrapper.innerHTML = getAllBlocks();
+                _$('#right-panel').appendChild(wrapper);
+                var blocks = mule.blocks;
+                function altSlotButtonCallback() {
+                    if (event.target.classList[0] === 'slot-alt') {
+                        var name = event.target.firstChild.id;
+                        blocks.push(name);
+                    } else if (event.target.classList[0] === 'block') {
+                        var name = event.target.id;
+                        blocks.push(name);
+                    } else if (event.target.classList[0] === 'pixel') {
+                        var name = event.target.parentNode.id;
+                        blocks.push(name);
+                    }
+                    _$('#right-panel').removeChild(wrapper);
+                    _$('#add-item-button').style.display = 'block';
+                    _$('#left-di-list').style.display = 'block';
+                    _$('#right-title-group').style.display = 'block';
+                    _$('#right-di-list').style.display = 'block';
+                    _$('#rename-mule-button').style.display = 'block';
+                    _$('#delete-mule-button').style.display = 'block';
+                    _$('#item-storage').style.display = 'block';
+                    _$('#mule-list').style.display = 'block';
+                    _$('#create-mule-button').style.display = 'block';
+                    mule.setProp(mule, 'blocks', blocks);
+                    MULES.setItem(index, mule);
+                    MULES.save();
+                    DOMInjectMuleList(index);
+                }
+                var altSlotButtonResponder = new InputResponders(_$('.slot-alt'));
+                altSlotButtonResponder.setCatalyst('click');
+                altSlotButtonResponder.setCallback(altSlotButtonCallback);
+                altSlotButtonResponder.activate();
+            }
+            function deleteSlotButtonCallback() {
+                var items = Array.prototype.slice.call(_$('#mule-list').children);
+                var item = document.querySelector('.selected');
+                var index = items.indexOf(item);
+                var mule = new PropertyStore();
+                mule.importItem(mule, MULES.getItem(index));
+                var refblocks = mule.blocks;
+                var ref = _$('.active');
+                var blocks = Array.prototype.slice.call(_$('#item-storage').children);
+                var index2 = blocks.indexOf(ref);
+                refblocks.splice(index2, 1);
+                _$('#item-storage').removeChild(ref);
+                _$('#del-item-button').style.display = 'none';
+                mule.setProp(mule, 'blocks', refblocks);
+                MULES.setItem(index, mule);
+                MULES.save();
+                DOMInjectMuleList(index);
+            }
 
             // Input Response Catalysts
-            createMuleButtonResponder.setCatalyst('click'); // (1)
-            renameMuleButtonResponder.setCatalyst('click'); // (2)
-            deleteMuleButtonResponder.setCatalyst('click'); // (3)
-            muleEmailChangeResponder.setCatalyst('change'); // (4)
-            mulePcodeChangeResponder.setCatalyst('change'); // (5)
-            muleSlotsChangeResponder.setCatalyst('change'); // (6)
-            listCopyButtonAResponder.setCatalyst('click'); // (7)
-            listCopyButtonBResponder.setCatalyst('click'); // (8)
+            createMuleButtonResponder.setCatalyst('click');
+            renameMuleButtonResponder.setCatalyst('click');
+            deleteMuleButtonResponder.setCatalyst('click');
+            muleEmailChangeResponder.setCatalyst('change');
+            mulePcodeChangeResponder.setCatalyst('change');
+            muleSlotsChangeResponder.setCatalyst('change');
+            listCopyButtonAResponder.setCatalyst('click');
+            listCopyButtonBResponder.setCatalyst('click');
+            createSlotButtonResponder.setCatalyst('click');
+            deleteSlotButtonResponder.setCatalyst('click');
 
             // Input Response Callback Assigners
-            createMuleButtonResponder.setCallback(createMuleButtonCallback); // (1)
-            renameMuleButtonResponder.setCallback(renameMuleButtonCallback); // (2)
-            deleteMuleButtonResponder.setCallback(deleteMuleButtonCallback); // (3)
-            muleEmailChangeResponder.setCallback(muleEmailChangeCallback); // (4)
-            mulePcodeChangeResponder.setCallback(mulePcodeChangeCallback); // (5)
-            muleSlotsChangeResponder.setCallback(muleSlotsChangeCallback); // (6)
-            listCopyButtonAResponder.setCallback(listCopyButtonACallback); // (7)
-            listCopyButtonBResponder.setCallback(listCopyButtonBCallback); // (8)
+            createMuleButtonResponder.setCallback(createMuleButtonCallback);
+            renameMuleButtonResponder.setCallback(renameMuleButtonCallback);
+            deleteMuleButtonResponder.setCallback(deleteMuleButtonCallback);
+            muleEmailChangeResponder.setCallback(muleEmailChangeCallback);
+            mulePcodeChangeResponder.setCallback(mulePcodeChangeCallback);
+            muleSlotsChangeResponder.setCallback(muleSlotsChangeCallback);
+            listCopyButtonAResponder.setCallback(listCopyButtonACallback);
+            listCopyButtonBResponder.setCallback(listCopyButtonBCallback);
+            createSlotButtonResponder.setCallback(createSlotButtonCallback);
+            deleteSlotButtonResponder.setCallback(deleteSlotButtonCallback);
 
             // Input Response Activators
-            createMuleButtonResponder.activate(); // (1)
-            renameMuleButtonResponder.activate(); // (2)
-            deleteMuleButtonResponder.activate(); // (3)
-            muleEmailChangeResponder.activate(); // (4)
-            mulePcodeChangeResponder.activate(); // (5)
-            muleSlotsChangeResponder.activate(); // (6)
-            listCopyButtonAResponder.activate(); // (7)
-            listCopyButtonBResponder.activate(); // (8)
-
+            createMuleButtonResponder.activate();
+            renameMuleButtonResponder.activate();
+            deleteMuleButtonResponder.activate();
+            muleEmailChangeResponder.activate();
+            mulePcodeChangeResponder.activate();
+            muleSlotsChangeResponder.activate();
+            listCopyButtonAResponder.activate();
+            listCopyButtonBResponder.activate();
+            createSlotButtonResponder.activate();
+            deleteSlotButtonResponder.activate();
+            
         }());
 
     </script> <!-- applicate engine -->
-    
-      <!-- Block Standard Template
-
-        <div class="pixel x0y0"></div>
-        <div class="pixel x1y0"></div>
-        <div class="pixel x2y0"></div>
-        <div class="pixel x3y0"></div>
-        <div class="pixel x4y0"></div>
-        <div class="pixel x5y0"></div>
-        <div class="pixel x6y0"></div>
-        <div class="pixel x7y0"></div>
-
-        <div class="pixel x0y1"></div>
-        <div class="pixel x1y1"></div>
-        <div class="pixel x2y1"></div>
-        <div class="pixel x3y1"></div>
-        <div class="pixel x4y1"></div>
-        <div class="pixel x5y1"></div>
-        <div class="pixel x6y1"></div>
-        <div class="pixel x7y1"></div>
-
-        <div class="pixel x0y2"></div>
-        <div class="pixel x1y2"></div>
-        <div class="pixel x2y2"></div>
-        <div class="pixel x3y2"></div>
-        <div class="pixel x4y2"></div>
-        <div class="pixel x5y2"></div>
-        <div class="pixel x6y2"></div>
-        <div class="pixel x7y2"></div>
-
-        <div class="pixel x0y3"></div>
-        <div class="pixel x1y3"></div>
-        <div class="pixel x2y3"></div>
-        <div class="pixel x3y3"></div>
-        <div class="pixel x4y3"></div>
-        <div class="pixel x5y3"></div>
-        <div class="pixel x6y3"></div>
-        <div class="pixel x7y3"></div>
-
-        <div class="pixel x0y4"></div>
-        <div class="pixel x1y4"></div>
-        <div class="pixel x2y4"></div>
-        <div class="pixel x3y4"></div>
-        <div class="pixel x4y4"></div>
-        <div class="pixel x5y4"></div>
-        <div class="pixel x6y4"></div>
-        <div class="pixel x7y4"></div>
-
-        <div class="pixel x0y5"></div>
-        <div class="pixel x1y5"></div>
-        <div class="pixel x2y5"></div>
-        <div class="pixel x3y5"></div>
-        <div class="pixel x4y5"></div>
-        <div class="pixel x5y5"></div>
-        <div class="pixel x6y5"></div>
-        <div class="pixel x7y5"></div>
-
-        <div class="pixel x0y6"></div>
-        <div class="pixel x1y6"></div>
-        <div class="pixel x2y6"></div>
-        <div class="pixel x3y6"></div>
-        <div class="pixel x4y6"></div>
-        <div class="pixel x5y6"></div>
-        <div class="pixel x6y6"></div>
-        <div class="pixel x7y6"></div>
-
-        <div class="pixel x0y7"></div>
-        <div class="pixel x1y7"></div>
-        <div class="pixel x2y7"></div>
-        <div class="pixel x3y7"></div>
-        <div class="pixel x4y7"></div>
-        <div class="pixel x5y7"></div>
-        <div class="pixel x6y7"></div>
-        <div class="pixel x7y7"></div>
-
-      End Block Standard Template -->
     
 </body>
 </html>

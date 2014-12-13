@@ -1,15 +1,17 @@
 .block {
+    display: block;
     position: relative;
-    display: block;
-    width: 34px;
-    height: 34px;
-    margin: 4px;
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
+
 .pixel {
-    position: absolute;
     display: block;
-    width: 4px;
-    height: 4px;
+    position: absolute;
+    width: 3px;
+    height: 3px;
 }
 
 .pixel.x0y0 {
@@ -18,399 +20,4904 @@
 }
 .pixel.x1y0 {
     top: 1px;
-    left: 5px;
+    left: 4px;
 }
 .pixel.x2y0 {
     top: 1px;
-    left: 9px;
+    left: 7px;
 }
 .pixel.x3y0 {
     top: 1px;
-    left: 13px;
+    left: 10px;
 }
 .pixel.x4y0 {
     top: 1px;
-    left: 17px;
+    left: 13px;
 }
 .pixel.x5y0 {
     top: 1px;
-    left: 21px;
+    left: 16px;
 }
 .pixel.x6y0 {
     top: 1px;
-    left: 25px;
+    left: 19px;
 }
 .pixel.x7y0 {
     top: 1px;
-    left: 29px;
+    left: 22px;
 }
 
 .pixel.x0y1 {
-    top: 5px;
+    top: 4px;
     left: 1px;
 }
 .pixel.x1y1 {
-    top: 5px;
-    left: 5px;
+    top: 4px;
+    left: 4px;
 }
 .pixel.x2y1 {
-    top: 5px;
-    left: 9px;
+    top: 4px;
+    left: 7px;
 }
 .pixel.x3y1 {
-    top: 5px;
-    left: 13px;
+    top: 4px;
+    left: 10px;
 }
 .pixel.x4y1 {
-    top: 5px;
-    left: 17px;
+    top: 4px;
+    left: 13px;
 }
 .pixel.x5y1 {
-    top: 5px;
-    left: 21px;
+    top: 4px;
+    left: 16px;
 }
 .pixel.x6y1 {
-    top: 5px;
-    left: 25px;
+    top: 4px;
+    left: 19px;
 }
 .pixel.x7y1 {
-    top: 5px;
-    left: 29px;
+    top: 4px;
+    left: 22px;
 }
 
 .pixel.x0y2 {
-    top: 9px;
+    top: 7px;
     left: 1px;
 }
 .pixel.x1y2 {
-    top: 9px;
-    left: 5px;
+    top: 7px;
+    left: 4px;
 }
 .pixel.x2y2 {
-    top: 9px;
-    left: 9px;
+    top: 7px;
+    left: 7px;
 }
 .pixel.x3y2 {
-    top: 9px;
-    left: 13px;
+    top: 7px;
+    left: 10px;
 }
 .pixel.x4y2 {
-    top: 9px;
-    left: 17px;
+    top: 7px;
+    left: 13px;
 }
 .pixel.x5y2 {
-    top: 9px;
-    left: 21px;
+    top: 7px;
+    left: 16px;
 }
 .pixel.x6y2 {
-    top: 9px;
-    left: 25px;
+    top: 7px;
+    left: 19px;
 }
 .pixel.x7y2 {
-    top: 9px;
-    left: 29px;
+    top: 7px;
+    left: 22px;
 }
 
 .pixel.x0y3 {
-    top: 13px;
+    top: 10px;
     left: 1px;
 }
 .pixel.x1y3 {
-    top: 13px;
-    left: 5px;
+    top: 10px;
+    left: 4px;
 }
 .pixel.x2y3 {
-    top: 13px;
-    left: 9px;
+    top: 10px;
+    left: 7px;
 }
 .pixel.x3y3 {
-    top: 13px;
-    left: 13px;
+    top: 10px;
+    left: 10px;
 }
 .pixel.x4y3 {
-    top: 13px;
-    left: 17px;
+    top: 10px;
+    left: 13px;
 }
 .pixel.x5y3 {
-    top: 13px;
-    left: 21px;
+    top: 10px;
+    left: 16px;
 }
 .pixel.x6y3 {
-    top: 13px;
-    left: 25px;
+    top: 10px;
+    left: 19px;
 }
 .pixel.x7y3 {
-    top: 13px;
-    left: 29px;
+    top: 10px;
+    left: 22px;
 }
 
 .pixel.x0y4 {
-    top: 17px;
+    top: 13px;
     left: 1px;
 }
 .pixel.x1y4 {
-    top: 17px;
-    left: 5px;
+    top: 13px;
+    left: 4px;
 }
 .pixel.x2y4 {
-    top: 17px;
-    left: 9px;
+    top: 13px;
+    left: 7px;
 }
 .pixel.x3y4 {
-    top: 17px;
-    left: 13px;
+    top: 13px;
+    left: 10px;
 }
 .pixel.x4y4 {
-    top: 17px;
-    left: 17px;
+    top: 13px;
+    left: 13px;
 }
 .pixel.x5y4 {
-    top: 17px;
-    left: 21px;
+    top: 13px;
+    left: 16px;
 }
 .pixel.x6y4 {
-    top: 17px;
-    left: 25px;
+    top: 13px;
+    left: 19px;
 }
 .pixel.x7y4 {
-    top: 17px;
-    left: 29px;
+    top: 13px;
+    left: 22px;
 }
 
 .pixel.x0y5 {
-    top: 21px;
+    top: 16px;
     left: 1px;
 }
 .pixel.x1y5 {
-    top: 21px;
-    left: 5px;
+    top: 16px;
+    left: 4px;
 }
 .pixel.x2y5 {
-    top: 21px;
-    left: 9px;
+    top: 16px;
+    left: 7px;
 }
 .pixel.x3y5 {
-    top: 21px;
-    left: 13px;
+    top: 16px;
+    left: 10px;
 }
 .pixel.x4y5 {
-    top: 21px;
-    left: 17px;
+    top: 16px;
+    left: 13px;
 }
 .pixel.x5y5 {
-    top: 21px;
-    left: 21px;
+    top: 16px;
+    left: 16px;
 }
 .pixel.x6y5 {
-    top: 21px;
-    left: 25px;
+    top: 16px;
+    left: 19px;
 }
 .pixel.x7y5 {
-    top: 21px;
-    left: 29px;
+    top: 16px;
+    left: 22px;
 }
 
 .pixel.x0y6 {
-    top: 25px;
+    top: 19px;
     left: 1px;
 }
 .pixel.x1y6 {
-    top: 25px;
-    left: 5px;
+    top: 19px;
+    left: 4px;
 }
 .pixel.x2y6 {
-    top: 25px;
-    left: 9px;
+    top: 19px;
+    left: 7px;
 }
 .pixel.x3y6 {
-    top: 25px;
-    left: 13px;
+    top: 19px;
+    left: 10px;
 }
 .pixel.x4y6 {
-    top: 25px;
-    left: 17px;
+    top: 19px;
+    left: 13px;
 }
 .pixel.x5y6 {
-    top: 25px;
-    left: 21px;
+    top: 19px;
+    left: 16px;
 }
 .pixel.x6y6 {
-    top: 25px;
-    left: 25px;
+    top: 19px;
+    left: 19px;
 }
 .pixel.x7y6 {
-    top: 25px;
-    left: 29px;
+    top: 19px;
+    left: 22px;
 }
 
 .pixel.x0y7 {
-    top: 29px;
+    top: 22px;
     left: 1px;
 }
 .pixel.x1y7 {
-    top: 29px;
-    left: 5px;
+    top: 22px;
+    left: 4px;
 }
 .pixel.x2y7 {
-    top: 29px;
-    left: 9px;
+    top: 22px;
+    left: 7px;
 }
 .pixel.x3y7 {
-    top: 29px;
-    left: 13px;
+    top: 22px;
+    left: 10px;
 }
 .pixel.x4y7 {
-    top: 29px;
-    left: 17px;
+    top: 22px;
+    left: 13px;
 }
 .pixel.x5y7 {
-    top: 29px;
-    left: 21px;
+    top: 22px;
+    left: 16px;
 }
 .pixel.x6y7 {
-    top: 29px;
-    left: 25px;
+    top: 22px;
+    left: 19px;
 }
 .pixel.x7y7 {
-    top: 29px;
-    left: 29px;
+    top: 22px;
+    left: 22px;
 }
 
 .pixel::after {
     box-shadow: 
-        0 0 0 1px #000,
-        0 0 6px 1px #111;
+        0 0 0 1px rgba(0,0,0,0.5),
+        0 0 6px 1px rgba(0,0,0,0.3);
     position: relative;
     display: block;
     z-index: -1;
     content: '';
-    width: 4px;
-    height: 4px;
+    width: 3px;
+    height: 3px;
 }
 
-.bows_UT_DOOMBOW > .pixel.x6y0 {
+.statpotions_DEFENSE > .pixel.x2y1 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x3y1 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x4y1 {
+    background: #C1C1C1;
+}
+.statpotions_DEFENSE > .pixel.x5y1 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x3y2 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x4y2 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x2y3 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x4y3 {
+    background: #9D9D9D;
+}
+.statpotions_DEFENSE > .pixel.x5y3 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x1y4 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x2y4 {
+    background: #0C0B0A;
+}
+.statpotions_DEFENSE > .pixel.x3y4 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x4y4 {
+    background: #FFFFFF;
+}
+.statpotions_DEFENSE > .pixel.x5y4 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x6y4 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x1y5 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x2y5 {
+    background: #0C0B0A;
+}
+.statpotions_DEFENSE > .pixel.x3y5 {
+    background: #0C0B0A;
+}
+.statpotions_DEFENSE > .pixel.x4y5 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x5y5 {
+    background: #0C0B0A;
+}
+.statpotions_DEFENSE > .pixel.x6y5 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x2y6 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x3y6 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x4y6 {
+    background: #616161;
+}
+.statpotions_DEFENSE > .pixel.x5y6 {
+    background: #616161;
+}
+
+.statpotions_ATTACK > .pixel.x2y1 {
+    background: #AB1AB1;
+}
+.statpotions_ATTACK > .pixel.x3y1 {
+    background: #AB1AB1;
+}
+.statpotions_ATTACK > .pixel.x4y1 {
+    background: #DD5AF0;
+}
+.statpotions_ATTACK > .pixel.x5y1 {
+    background: #AB1AB1;
+}
+.statpotions_ATTACK > .pixel.x3y2 {
+    background: #AB1AB1;
+}
+.statpotions_ATTACK > .pixel.x4y2 {
+    background: #AB1AB1;
+}
+.statpotions_ATTACK > .pixel.x2y3 {
+    background: #AB1AB1;
+}
+.statpotions_ATTACK > .pixel.x4y3 {
+    background: #9D9D9D;
+}
+.statpotions_ATTACK > .pixel.x5y3 {
+    background: #AB1AB1;
+}
+.statpotions_ATTACK > .pixel.x1y4 {
+    background: #AB1AB1;
+}
+.statpotions_ATTACK > .pixel.x2y4 {
+    background: #DD5AF0;
+}
+.statpotions_ATTACK > .pixel.x3y4 {
+    background: #E691F1;
+}
+.statpotions_ATTACK > .pixel.x4y4 {
+    background: #FFFFFF;
+}
+.statpotions_ATTACK > .pixel.x5y4 {
+    background: #E691F1;
+}
+.statpotions_ATTACK > .pixel.x6y4 {
+    background: #AB1AB1;
+}
+.statpotions_ATTACK > .pixel.x1y5 {
+    background: #AB1AB1;
+}
+.statpotions_ATTACK > .pixel.x2y5 {
+    background: #DD5AF0;
+}
+.statpotions_ATTACK > .pixel.x3y5 {
+    background: #DD5AF0;
+}
+.statpotions_ATTACK > .pixel.x4y5 {
+    background: #E691F1;
+}
+.statpotions_ATTACK > .pixel.x5y5 {
+    background: #DD5AF0;
+}
+.statpotions_ATTACK > .pixel.x6y5 {
+    background: #AB1AB1;
+}
+.statpotions_ATTACK > .pixel.x2y6 {
+    background: #AB1AB1;
+}
+.statpotions_ATTACK > .pixel.x3y6 {
+    background: #AB1AB1;
+}
+.statpotions_ATTACK > .pixel.x4y6 {
+    background: #AB1AB1;
+}
+.statpotions_ATTACK > .pixel.x5y6 {
+    background: #AB1AB1;
+}
+
+.statpotions_SPEED > .pixel.x2y1 {
+    background: #179C4B;
+}
+.statpotions_SPEED > .pixel.x3y1 {
+    background: #179C4B;
+}
+.statpotions_SPEED > .pixel.x4y1 {
+    background: #41E480;
+}
+.statpotions_SPEED > .pixel.x5y1 {
+    background: #179C4B;
+}
+.statpotions_SPEED > .pixel.x3y2 {
+    background: #179C4B;
+}
+.statpotions_SPEED > .pixel.x4y2 {
+    background: #179C4B;
+}
+.statpotions_SPEED > .pixel.x2y3 {
+    background: #179C4B;
+}
+.statpotions_SPEED > .pixel.x4y3 {
+    background: #9D9D9D;
+}
+.statpotions_SPEED > .pixel.x5y3 {
+    background: #179C4B;
+}
+.statpotions_SPEED > .pixel.x1y4 {
+    background: #179C4B;
+}
+.statpotions_SPEED > .pixel.x2y4 {
+    background: #41E480;
+}
+.statpotions_SPEED > .pixel.x3y4 {
+    background: #66E89E;
+}
+.statpotions_SPEED > .pixel.x4y4 {
+    background: #FFFFFF;
+}
+.statpotions_SPEED > .pixel.x5y4 {
+    background: #66E89E;
+}
+.statpotions_SPEED > .pixel.x6y4 {
+    background: #179C4B;
+}
+.statpotions_SPEED > .pixel.x1y5 {
+    background: #179C4B;
+}
+.statpotions_SPEED > .pixel.x2y5 {
+    background: #41E480;
+}
+.statpotions_SPEED > .pixel.x3y5 {
+    background: #41E480;
+}
+.statpotions_SPEED > .pixel.x4y5 {
+    background: #66E89E;
+}
+.statpotions_SPEED > .pixel.x5y5 {
+    background: #41E480;
+}
+.statpotions_SPEED > .pixel.x6y5 {
+    background: #179C4B;
+}
+.statpotions_SPEED > .pixel.x2y6 {
+    background: #179C4B;
+}
+.statpotions_SPEED > .pixel.x3y6 {
+    background: #179C4B;
+}
+.statpotions_SPEED > .pixel.x4y6 {
+    background: #179C4B;
+}
+.statpotions_SPEED > .pixel.x5y6 {
+    background: #179C4B;
+}
+
+.statpotions_DEXTERITY > .pixel.x2y1 {
+    background: #EE0000;
+}
+.statpotions_DEXTERITY > .pixel.x3y1 {
+    background: #EE0000;
+}
+.statpotions_DEXTERITY > .pixel.x4y1 {
+    background: #EB8931;
+}
+.statpotions_DEXTERITY > .pixel.x5y1 {
+    background: #EE0000;
+}
+.statpotions_DEXTERITY > .pixel.x3y2 {
+    background: #EE0000;
+}
+.statpotions_DEXTERITY > .pixel.x4y2 {
+    background: #EE0000;
+}
+.statpotions_DEXTERITY > .pixel.x2y3 {
+    background: #EE0000;
+}
+.statpotions_DEXTERITY > .pixel.x4y3 {
+    background: #9D9D9D;
+}
+.statpotions_DEXTERITY > .pixel.x5y3 {
+    background: #EE0000;
+}
+.statpotions_DEXTERITY > .pixel.x1y4 {
+    background: #EE0000;
+}
+.statpotions_DEXTERITY > .pixel.x2y4 {
+    background: #EB8931;
+}
+.statpotions_DEXTERITY > .pixel.x3y4 {
+    background: #FAB170;
+}
+.statpotions_DEXTERITY > .pixel.x4y4 {
+    background: #FFFFFF;
+}
+.statpotions_DEXTERITY > .pixel.x5y4 {
+    background: #FAB170;
+}
+.statpotions_DEXTERITY > .pixel.x6y4 {
+    background: #EE0000;
+}
+.statpotions_DEXTERITY > .pixel.x1y5 {
+    background: #EE0000;
+}
+.statpotions_DEXTERITY > .pixel.x2y5 {
+    background: #EB8931;
+}
+.statpotions_DEXTERITY > .pixel.x3y5 {
+    background: #EB8931;
+}
+.statpotions_DEXTERITY > .pixel.x4y5 {
+    background: #FAB170;
+}
+.statpotions_DEXTERITY > .pixel.x5y5 {
+    background: #EB8931;
+}
+.statpotions_DEXTERITY > .pixel.x6y5 {
+    background: #EE0000;
+}
+.statpotions_DEXTERITY > .pixel.x2y6 {
+    background: #EE0000;
+}
+.statpotions_DEXTERITY > .pixel.x3y6 {
+    background: #EE0000;
+}
+.statpotions_DEXTERITY > .pixel.x4y6 {
+    background: #EE0000;
+}
+.statpotions_DEXTERITY > .pixel.x5y6 {
+    background: #EE0000;
+}
+
+.statpotions_VITALITY > .pixel.x2y1 {
+    background: #A81E1E;
+}
+.statpotions_VITALITY > .pixel.x3y1 {
+    background: #A81E1E;
+}
+.statpotions_VITALITY > .pixel.x4y1 {
+    background: #FF072C;
+}
+.statpotions_VITALITY > .pixel.x5y1 {
+    background: #A81E1E;
+}
+.statpotions_VITALITY > .pixel.x3y2 {
+    background: #A81E1E;
+}
+.statpotions_VITALITY > .pixel.x4y2 {
+    background: #A81E1E;
+}
+.statpotions_VITALITY > .pixel.x2y3 {
+    background: #A81E1E;
+}
+.statpotions_VITALITY > .pixel.x4y3 {
+    background: #9D9D9D;
+}
+.statpotions_VITALITY > .pixel.x5y3 {
+    background: #A81E1E;
+}
+.statpotions_VITALITY > .pixel.x1y4 {
+    background: #A81E1E;
+}
+.statpotions_VITALITY > .pixel.x2y4 {
+    background: #C40015;
+}
+.statpotions_VITALITY > .pixel.x3y4 {
+    background: #FF072C;
+}
+.statpotions_VITALITY > .pixel.x4y4 {
+    background: #FFFFFF;
+}
+.statpotions_VITALITY > .pixel.x5y4 {
+    background: #FF072C;
+}
+.statpotions_VITALITY > .pixel.x6y4 {
+    background: #A81E1E;
+}
+.statpotions_VITALITY > .pixel.x1y5 {
+    background: #A81E1E;
+}
+.statpotions_VITALITY > .pixel.x2y5 {
+    background: #C40015;
+}
+.statpotions_VITALITY > .pixel.x3y5 {
+    background: #C40015;
+}
+.statpotions_VITALITY > .pixel.x4y5 {
+    background: #FF072C;
+}
+.statpotions_VITALITY > .pixel.x5y5 {
+    background: #C40015;
+}
+.statpotions_VITALITY > .pixel.x6y5 {
+    background: #A81E1E;
+}
+.statpotions_VITALITY > .pixel.x2y6 {
+    background: #A81E1E;
+}
+.statpotions_VITALITY > .pixel.x3y6 {
+    background: #A81E1E;
+}
+.statpotions_VITALITY > .pixel.x4y6 {
+    background: #A81E1E;
+}
+.statpotions_VITALITY > .pixel.x5y6 {
+    background: #A81E1E;
+}
+
+.statpotions_WISDOM > .pixel.x2y1 {
+    background: #4063E3;
+}
+.statpotions_WISDOM > .pixel.x3y1 {
+    background: #4063E3;
+}
+.statpotions_WISDOM > .pixel.x4y1 {
+    background: #4A93FE;
+}
+.statpotions_WISDOM > .pixel.x5y1 {
+    background: #4063E3;
+}
+.statpotions_WISDOM > .pixel.x3y2 {
+    background: #4063E3;
+}
+.statpotions_WISDOM > .pixel.x4y2 {
+    background: #4063E3;
+}
+.statpotions_WISDOM > .pixel.x2y3 {
+    background: #4063E3;
+}
+.statpotions_WISDOM > .pixel.x4y3 {
+    background: #9D9D9D;
+}
+.statpotions_WISDOM > .pixel.x5y3 {
+    background: #4063E3;
+}
+.statpotions_WISDOM > .pixel.x1y4 {
+    background: #4063E3;
+}
+.statpotions_WISDOM > .pixel.x2y4 {
+    background: #4A93FE;
+}
+.statpotions_WISDOM > .pixel.x3y4 {
+    background: #7F9AFE;
+}
+.statpotions_WISDOM > .pixel.x4y4 {
+    background: #FFFFFF;
+}
+.statpotions_WISDOM > .pixel.x5y4 {
+    background: #7F9AFE;
+}
+.statpotions_WISDOM > .pixel.x6y4 {
+    background: #4063E3;
+}
+.statpotions_WISDOM > .pixel.x1y5 {
+    background: #4063E3;
+}
+.statpotions_WISDOM > .pixel.x2y5 {
+    background: #4A93FE;
+}
+.statpotions_WISDOM > .pixel.x3y5 {
+    background: #4A93FE;
+}
+.statpotions_WISDOM > .pixel.x4y5 {
+    background: #7F9AFE;
+}
+.statpotions_WISDOM > .pixel.x5y5 {
+    background: #4A93FE;
+}
+.statpotions_WISDOM > .pixel.x6y5 {
+    background: #4063E3;
+}
+.statpotions_WISDOM > .pixel.x2y6 {
+    background: #4063E3;
+}
+.statpotions_WISDOM > .pixel.x3y6 {
+    background: #4063E3;
+}
+.statpotions_WISDOM > .pixel.x4y6 {
+    background: #4063E3;
+}
+.statpotions_WISDOM > .pixel.x5y6 {
+    background: #4063E3;
+}
+
+.statpotions_LIFE > .pixel.x2y1 {
+    background: #17959D;
+}
+.statpotions_LIFE > .pixel.x3y1 {
+    background: #17959D;
+}
+.statpotions_LIFE > .pixel.x4y1 {
+    background: #42DEE4;
+}
+.statpotions_LIFE > .pixel.x5y1 {
+    background: #17959D;
+}
+.statpotions_LIFE > .pixel.x3y2 {
+    background: #17959D;
+}
+.statpotions_LIFE > .pixel.x4y2 {
+    background: #17959D;
+}
+.statpotions_LIFE > .pixel.x2y3 {
+    background: #17959D;
+}
+.statpotions_LIFE > .pixel.x4y3 {
+    background: #9D9D9D;
+}
+.statpotions_LIFE > .pixel.x5y3 {
+    background: #17959D;
+}
+.statpotions_LIFE > .pixel.x1y4 {
+    background: #15939B;
+}
+.statpotions_LIFE > .pixel.x2y4 {
+    background: #42DEE4;
+}
+.statpotions_LIFE > .pixel.x3y4 {
+    background: #66DDE8;
+}
+.statpotions_LIFE > .pixel.x4y4 {
+    background: #FFFFFF;
+}
+.statpotions_LIFE > .pixel.x5y4 {
+    background: #66DDE8;
+}
+.statpotions_LIFE > .pixel.x6y4 {
+    background: #15939B;
+}
+.statpotions_LIFE > .pixel.x1y5 {
+    background: #15939B;
+}
+.statpotions_LIFE > .pixel.x2y5 {
+    background: #42DEE4;
+}
+.statpotions_LIFE > .pixel.x3y5 {
+    background: #42DEE4;
+}
+.statpotions_LIFE > .pixel.x4y5 {
+    background: #66DDE8;
+}
+.statpotions_LIFE > .pixel.x5y5 {
+    background: #42DEE4;
+}
+.statpotions_LIFE > .pixel.x6y5 {
+    background: #15939B;
+}
+.statpotions_LIFE > .pixel.x2y6 {
+    background: #17959D;
+}
+.statpotions_LIFE > .pixel.x3y6 {
+    background: #17959D;
+}
+.statpotions_LIFE > .pixel.x4y6 {
+    background: #17959D;
+}
+.statpotions_LIFE > .pixel.x5y6 {
+    background: #17959D;
+}
+
+.statpotions_MANA > .pixel.x2y1 {
+    background: #AD9319;
+}
+.statpotions_MANA > .pixel.x3y1 {
+    background: #AD9319;
+}
+.statpotions_MANA > .pixel.x4y1 {
+    background: #EFD05D;
+}
+.statpotions_MANA > .pixel.x5y1 {
+    background: #AD9319;
+}
+.statpotions_MANA > .pixel.x3y2 {
+    background: #AD9319;
+}
+.statpotions_MANA > .pixel.x4y2 {
+    background: #AD9319;
+}
+.statpotions_MANA > .pixel.x2y3 {
+    background: #AD9319;
+}
+.statpotions_MANA > .pixel.x4y3 {
+    background: #9D9D9D;
+}
+.statpotions_MANA > .pixel.x5y3 {
+    background: #AD9319;
+}
+.statpotions_MANA > .pixel.x1y4 {
+    background: #AD9319;
+}
+.statpotions_MANA > .pixel.x2y4 {
+    background: #EFD05D;
+}
+.statpotions_MANA > .pixel.x3y4 {
+    background: #E7DE89;
+}
+.statpotions_MANA > .pixel.x4y4 {
+    background: #FFFFFF;
+}
+.statpotions_MANA > .pixel.x5y4 {
+    background: #E7DE89;
+}
+.statpotions_MANA > .pixel.x6y4 {
+    background: #AD9319;
+}
+.statpotions_MANA > .pixel.x1y5 {
+    background: #AD9319;
+}
+.statpotions_MANA > .pixel.x2y5 {
+    background: #EFD05D;
+}
+.statpotions_MANA > .pixel.x3y5 {
+    background: #EFD05D;
+}
+.statpotions_MANA > .pixel.x4y5 {
+    background: #E7DE89;
+}
+.statpotions_MANA > .pixel.x5y5 {
+    background: #EFD05D;
+}
+.statpotions_MANA > .pixel.x6y5 {
+    background: #AD9319;
+}
+.statpotions_MANA > .pixel.x2y6 {
+    background: #AD9319;
+}
+.statpotions_MANA > .pixel.x3y6 {
+    background: #AD9319;
+}
+.statpotions_MANA > .pixel.x4y6 {
+    background: #AD9319;
+}
+.statpotions_MANA > .pixel.x5y6 {
+    background: #AD9319;
+}
+
+.dungeonkeys_INCANTATION { /* special */
+    margin: 12px 0 0 10px;
+}
+.dungeonkeys_INCANTATION > .pixel.x4y0 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x2y1 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x3y1 {
+    background: #E85000;
+}
+.dungeonkeys_INCANTATION > .pixel.x4y1 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x5y1 {
+    background: #E85000;
+}
+.dungeonkeys_INCANTATION > .pixel.x6y1 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x2y2 {
+    background: #E85000;
+}
+.dungeonkeys_INCANTATION > .pixel.x3y2 {
+    background: #E85000;
+}
+.dungeonkeys_INCANTATION > .pixel.x4y2 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x5y2 {
+    background: #E85000;
+}
+.dungeonkeys_INCANTATION > .pixel.x6y2 {
+    background: #E85000;
+}
+.dungeonkeys_INCANTATION > .pixel.x1y3 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x2y3 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x3y3 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x4y3 {
+    background: #E85000;
+}
+.dungeonkeys_INCANTATION > .pixel.x5y3 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x6y3 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x7y3 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x2y4 {
+    background: #E85000;
+}
+.dungeonkeys_INCANTATION > .pixel.x3y4 {
+    background: #E85000;
+}
+.dungeonkeys_INCANTATION > .pixel.x4y4 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x5y4 {
+    background: #E85000;
+}
+.dungeonkeys_INCANTATION > .pixel.x6y4 {
+    background: #E85000;
+}
+.dungeonkeys_INCANTATION > .pixel.x2y5 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x3y5 {
+    background: #E85000;
+}
+.dungeonkeys_INCANTATION > .pixel.x4y5 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x5y5 {
+    background: #E85000;
+}
+.dungeonkeys_INCANTATION > .pixel.x6y5 {
+    background: #E69B07;
+}
+.dungeonkeys_INCANTATION > .pixel.x4y6 {
+    background: #E69B07;
+}
+
+.dungeonkeys_TOMB > .pixel.x2y0 {
+    background: #00781F;
+}
+.dungeonkeys_TOMB > .pixel.x3y0 {
+    background: #738FF5;
+}
+.dungeonkeys_TOMB > .pixel.x4y0 {
+    background: #00781F;
+}
+.dungeonkeys_TOMB > .pixel.x5y0 {
+    background: #00781F;
+}
+.dungeonkeys_TOMB > .pixel.x1y1 {
+    background: #DE9709;
+}
+.dungeonkeys_TOMB > .pixel.x2y1 {
+    background: #EE0000;
+}
+.dungeonkeys_TOMB > .pixel.x3y1 {
+    background: #F7D46B;
+}
+.dungeonkeys_TOMB > .pixel.x4y1 {
+    background: #EE0000;
+}
+.dungeonkeys_TOMB > .pixel.x5y1 {
+    background: #F7D46B;
+}
+.dungeonkeys_TOMB > .pixel.x6y1 {
+    background: #DE9709;
+}
+.dungeonkeys_TOMB > .pixel.x0y2 {
+    background: #DE9709;
+}
+.dungeonkeys_TOMB > .pixel.x1y2 {
+    background: #30A4F2;
+}
+.dungeonkeys_TOMB > .pixel.x2y2 {
+    background: #F7D46B;
+}
+.dungeonkeys_TOMB > .pixel.x3y2 {
+    background: #F7D46B;
+}
+.dungeonkeys_TOMB > .pixel.x4y2 {
+    background: #F7D46B;
+}
+.dungeonkeys_TOMB > .pixel.x5y2 {
+    background: #F7D46B;
+}
+.dungeonkeys_TOMB > .pixel.x6y2 {
+    background: #30A4F2;
+}
+.dungeonkeys_TOMB > .pixel.x7y2 {
+    background: #DE9709;
+}
+.dungeonkeys_TOMB > .pixel.x1y3 {
+    background: #DE9709;
+}
+.dungeonkeys_TOMB > .pixel.x3y3 {
+    background: #F7D46B;
+}
+.dungeonkeys_TOMB > .pixel.x4y3 {
+    background: #F7D46B;
+}
+.dungeonkeys_TOMB > .pixel.x6y3 {
+    background: #DE9709;
+}
+.dungeonkeys_TOMB > .pixel.x4y4 {
+    background: #F6D36A;
+}
+.dungeonkeys_TOMB > .pixel.x2y5 {
+    background: #EFCC63;
+}
+.dungeonkeys_TOMB > .pixel.x3y5 {
+    background: #EFCC63;
+}
+.dungeonkeys_TOMB > .pixel.x4y5 {
+    background: #EFCC63;
+}
+.dungeonkeys_TOMB > .pixel.x4y6 {
+    background: #D4B655;
+}
+.dungeonkeys_TOMB > .pixel.x2y7 {
+    background: #D4B655;
+}
+.dungeonkeys_TOMB > .pixel.x3y7 {
+    background: #D4B655;
+}
+.dungeonkeys_TOMB > .pixel.x4y7 {
+    background: #D4B655;
+}
+
+.dungeonkeys_TRENCH > .pixel.x3y0 {
+    background: #003C78;
+}
+.dungeonkeys_TRENCH > .pixel.x4y0 {
+    background: #0079EB;
+}
+.dungeonkeys_TRENCH > .pixel.x5y0 {
+    background: #0079EB;
+}
+.dungeonkeys_TRENCH > .pixel.x2y1 {
+    background: #0079EB;
+}
+.dungeonkeys_TRENCH > .pixel.x3y1 {
+    background: #A6A1BA;
+}
+.dungeonkeys_TRENCH > .pixel.x4y1 {
+    background: #005DB5;
+}
+.dungeonkeys_TRENCH > .pixel.x5y1 {
+    background: #005DB5;
+}
+.dungeonkeys_TRENCH > .pixel.x6y1 {
+    background: #0079EB;
+}
+.dungeonkeys_TRENCH > .pixel.x1y2 {
+    background: #0079EB;
+}
+.dungeonkeys_TRENCH > .pixel.x2y2 {
+    background: #C1005D;
+}
+.dungeonkeys_TRENCH > .pixel.x3y2 {
+    background: #BEB6D6;
+}
+.dungeonkeys_TRENCH > .pixel.x4y2 {
+    background: #C1005D;
+}
+.dungeonkeys_TRENCH > .pixel.x5y2 {
+    background: #0079EB;
+}
+.dungeonkeys_TRENCH > .pixel.x6y2 {
+    background: #005DB5;
+}
+.dungeonkeys_TRENCH > .pixel.x7y2 {
+    background: #0079EB;
+}
+.dungeonkeys_TRENCH > .pixel.x2y3 {
+    background: #005DB5;
+}
+.dungeonkeys_TRENCH > .pixel.x3y3 {
+    background: #BEB6D6;
+}
+.dungeonkeys_TRENCH > .pixel.x4y3 {
+    background: #BEB6D6;
+}
+.dungeonkeys_TRENCH > .pixel.x5y3 {
+    background: #A6A1BA;
+}
+.dungeonkeys_TRENCH > .pixel.x6y3 {
+    background: #003C78;
+}
+.dungeonkeys_TRENCH > .pixel.x7y3 {
+    background: #005DB5;
+}
+.dungeonkeys_TRENCH > .pixel.x4y4 {
+    background: #F6D36A;
+}
+.dungeonkeys_TRENCH > .pixel.x6y4 {
+    background: #005BB3;
+}
+.dungeonkeys_TRENCH > .pixel.x2y5 {
+    background: #EFCC63;
+}
+.dungeonkeys_TRENCH > .pixel.x3y5 {
+    background: #EFCC63;
+}
+.dungeonkeys_TRENCH > .pixel.x4y5 {
+    background: #EFCC63;
+}
+.dungeonkeys_TRENCH > .pixel.x4y6 {
+    background: #D4B655;
+}
+.dungeonkeys_TRENCH > .pixel.x2y7 {
+    background: #D4B655;
+}
+.dungeonkeys_TRENCH > .pixel.x3y7 {
+    background: #D4B655;
+}
+.dungeonkeys_TRENCH > .pixel.x4y7 {
+    background: #D4B655;
+}
+
+.dungeonkeys_SNAKEPIT > .pixel.x0y0 {
+    background: #0C5426;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x2y0 {
+    background: #0B4922;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x3y0 {
+    background: #1DC159;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x4y0 {
+    background: #1DC159;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x5y0 {
+    background: #0B4922;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x7y0 {
+    background: #0C5426;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x1y1 {
+    background: #0C5426;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x2y1 {
+    background: #EE0000;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x3y1 {
+    background: #1DC159;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x4y1 {
+    background: #EE0000;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x5y1 {
+    background: #1DC159;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x6y1 {
+    background: #0C5426;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x1y2 {
+    background: #0C5426;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x2y2 {
+    background: #1AAF51;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x3y2 {
+    background: #1AAF51;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x4y2 {
+    background: #1AAF51;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x5y2 {
+    background: #1AAF51;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x6y2 {
+    background: #0C5426;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x0y3 {
+    background: #0C5426;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x3y3 {
+    background: #1AAF51;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x4y3 {
+    background: #1AAF51;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x7y3 {
+    background: #0C5426;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x4y4 {
+    background: #F6D36A;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x2y5 {
+    background: #EFCC63;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x3y5 {
+    background: #EFCC63;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x4y5 {
+    background: #EFCC63;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x4y6 {
+    background: #D4B655;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x2y7 {
+    background: #D4B655;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x3y7 {
+    background: #D4B655;
+}
+.dungeonkeys_SNAKEPIT > .pixel.x4y7 {
+    background: #D4B655;
+}
+
+.dungeonkeys_UNDEAD > .pixel.x3y0 {
+    background: #FFFFFF;
+}
+.dungeonkeys_UNDEAD > .pixel.x4y0 {
+    background: #FFFFFF;
+}
+.dungeonkeys_UNDEAD > .pixel.x2y1 {
+    background: #980002;
+}
+.dungeonkeys_UNDEAD > .pixel.x3y1 {
+    background: #E6E6E6;
+}
+.dungeonkeys_UNDEAD > .pixel.x4y1 {
+    background: #980002;
+}
+.dungeonkeys_UNDEAD > .pixel.x5y1 {
+    background: #C9C9C9;
+}
+.dungeonkeys_UNDEAD > .pixel.x2y2 {
+    background: #E6E6E6;
+}
+.dungeonkeys_UNDEAD > .pixel.x3y2 {
     background: #000000;
 }
-.bows_UT_DOOMBOW > .pixel.x7y0 {
+.dungeonkeys_UNDEAD > .pixel.x4y2 {
+    background: #C9C9C9;
+}
+.dungeonkeys_UNDEAD > .pixel.x5y2 {
+    background: #C9C9C9;
+}
+.dungeonkeys_UNDEAD > .pixel.x3y3 {
+    background: #000000;
+}
+.dungeonkeys_UNDEAD > .pixel.x4y3 {
+    background: #C9C9C9;
+}
+.dungeonkeys_UNDEAD > .pixel.x4y4 {
+    background: #F6D36A;
+}
+.dungeonkeys_UNDEAD > .pixel.x2y5 {
+    background: #EFCC63;
+}
+.dungeonkeys_UNDEAD > .pixel.x3y5 {
+    background: #EFCC63;
+}
+.dungeonkeys_UNDEAD > .pixel.x4y5 {
+    background: #EFCC63;
+}
+.dungeonkeys_UNDEAD > .pixel.x4y6 {
+    background: #D4B655;
+}
+.dungeonkeys_UNDEAD > .pixel.x2y7 {
+    background: #D4B655;
+}
+.dungeonkeys_UNDEAD > .pixel.x3y7 {
+    background: #D4B655;
+}
+.dungeonkeys_UNDEAD > .pixel.x4y7 {
+    background: #D4B655;
+}
+
+.daggers_T0_STEEL > .pixel.x5y1 {
+    background: #FFFFFF;
+}
+.daggers_T0_STEEL > .pixel.x6y1 {
+    background: #FFFFFF;
+}
+.daggers_T0_STEEL > .pixel.x4y2 {
+    background: #FFFFFF;
+}
+.daggers_T0_STEEL > .pixel.x5y2 {
+    background: #9D9D9D;
+}
+.daggers_T0_STEEL > .pixel.x6y2 {
+    background: #9D9D9D;
+}
+.daggers_T0_STEEL > .pixel.x1y3 {
+    background: #F7E26B;
+}
+.daggers_T0_STEEL > .pixel.x3y3 {
+    background: #FFFFFF;
+}
+.daggers_T0_STEEL > .pixel.x4y3 {
+    background: #9D9D9D;
+}
+.daggers_T0_STEEL > .pixel.x5y3 {
+    background: #9D9D9D;
+}
+.daggers_T0_STEEL > .pixel.x2y4 {
+    background: #F5E069;
+}
+.daggers_T0_STEEL > .pixel.x3y4 {
+    background: #9C9C9C;
+}
+.daggers_T0_STEEL > .pixel.x4y4 {
+    background: #9C9C9C;
+}
+.daggers_T0_STEEL > .pixel.x2y5 {
+    background: #9C5C1A;
+}
+.daggers_T0_STEEL > .pixel.x3y5 {
+    background: #EDD861;
+}
+.daggers_T0_STEEL > .pixel.x1y6 {
+    background: #985816;
+}
+.daggers_T0_STEEL > .pixel.x4y6 {
+    background: #EBD65F;
+}
+
+.daggers_T1_DIRK > .pixel.x5y1 {
+    background: #B2DCEF;
+}
+.daggers_T1_DIRK > .pixel.x6y1 {
+    background: #B2DCEF;
+}
+.daggers_T1_DIRK > .pixel.x4y2 {
+    background: #B2DCEF;
+}
+.daggers_T1_DIRK > .pixel.x5y2 {
+    background: #FFFFFF;
+}
+.daggers_T1_DIRK > .pixel.x6y2 {
+    background: #FFFFFF;
+}
+.daggers_T1_DIRK > .pixel.x1y3 {
+    background: #9D9D9D;
+}
+.daggers_T1_DIRK > .pixel.x3y3 {
+    background: #B2DCEF;
+}
+.daggers_T1_DIRK > .pixel.x4y3 {
+    background: #FFFFFF;
+}
+.daggers_T1_DIRK > .pixel.x5y3 {
+    background: #FFFFFF;
+}
+.daggers_T1_DIRK > .pixel.x2y4 {
+    background: #9D9D9D;
+}
+.daggers_T1_DIRK > .pixel.x3y4 {
+    background: #FEFEFE;
+}
+.daggers_T1_DIRK > .pixel.x4y4 {
+    background: #FEFEFE;
+}
+.daggers_T1_DIRK > .pixel.x2y5 {
+    background: #9C5C1A;
+}
+.daggers_T1_DIRK > .pixel.x3y5 {
+    background: #969696;
+}
+.daggers_T1_DIRK > .pixel.x1y6 {
+    background: #9C5C1A;
+}
+.daggers_T1_DIRK > .pixel.x4y6 {
+    background: #969696;
+}
+
+.daggers_T2_BLUESTEEL > .pixel.x5y1 {
+    background: #A9A9CF;
+}
+.daggers_T2_BLUESTEEL > .pixel.x6y1 {
+    background: #A9A9CF;
+}
+.daggers_T2_BLUESTEEL > .pixel.x4y2 {
+    background: #A9A9CF;
+}
+.daggers_T2_BLUESTEEL > .pixel.x5y2 {
+    background: #626288;
+}
+.daggers_T2_BLUESTEEL > .pixel.x6y2 {
+    background: #626288;
+}
+.daggers_T2_BLUESTEEL > .pixel.x1y3 {
+    background: #F7E26B;
+}
+.daggers_T2_BLUESTEEL > .pixel.x3y3 {
+    background: #A9A9CF;
+}
+.daggers_T2_BLUESTEEL > .pixel.x4y3 {
+    background: #626288;
+}
+.daggers_T2_BLUESTEEL > .pixel.x5y3 {
+    background: #626288;
+}
+.daggers_T2_BLUESTEEL > .pixel.x2y4 {
+    background: #F6E16A;
+}
+.daggers_T2_BLUESTEEL > .pixel.x3y4 {
+    background: #606086;
+}
+.daggers_T2_BLUESTEEL > .pixel.x4y4 {
+    background: #606086;
+}
+.daggers_T2_BLUESTEEL > .pixel.x2y5 {
+    background: #9C5C1A;
+}
+.daggers_T2_BLUESTEEL > .pixel.x3y5 {
+    background: #F6E16A;
+}
+.daggers_T2_BLUESTEEL > .pixel.x1y6 {
+    background: #9C5C1A;
+}
+.daggers_T2_BLUESTEEL > .pixel.x4y6 {
+    background: #E9D45D;
+}
+
+.daggers_T3_DUSKYROSE > .pixel.x5y1 {
+    background: #DE9D90;
+}
+.daggers_T3_DUSKYROSE > .pixel.x6y1 {
+    background: #DE9D90;
+}
+.daggers_T3_DUSKYROSE > .pixel.x4y2 {
+    background: #DE9D90;
+}
+.daggers_T3_DUSKYROSE > .pixel.x5y2 {
+    background: #B14A35;
+}
+.daggers_T3_DUSKYROSE > .pixel.x6y2 {
+    background: #B14A35;
+}
+.daggers_T3_DUSKYROSE > .pixel.x1y3 {
+    background: #F7E26B;
+}
+.daggers_T3_DUSKYROSE > .pixel.x3y3 {
+    background: #DE9D90;
+}
+.daggers_T3_DUSKYROSE > .pixel.x4y3 {
+    background: #B14A35;
+}
+.daggers_T3_DUSKYROSE > .pixel.x5y3 {
+    background: #B14A35;
+}
+.daggers_T3_DUSKYROSE > .pixel.x2y4 {
+    background: #F6E16A;
+}
+.daggers_T3_DUSKYROSE > .pixel.x3y4 {
+    background: #B14A35;
+}
+.daggers_T3_DUSKYROSE > .pixel.x4y4 {
+    background: #B14A35;
+}
+.daggers_T3_DUSKYROSE > .pixel.x2y5 {
+    background: #9C5C1A;
+}
+.daggers_T3_DUSKYROSE > .pixel.x3y5 {
+    background: #F6E16A;
+}
+.daggers_T3_DUSKYROSE > .pixel.x1y6 {
+    background: #9C5C1A;
+}
+.daggers_T3_DUSKYROSE > .pixel.x4y6 {
+    background: #E9D45D;
+}
+
+.daggers_T4_SILVER > .pixel.x5y1 {
+    background: #FFFFFF;
+}
+.daggers_T4_SILVER > .pixel.x6y1 {
+    background: #FFFFFF;
+}
+.daggers_T4_SILVER > .pixel.x4y2 {
+    background: #FFFFFF;
+}
+.daggers_T4_SILVER > .pixel.x5y2 {
+    background: #9D9D9D;
+}
+.daggers_T4_SILVER > .pixel.x6y2 {
+    background: #9D9D9D;
+}
+.daggers_T4_SILVER > .pixel.x1y3 {
+    background: #4E4E4E;
+}
+.daggers_T4_SILVER > .pixel.x3y3 {
+    background: #FFFFFF;
+}
+.daggers_T4_SILVER > .pixel.x4y3 {
+    background: #9D9D9D;
+}
+.daggers_T4_SILVER > .pixel.x5y3 {
+    background: #9D9D9D;
+}
+.daggers_T4_SILVER > .pixel.x2y4 {
+    background: #4D4D4D;
+}
+.daggers_T4_SILVER > .pixel.x3y4 {
+    background: #9D9D9D;
+}
+.daggers_T4_SILVER > .pixel.x4y4 {
+    background: #9D9D9D;
+}
+.daggers_T4_SILVER > .pixel.x2y5 {
+    background: #A6A6A6;
+}
+.daggers_T4_SILVER > .pixel.x3y5 {
+    background: #474747;
+}
+.daggers_T4_SILVER > .pixel.x1y6 {
+    background: #9D9D9D;
+}
+.daggers_T4_SILVER > .pixel.x4y6 {
+    background: #404040;
+}
+
+.daggers_T5_GOLDEN > .pixel.x5y1 {
+    background: #F7E26B;
+}
+.daggers_T5_GOLDEN > .pixel.x6y1 {
+    background: #F7E26B;
+}
+.daggers_T5_GOLDEN > .pixel.x4y2 {
+    background: #F7E26B;
+}
+.daggers_T5_GOLDEN > .pixel.x5y2 {
+    background: #EB8931;
+}
+.daggers_T5_GOLDEN > .pixel.x6y2 {
+    background: #EB8931;
+}
+.daggers_T5_GOLDEN > .pixel.x1y3 {
+    background: #000000;
+}
+.daggers_T5_GOLDEN > .pixel.x3y3 {
+    background: #F7E26B;
+}
+.daggers_T5_GOLDEN > .pixel.x4y3 {
+    background: #EB8931;
+}
+.daggers_T5_GOLDEN > .pixel.x5y3 {
+    background: #EB8931;
+}
+.daggers_T5_GOLDEN > .pixel.x2y4 {
+    background: #000000;
+}
+.daggers_T5_GOLDEN > .pixel.x3y4 {
+    background: #EB8931;
+}
+.daggers_T5_GOLDEN > .pixel.x4y4 {
+    background: #EB8931;
+}
+.daggers_T5_GOLDEN > .pixel.x2y5 {
+    background: #9C5C1A;
+}
+.daggers_T5_GOLDEN > .pixel.x3y5 {
+    background: #000000;
+}
+.daggers_T5_GOLDEN > .pixel.x1y6 {
+    background: #965614;
+}
+.daggers_T5_GOLDEN > .pixel.x4y6 {
+    background: #000000;
+}
+
+.daggers_T6_OBSIDIAN > .pixel.x5y1 {
+    background: #1B2632;
+}
+.daggers_T6_OBSIDIAN > .pixel.x6y1 {
+    background: #1B2632;
+}
+.daggers_T6_OBSIDIAN > .pixel.x4y2 {
+    background: #1B2632;
+}
+.daggers_T6_OBSIDIAN > .pixel.x5y2 {
+    background: #000000;
+}
+.daggers_T6_OBSIDIAN > .pixel.x6y2 {
+    background: #000000;
+}
+.daggers_T6_OBSIDIAN > .pixel.x1y3 {
+    background: #F7E26B;
+}
+.daggers_T6_OBSIDIAN > .pixel.x3y3 {
+    background: #1B2632;
+}
+.daggers_T6_OBSIDIAN > .pixel.x4y3 {
+    background: #000000;
+}
+.daggers_T6_OBSIDIAN > .pixel.x5y3 {
+    background: #000000;
+}
+.daggers_T6_OBSIDIAN > .pixel.x2y4 {
+    background: #F7E26B;
+}
+.daggers_T6_OBSIDIAN > .pixel.x3y4 {
+    background: #000000;
+}
+.daggers_T6_OBSIDIAN > .pixel.x4y4 {
+    background: #000000;
+}
+.daggers_T6_OBSIDIAN > .pixel.x2y5 {
+    background: #9D5D1B;
+}
+.daggers_T6_OBSIDIAN > .pixel.x3y5 {
+    background: #F7E26B;
+}
+.daggers_T6_OBSIDIAN > .pixel.x1y6 {
+    background: #965614;
+}
+.daggers_T6_OBSIDIAN > .pixel.x4y6 {
+    background: #F7E26B;
+}
+
+.daggers_T7_MITHRIL > .pixel.x5y1 {
+    background: #2395FF;
+}
+.daggers_T7_MITHRIL > .pixel.x6y1 {
+    background: #62B3FF;
+}
+.daggers_T7_MITHRIL > .pixel.x4y2 {
+    background: #2395FF;
+}
+.daggers_T7_MITHRIL > .pixel.x5y2 {
+    background: #FFE100;
+}
+.daggers_T7_MITHRIL > .pixel.x6y2 {
+    background: #1969B5;
+}
+.daggers_T7_MITHRIL > .pixel.x1y3 {
+    background: #F7DF6B;
+}
+.daggers_T7_MITHRIL > .pixel.x3y3 {
+    background: #2395FF;
+}
+.daggers_T7_MITHRIL > .pixel.x4y3 {
+    background: #FFE100;
+}
+.daggers_T7_MITHRIL > .pixel.x5y3 {
+    background: #1969B5;
+}
+.daggers_T7_MITHRIL > .pixel.x2y4 {
+    background: #F7FB34;
+}
+.daggers_T7_MITHRIL > .pixel.x3y4 {
+    background: #FD0002;
+}
+.daggers_T7_MITHRIL > .pixel.x4y4 {
+    background: #1565B1;
+}
+.daggers_T7_MITHRIL > .pixel.x2y5 {
+    background: #683C10;
+}
+.daggers_T7_MITHRIL > .pixel.x3y5 {
+    background: #F1F52E;
+}
+.daggers_T7_MITHRIL > .pixel.x1y6 {
+    background: #63370B;
+}
+.daggers_T7_MITHRIL > .pixel.x4y6 {
+    background: #E9D15D;
+}
+
+.daggers_T8_FIRE > .pixel.x5y0 {
+    background: #F7E26B;
+}
+.daggers_T8_FIRE > .pixel.x2y1 {
+    background: #F7E26B;
+}
+.daggers_T8_FIRE > .pixel.x4y1 {
+    background: #F7E26B;
+}
+.daggers_T8_FIRE > .pixel.x5y1 {
+    background: #EB8931;
+}
+.daggers_T8_FIRE > .pixel.x3y2 {
+    background: #EB8931;
+}
+.daggers_T8_FIRE > .pixel.x4y2 {
+    background: #BE2633;
+}
+.daggers_T8_FIRE > .pixel.x5y2 {
+    background: #BE2633;
+}
+.daggers_T8_FIRE > .pixel.x6y2 {
+    background: #EB8931;
+}
+.daggers_T8_FIRE > .pixel.x1y3 {
+    background: #000000;
+}
+.daggers_T8_FIRE > .pixel.x2y3 {
+    background: #F7E26B;
+}
+.daggers_T8_FIRE > .pixel.x3y3 {
+    background: #BE2633;
+}
+.daggers_T8_FIRE > .pixel.x4y3 {
+    background: #BE2633;
+}
+.daggers_T8_FIRE > .pixel.x5y3 {
+    background: #BE2633;
+}
+.daggers_T8_FIRE > .pixel.x2y4 {
+    background: #000000;
+}
+.daggers_T8_FIRE > .pixel.x3y4 {
+    background: #BC2431;
+}
+.daggers_T8_FIRE > .pixel.x4y4 {
+    background: #BC2431;
+}
+.daggers_T8_FIRE > .pixel.x5y4 {
+    background: #E9872F;
+}
+.daggers_T8_FIRE > .pixel.x2y5 {
+    background: #9F5F1D;
+}
+.daggers_T8_FIRE > .pixel.x3y5 {
+    background: #000000;
+}
+.daggers_T8_FIRE > .pixel.x4y5 {
+    background: #EFDA63;
+}
+.daggers_T8_FIRE > .pixel.x1y6 {
+    background: #985816;
+}
+.daggers_T8_FIRE > .pixel.x4y6 {
+    background: #000000;
+}
+
+.daggers_T9_RAGETALON > .pixel.x5y1 {
+    background: #DD5AF0;
+}
+.daggers_T9_RAGETALON > .pixel.x6y1 {
+    background: #DD5AF0;
+}
+.daggers_T9_RAGETALON > .pixel.x4y2 {
+    background: #DD5AF0;
+}
+.daggers_T9_RAGETALON > .pixel.x5y2 {
+    background: #AB1AB1;
+}
+.daggers_T9_RAGETALON > .pixel.x6y2 {
+    background: #AB1AB1;
+}
+.daggers_T9_RAGETALON > .pixel.x1y3 {
+    background: #F7E26B;
+}
+.daggers_T9_RAGETALON > .pixel.x3y3 {
+    background: #DD5AF0;
+}
+.daggers_T9_RAGETALON > .pixel.x4y3 {
+    background: #AB1AB1;
+}
+.daggers_T9_RAGETALON > .pixel.x5y3 {
+    background: #AB1AB1;
+}
+.daggers_T9_RAGETALON > .pixel.x2y4 {
+    background: #F7E26B;
+}
+.daggers_T9_RAGETALON > .pixel.x3y4 {
+    background: #AB1AB1;
+}
+.daggers_T9_RAGETALON > .pixel.x4y4 {
+    background: #AB1AB1;
+}
+.daggers_T9_RAGETALON > .pixel.x2y5 {
+    background: #9D5D1B;
+}
+.daggers_T9_RAGETALON > .pixel.x3y5 {
+    background: #F7E26B;
+}
+.daggers_T9_RAGETALON > .pixel.x1y6 {
+    background: #965614;
+}
+.daggers_T9_RAGETALON > .pixel.x4y6 {
+    background: #F7E26B;
+}
+
+.daggers_T10_EMERALDSHARD > .pixel.x5y1 {
+    background: #41E480;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x6y1 {
+    background: #41E480;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x4y2 {
+    background: #41E480;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x5y2 {
+    background: #179C4B;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x6y2 {
+    background: #179C4B;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x1y3 {
+    background: #F7E26B;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x3y3 {
+    background: #41E480;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x4y3 {
+    background: #179C4B;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x5y3 {
+    background: #179C4B;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x2y4 {
+    background: #F7E26B;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x3y4 {
+    background: #179C4B;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x4y4 {
+    background: #179C4B;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x2y5 {
+    background: #9D5D1B;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x3y5 {
+    background: #F7E26B;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x1y6 {
+    background: #965614;
+}
+.daggers_T10_EMERALDSHARD > .pixel.x4y6 {
+    background: #F7E26B;
+}
+
+.daggers_T11_AGATECLAW > .pixel.x5y1 {
+    background: #8D69DB;
+}
+.daggers_T11_AGATECLAW > .pixel.x6y1 {
+    background: #8D69DB;
+}
+.daggers_T11_AGATECLAW > .pixel.x4y2 {
+    background: #8D69DB;
+}
+.daggers_T11_AGATECLAW > .pixel.x5y2 {
+    background: #4816B0;
+}
+.daggers_T11_AGATECLAW > .pixel.x6y2 {
+    background: #4816B0;
+}
+.daggers_T11_AGATECLAW > .pixel.x1y3 {
+    background: #F7E26B;
+}
+.daggers_T11_AGATECLAW > .pixel.x3y3 {
+    background: #8D69DB;
+}
+.daggers_T11_AGATECLAW > .pixel.x4y3 {
+    background: #4816B0;
+}
+.daggers_T11_AGATECLAW > .pixel.x5y3 {
+    background: #4816B0;
+}
+.daggers_T11_AGATECLAW > .pixel.x2y4 {
+    background: #F7E26B;
+}
+.daggers_T11_AGATECLAW > .pixel.x3y4 {
+    background: #4816B0;
+}
+.daggers_T11_AGATECLAW > .pixel.x4y4 {
+    background: #4816B0;
+}
+.daggers_T11_AGATECLAW > .pixel.x2y5 {
+    background: #A3A3A3;
+}
+.daggers_T11_AGATECLAW > .pixel.x3y5 {
+    background: #F7E26B;
+}
+.daggers_T11_AGATECLAW > .pixel.x1y6 {
+    background: #9D9D9D;
+}
+.daggers_T11_AGATECLAW > .pixel.x4y6 {
+    background: #F7E26B;
+}
+
+.daggers_T12_FOULMALEVOLENCE > .pixel.x5y1 {
+    background: #E96A6A;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x6y1 {
+    background: #E96A6A;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x4y2 {
+    background: #E96A6A;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x5y2 {
+    background: #CF2D2D;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x6y2 {
+    background: #CF2D2D;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x1y3 {
+    background: #FFFFFF;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x3y3 {
+    background: #E96A6A;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x4y3 {
+    background: #CF2D2D;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x5y3 {
+    background: #CF2D2D;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x2y4 {
+    background: #FFFFFF;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x3y4 {
+    background: #CF2D2D;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x4y4 {
+    background: #CF2D2D;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x2y5 {
+    background: #444444;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x3y5 {
+    background: #FFFFFF;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x1y6 {
+    background: #444444;
+}
+.daggers_T12_FOULMALEVOLENCE > .pixel.x4y6 {
+    background: #FFFFFF;
+}
+
+.daggers_UT_POISONFANG > .pixel.x5y1 {
+    background: #B2DCEF;
+}
+.daggers_UT_POISONFANG > .pixel.x6y1 {
+    background: #1ECF60;
+}
+.daggers_UT_POISONFANG > .pixel.x4y2 {
+    background: #B2DCEF;
+}
+.daggers_UT_POISONFANG > .pixel.x5y2 {
+    background: #FFFFFF;
+}
+.daggers_UT_POISONFANG > .pixel.x6y2 {
+    background: #1ECF60;
+}
+.daggers_UT_POISONFANG > .pixel.x3y3 {
+    background: #B2DCEF;
+}
+.daggers_UT_POISONFANG > .pixel.x4y3 {
+    background: #FFFFFF;
+}
+.daggers_UT_POISONFANG > .pixel.x5y3 {
+    background: #FFFFFF;
+}
+.daggers_UT_POISONFANG > .pixel.x2y4 {
+    background: #FFFFFF;
+}
+.daggers_UT_POISONFANG > .pixel.x3y4 {
+    background: #FFFFFF;
+}
+.daggers_UT_POISONFANG > .pixel.x4y4 {
+    background: #FFFFFF;
+}
+.daggers_UT_POISONFANG > .pixel.x6y4 {
+    background: #1CCD60;
+}
+.daggers_UT_POISONFANG > .pixel.x2y5 {
+    background: #9C5C1A;
+}
+.daggers_UT_POISONFANG > .pixel.x3y5 {
+    background: #F5F5F5;
+}
+.daggers_UT_POISONFANG > .pixel.x1y6 {
+    background: #985615;
+}
+.daggers_UT_POISONFANG > .pixel.x6y6 {
+    background: #11C154;
+}
+
+.daggers_UT_BONE > .pixel.x6y0 {
+    background: #EFDED9;
+}
+.daggers_UT_BONE > .pixel.x5y1 {
+    background: #EFDED9;
+}
+.daggers_UT_BONE > .pixel.x6y1 {
+    background: #FFF3EF;
+}
+.daggers_UT_BONE > .pixel.x4y2 {
+    background: #EFDED9;
+}
+.daggers_UT_BONE > .pixel.x5y2 {
+    background: #EFDED9;
+}
+.daggers_UT_BONE > .pixel.x6y2 {
+    background: #FFF3EF;
+}
+.daggers_UT_BONE > .pixel.x1y3 {
+    background: #AB9F9B;
+}
+.daggers_UT_BONE > .pixel.x3y3 {
+    background: #EEDDD8;
+}
+.daggers_UT_BONE > .pixel.x4y3 {
+    background: #D6CCC9;
+}
+.daggers_UT_BONE > .pixel.x5y3 {
+    background: #FEF2EE;
+}
+.daggers_UT_BONE > .pixel.x2y4 {
+    background: #A59995;
+}
+.daggers_UT_BONE > .pixel.x3y4 {
+    background: #D0C6C3;
+}
+.daggers_UT_BONE > .pixel.x4y4 {
+    background: #F8ECE8;
+}
+.daggers_UT_BONE > .pixel.x2y5 {
+    background: #676767;
+}
+.daggers_UT_BONE > .pixel.x3y5 {
+    background: #9F938F;
+}
+.daggers_UT_BONE > .pixel.x1y6 {
+    background: #616161;
+}
+.daggers_UT_BONE > .pixel.x4y6 {
+    background: #9B8F8B;
+}
+
+.daggers_UT_SPIRIT > .pixel.x5y1 {
+    background: #C7C1FF;
+}
+.daggers_UT_SPIRIT > .pixel.x6y1 {
+    background: #C7C1FF;
+}
+.daggers_UT_SPIRIT > .pixel.x4y2 {
+    background: #C7C1FF;
+}
+.daggers_UT_SPIRIT > .pixel.x5y2 {
+    background: #C1AFF7;
+}
+.daggers_UT_SPIRIT > .pixel.x6y2 {
+    background: #C1AFF7;
+}
+.daggers_UT_SPIRIT > .pixel.x1y3 {
+    background: #525499;
+}
+.daggers_UT_SPIRIT > .pixel.x2y3 {
+    background: #6769C1;
+}
+.daggers_UT_SPIRIT > .pixel.x3y3 {
+    background: #C7C1FF;
+}
+.daggers_UT_SPIRIT > .pixel.x4y3 {
+    background: #A598D6;
+}
+.daggers_UT_SPIRIT > .pixel.x5y3 {
+    background: #C1AFF7;
+}
+.daggers_UT_SPIRIT > .pixel.x2y4 {
+    background: #505297;
+}
+.daggers_UT_SPIRIT > .pixel.x3y4 {
+    background: #A396D4;
+}
+.daggers_UT_SPIRIT > .pixel.x4y4 {
+    background: #BFADF5;
+}
+.daggers_UT_SPIRIT > .pixel.x2y5 {
+    background: #5F61B9;
+}
+.daggers_UT_SPIRIT > .pixel.x3y5 {
+    background: #4B4D92;
+}
+.daggers_UT_SPIRIT > .pixel.x4y5 {
+    background: #5D5FB7;
+}
+.daggers_UT_SPIRIT > .pixel.x1y6 {
+    background: #5B5DB5;
+}
+.daggers_UT_SPIRIT > .pixel.x4y6 {
+    background: #46488D;
+}
+
+.daggers_UT_CRONUS { /* special */
+    margin: 8px 0 0 10px;
+}
+.daggers_UT_CRONUS > .pixel.x4y1 {
+    background: #2500BC;
+}
+.daggers_UT_CRONUS > .pixel.x6y1 {
+    background: #7700BC;
+}
+.daggers_UT_CRONUS > .pixel.x7y1 {
+    background: #A00098;
+}
+.daggers_UT_CRONUS > .pixel.x2y2 {
+    background: #0D00A0;
+}
+.daggers_UT_CRONUS > .pixel.x5y2 {
+    background: #7700BC;
+}
+.daggers_UT_CRONUS > .pixel.x6y2 {
+    background: #A00098;
+}
+.daggers_UT_CRONUS > .pixel.x7y2 {
+    background: #EE0000;
+}
+.daggers_UT_CRONUS > .pixel.x3y3 {
+    background: #4800BC;
+}
+.daggers_UT_CRONUS > .pixel.x4y3 {
+    background: #7700BC;
+}
+.daggers_UT_CRONUS > .pixel.x5y3 {
+    background: #A00098;
+}
+.daggers_UT_CRONUS > .pixel.x6y3 {
+    background: #EE0000;
+}
+.daggers_UT_CRONUS > .pixel.x1y4 {
+    background: #000000;
+}
+.daggers_UT_CRONUS > .pixel.x3y4 {
+    background: #7700BC;
+}
+.daggers_UT_CRONUS > .pixel.x4y4 {
+    background: #A00098;
+}
+.daggers_UT_CRONUS > .pixel.x5y4 {
+    background: #EE0000;
+}
+.daggers_UT_CRONUS > .pixel.x2y5 {
+    background: #000000;
+}
+.daggers_UT_CRONUS > .pixel.x3y5 {
+    background: #9E0096;
+}
+.daggers_UT_CRONUS > .pixel.x4y5 {
+    background: #EC0000;
+}
+.daggers_UT_CRONUS > .pixel.x2y6 {
+    background: #353434;
+}
+.daggers_UT_CRONUS > .pixel.x3y6 {
+    background: #000000;
+}
+.daggers_UT_CRONUS > .pixel.x1y7 {
+    background: #353434;
+}
+.daggers_UT_CRONUS > .pixel.x4y7 {
+    background: #000000;
+}
+
+.bows_T0_SHORT > .pixel.x6y0 {
+    background: #9D9D9D;
+}
+.bows_T0_SHORT > .pixel.x7y0 {
+    background: #A46422;
+}
+.bows_T0_SHORT > .pixel.x5y1 {
+    background: #9D9D9D;
+}
+.bows_T0_SHORT > .pixel.x7y1 {
+    background: #A46422;
+}
+.bows_T0_SHORT > .pixel.x4y2 {
+    background: #9D9D9D;
+}
+.bows_T0_SHORT > .pixel.x7y2 {
+    background: #A46422;
+}
+.bows_T0_SHORT > .pixel.x3y3 {
+    background: #9D9D9D;
+}
+.bows_T0_SHORT > .pixel.x6y3 {
+    background: #A46422;
+}
+.bows_T0_SHORT > .pixel.x2y4 {
+    background: #9D9D9D;
+}
+.bows_T0_SHORT > .pixel.x6y4 {
+    background: #A46422;
+}
+.bows_T0_SHORT > .pixel.x1y5 {
+    background: #9D9D9D;
+}
+.bows_T0_SHORT > .pixel.x5y5 {
+    background: #A46422;
+}
+.bows_T0_SHORT > .pixel.x0y6 {
+    background: #9D9D9D;
+}
+.bows_T0_SHORT > .pixel.x3y6 {
+    background: #A46422;
+}
+.bows_T0_SHORT > .pixel.x4y6 {
+    background: #A46422;
+}
+.bows_T0_SHORT > .pixel.x0y7 {
+    background: #A46422;
+}
+.bows_T0_SHORT > .pixel.x1y7 {
+    background: #A46422;
+}
+.bows_T0_SHORT > .pixel.x2y7 {
+    background: #A46422;
+}
+
+.bows_T1_REINFORCED > .pixel.x6y0 {
+    background: #9D9D9D;
+}
+.bows_T1_REINFORCED > .pixel.x7y0 {
+    background: #2D2D2C;
+}
+.bows_T1_REINFORCED > .pixel.x5y1 {
+    background: #9D9D9D;
+}
+.bows_T1_REINFORCED > .pixel.x7y1 {
+    background: #2D2D2C;
+}
+.bows_T1_REINFORCED > .pixel.x4y2 {
+    background: #9D9D9D;
+}
+.bows_T1_REINFORCED > .pixel.x7y2 {
+    background: #2D2D2C;
+}
+.bows_T1_REINFORCED > .pixel.x3y3 {
+    background: #9D9D9D;
+}
+.bows_T1_REINFORCED > .pixel.x6y3 {
+    background: #A46422;
+}
+.bows_T1_REINFORCED > .pixel.x2y4 {
+    background: #9D9D9D;
+}
+.bows_T1_REINFORCED > .pixel.x6y4 {
+    background: #A46422;
+}
+.bows_T1_REINFORCED > .pixel.x1y5 {
+    background: #9D9D9D;
+}
+.bows_T1_REINFORCED > .pixel.x5y5 {
+    background: #A46422;
+}
+.bows_T1_REINFORCED > .pixel.x0y6 {
+    background: #9D9D9D;
+}
+.bows_T1_REINFORCED > .pixel.x3y6 {
+    background: #A46422;
+}
+.bows_T1_REINFORCED > .pixel.x4y6 {
+    background: #A46422;
+}
+.bows_T1_REINFORCED > .pixel.x0y7 {
+    background: #2D2D2C;
+}
+.bows_T1_REINFORCED > .pixel.x1y7 {
+    background: #2D2D2C;
+}
+.bows_T1_REINFORCED > .pixel.x2y7 {
+    background: #2D2D2C;
+}
+
+.bows_T2_CROSS > .pixel.x2y0 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x3y0 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x4y0 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x5y0 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x7y0 {
+    background: #9D9D9D;
+}
+.bows_T2_CROSS > .pixel.x2y1 {
+    background: #9D9D9D;
+}
+.bows_T2_CROSS > .pixel.x6y1 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x2y2 {
+    background: #9D9D9D;
+}
+.bows_T2_CROSS > .pixel.x5y2 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x7y2 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x2y3 {
+    background: #9D9D9D;
+}
+.bows_T2_CROSS > .pixel.x4y3 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x7y3 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x2y4 {
+    background: #9D9D9D;
+}
+.bows_T2_CROSS > .pixel.x3y4 {
+    background: #BD2532;
+}
+.bows_T2_CROSS > .pixel.x7y4 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x1y5 {
+    background: #9D9D9D;
+}
+.bows_T2_CROSS > .pixel.x2y5 {
+    background: #BD2532;
+}
+.bows_T2_CROSS > .pixel.x3y5 {
+    background: #9D9D9D;
+}
+.bows_T2_CROSS > .pixel.x4y5 {
+    background: #9D9D9D;
+}
+.bows_T2_CROSS > .pixel.x5y5 {
+    background: #9D9D9D;
+}
+.bows_T2_CROSS > .pixel.x6y5 {
+    background: #9D9D9D;
+}
+.bows_T2_CROSS > .pixel.x7y5 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x0y6 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x1y6 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x2y6 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x0y7 {
+    background: #A46422;
+}
+.bows_T2_CROSS > .pixel.x1y7 {
+    background: #A46422;
+}
+
+.bows_T3_GREYWOOD > .pixel.x6y0 {
+    background: #9D9D9D;
+}
+.bows_T3_GREYWOOD > .pixel.x7y0 {
+    background: #4E4E4E;
+}
+.bows_T3_GREYWOOD > .pixel.x5y1 {
+    background: #9D9D9D;
+}
+.bows_T3_GREYWOOD > .pixel.x7y1 {
+    background: #4E4E4E;
+}
+.bows_T3_GREYWOOD > .pixel.x4y2 {
+    background: #9D9D9D;
+}
+.bows_T3_GREYWOOD > .pixel.x7y2 {
+    background: #4E4E4E;
+}
+.bows_T3_GREYWOOD > .pixel.x3y3 {
+    background: #9D9D9D;
+}
+.bows_T3_GREYWOOD > .pixel.x6y3 {
+    background: #4E4E4E;
+}
+.bows_T3_GREYWOOD > .pixel.x2y4 {
+    background: #9D9D9D;
+}
+.bows_T3_GREYWOOD > .pixel.x6y4 {
+    background: #4E4E4E;
+}
+.bows_T3_GREYWOOD > .pixel.x1y5 {
+    background: #9D9D9D;
+}
+.bows_T3_GREYWOOD > .pixel.x5y5 {
+    background: #4E4E4E;
+}
+.bows_T3_GREYWOOD > .pixel.x0y6 {
+    background: #9D9D9D;
+}
+.bows_T3_GREYWOOD > .pixel.x3y6 {
+    background: #4E4E4E;
+}
+.bows_T3_GREYWOOD > .pixel.x4y6 {
+    background: #4E4E4E;
+}
+.bows_T3_GREYWOOD > .pixel.x0y7 {
+    background: #4E4E4E;
+}
+.bows_T3_GREYWOOD > .pixel.x1y7 {
+    background: #4E4E4E;
+}
+.bows_T3_GREYWOOD > .pixel.x2y7 {
+    background: #4E4E4E;
+}
+
+.bows_T4_IRONWOOD > .pixel.x6y0 {
+    background: #9D9D9D;
+}
+.bows_T4_IRONWOOD > .pixel.x7y0 {
+    background: #2D2D2C;
+}
+.bows_T4_IRONWOOD > .pixel.x5y1 {
+    background: #9D9D9D;
+}
+.bows_T4_IRONWOOD > .pixel.x7y1 {
+    background: #2D2D2C;
+}
+.bows_T4_IRONWOOD > .pixel.x4y2 {
+    background: #9D9D9D;
+}
+.bows_T4_IRONWOOD > .pixel.x7y2 {
+    background: #2D2D2C;
+}
+.bows_T4_IRONWOOD > .pixel.x3y3 {
+    background: #9D9D9D;
+}
+.bows_T4_IRONWOOD > .pixel.x6y3 {
+    background: #4E4E4E;
+}
+.bows_T4_IRONWOOD > .pixel.x2y4 {
+    background: #9D9D9D;
+}
+.bows_T4_IRONWOOD > .pixel.x6y4 {
+    background: #4E4E4E;
+}
+.bows_T4_IRONWOOD > .pixel.x1y5 {
+    background: #9D9D9D;
+}
+.bows_T4_IRONWOOD > .pixel.x5y5 {
+    background: #4E4E4E;
+}
+.bows_T4_IRONWOOD > .pixel.x0y6 {
+    background: #9D9D9D;
+}
+.bows_T4_IRONWOOD > .pixel.x3y6 {
+    background: #4E4E4E;
+}
+.bows_T4_IRONWOOD > .pixel.x4y6 {
+    background: #4E4E4E;
+}
+.bows_T4_IRONWOOD > .pixel.x0y7 {
+    background: #2D2D2C;
+}
+.bows_T4_IRONWOOD > .pixel.x1y7 {
+    background: #2D2D2C;
+}
+.bows_T4_IRONWOOD > .pixel.x2y7 {
+    background: #2D2D2C;
+}
+
+.bows_T5_FIRE > .pixel.x6y0 {
+    background: #9D9D9D;
+}
+.bows_T5_FIRE > .pixel.x7y0 {
+    background: #A46422;
+}
+.bows_T5_FIRE > .pixel.x5y1 {
+    background: #9D9D9D;
+}
+.bows_T5_FIRE > .pixel.x7y1 {
+    background: #A46422;
+}
+.bows_T5_FIRE > .pixel.x4y2 {
+    background: #9D9D9D;
+}
+.bows_T5_FIRE > .pixel.x7y2 {
+    background: #A46422;
+}
+.bows_T5_FIRE > .pixel.x3y3 {
+    background: #9D9D9D;
+}
+.bows_T5_FIRE > .pixel.x7y3 {
+    background: #A46422;
+}
+.bows_T5_FIRE > .pixel.x2y4 {
+    background: #9D9D9D;
+}
+.bows_T5_FIRE > .pixel.x5y4 {
+    background: #A46422;
+}
+.bows_T5_FIRE > .pixel.x6y4 {
+    background: #A46422;
+}
+.bows_T5_FIRE > .pixel.x1y5 {
+    background: #9D9D9D;
+}
+.bows_T5_FIRE > .pixel.x4y5 {
+    background: #A46422;
+}
+.bows_T5_FIRE > .pixel.x0y6 {
+    background: #9D9D9D;
+}
+.bows_T5_FIRE > .pixel.x4y6 {
+    background: #A46422;
+}
+.bows_T5_FIRE > .pixel.x0y7 {
+    background: #A46422;
+}
+.bows_T5_FIRE > .pixel.x1y7 {
+    background: #A46422;
+}
+.bows_T5_FIRE > .pixel.x2y7 {
+    background: #A46422;
+}
+.bows_T5_FIRE > .pixel.x3y7 {
+    background: #A46422;
+}
+
+.bows_T6_DOUBLE > .pixel.x6y0 {
+    background: #9D9D9D;
+}
+.bows_T6_DOUBLE > .pixel.x7y0 {
+    background: #A46422;
+}
+.bows_T6_DOUBLE > .pixel.x5y1 {
+    background: #9D9D9D;
+}
+.bows_T6_DOUBLE > .pixel.x7y1 {
+    background: #A46422;
+}
+.bows_T6_DOUBLE > .pixel.x4y2 {
+    background: #9D9D9D;
+}
+.bows_T6_DOUBLE > .pixel.x7y2 {
+    background: #A46422;
+}
+.bows_T6_DOUBLE > .pixel.x3y3 {
+    background: #9D9D9D;
+}
+.bows_T6_DOUBLE > .pixel.x6y3 {
+    background: #A46422;
+}
+.bows_T6_DOUBLE > .pixel.x2y4 {
+    background: #9D9D9D;
+}
+.bows_T6_DOUBLE > .pixel.x4y4 {
+    background: #A46422;
+}
+.bows_T6_DOUBLE > .pixel.x5y4 {
+    background: #A46422;
+}
+.bows_T6_DOUBLE > .pixel.x1y5 {
+    background: #9D9D9D;
+}
+.bows_T6_DOUBLE > .pixel.x4y5 {
+    background: #A46422;
+}
+.bows_T6_DOUBLE > .pixel.x0y6 {
+    background: #9D9D9D;
+}
+.bows_T6_DOUBLE > .pixel.x3y6 {
+    background: #A46422;
+}
+.bows_T6_DOUBLE > .pixel.x0y7 {
+    background: #A46422;
+}
+.bows_T6_DOUBLE > .pixel.x1y7 {
+    background: #A46422;
+}
+.bows_T6_DOUBLE > .pixel.x2y7 {
+    background: #A46422;
+}
+
+.bows_T7_HEAVYCROSS > .pixel.x2y0 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x3y0 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x4y0 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x5y0 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x2y1 {
+    background: #9D9D9D;
+}
+.bows_T7_HEAVYCROSS > .pixel.x6y1 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x3y2 {
+    background: #9D9D9D;
+}
+.bows_T7_HEAVYCROSS > .pixel.x5y2 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x7y2 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x4y3 {
+    background: #9D9D9D;
+}
+.bows_T7_HEAVYCROSS > .pixel.x7y3 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x3y4 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x5y4 {
+    background: #9D9D9D;
+}
+.bows_T7_HEAVYCROSS > .pixel.x7y4 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x1y5 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x2y5 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x6y5 {
+    background: #9D9D9D;
+}
+.bows_T7_HEAVYCROSS > .pixel.x7y5 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x0y6 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x1y6 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x2y6 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x0y7 {
+    background: #A46422;
+}
+.bows_T7_HEAVYCROSS > .pixel.x1y7 {
+    background: #A46422;
+}
+
+.bows_T8_GOLDEN > .pixel.x6y0 {
+    background: #F7E26B;
+}
+.bows_T8_GOLDEN > .pixel.x7y0 {
+    background: #EB8931;
+}
+.bows_T8_GOLDEN > .pixel.x5y1 {
+    background: #F7E26B;
+}
+.bows_T8_GOLDEN > .pixel.x7y1 {
+    background: #EB8931;
+}
+.bows_T8_GOLDEN > .pixel.x4y2 {
+    background: #F7E26B;
+}
+.bows_T8_GOLDEN > .pixel.x7y2 {
+    background: #EB8931;
+}
+.bows_T8_GOLDEN > .pixel.x3y3 {
+    background: #F7E26B;
+}
+.bows_T8_GOLDEN > .pixel.x6y3 {
+    background: #EB8931;
+}
+.bows_T8_GOLDEN > .pixel.x2y4 {
+    background: #F7E26B;
+}
+.bows_T8_GOLDEN > .pixel.x6y4 {
+    background: #EB8931;
+}
+.bows_T8_GOLDEN > .pixel.x1y5 {
+    background: #F7E26B;
+}
+.bows_T8_GOLDEN > .pixel.x5y5 {
+    background: #EB8931;
+}
+.bows_T8_GOLDEN > .pixel.x0y6 {
+    background: #F7E26B;
+}
+.bows_T8_GOLDEN > .pixel.x3y6 {
+    background: #EB8931;
+}
+.bows_T8_GOLDEN > .pixel.x4y6 {
+    background: #EB8931;
+}
+.bows_T8_GOLDEN > .pixel.x0y7 {
+    background: #EB8931;
+}
+.bows_T8_GOLDEN > .pixel.x1y7 {
+    background: #EB8931;
+}
+.bows_T8_GOLDEN > .pixel.x2y7 {
+    background: #EB8931;
+}
+
+.bows_T9_VERDANT > .pixel.x6y0 {
+    background: #F7E26B;
+}
+.bows_T9_VERDANT > .pixel.x7y0 {
+    background: #20D465;
+}
+.bows_T9_VERDANT > .pixel.x5y1 {
+    background: #F7E26B;
+}
+.bows_T9_VERDANT > .pixel.x7y1 {
+    background: #20D465;
+}
+.bows_T9_VERDANT > .pixel.x4y2 {
+    background: #F7E26B;
+}
+.bows_T9_VERDANT > .pixel.x7y2 {
+    background: #20D465;
+}
+.bows_T9_VERDANT > .pixel.x3y3 {
+    background: #F7E26B;
+}
+.bows_T9_VERDANT > .pixel.x6y3 {
+    background: #20D465;
+}
+.bows_T9_VERDANT > .pixel.x2y4 {
+    background: #F7E26B;
+}
+.bows_T9_VERDANT > .pixel.x6y4 {
+    background: #20D465;
+}
+.bows_T9_VERDANT > .pixel.x1y5 {
+    background: #F7E26B;
+}
+.bows_T9_VERDANT > .pixel.x5y5 {
+    background: #20D465;
+}
+.bows_T9_VERDANT > .pixel.x0y6 {
+    background: #F7E26B;
+}
+.bows_T9_VERDANT > .pixel.x3y6 {
+    background: #20D465;
+}
+.bows_T9_VERDANT > .pixel.x4y6 {
+    background: #20D465;
+}
+.bows_T9_VERDANT > .pixel.x0y7 {
+    background: #20D465;
+}
+.bows_T9_VERDANT > .pixel.x1y7 {
+    background: #20D465;
+}
+.bows_T9_VERDANT > .pixel.x2y7 {
+    background: #20D465;
+}
+
+.bows_T10_FEY > .pixel.x6y0 {
+    background: #F7E26B;
+}
+.bows_T10_FEY > .pixel.x7y0 {
+    background: #792DCF;
+}
+.bows_T10_FEY > .pixel.x5y1 {
+    background: #F7E26B;
+}
+.bows_T10_FEY > .pixel.x7y1 {
+    background: #792DCF;
+}
+.bows_T10_FEY > .pixel.x4y2 {
+    background: #F7E26B;
+}
+.bows_T10_FEY > .pixel.x7y2 {
+    background: #792DCF;
+}
+.bows_T10_FEY > .pixel.x3y3 {
+    background: #F7E26B;
+}
+.bows_T10_FEY > .pixel.x6y3 {
+    background: #792DCF;
+}
+.bows_T10_FEY > .pixel.x2y4 {
+    background: #F7E26B;
+}
+.bows_T10_FEY > .pixel.x6y4 {
+    background: #792DCF;
+}
+.bows_T10_FEY > .pixel.x1y5 {
+    background: #F7E26B;
+}
+.bows_T10_FEY > .pixel.x5y5 {
+    background: #792DCF;
+}
+.bows_T10_FEY > .pixel.x0y6 {
+    background: #F7E26B;
+}
+.bows_T10_FEY > .pixel.x3y6 {
+    background: #792DCF;
+}
+.bows_T10_FEY > .pixel.x4y6 {
+    background: #792DCF;
+}
+.bows_T10_FEY > .pixel.x0y7 {
+    background: #792DCF;
+}
+.bows_T10_FEY > .pixel.x1y7 {
+    background: #792DCF;
+}
+.bows_T10_FEY > .pixel.x2y7 {
+    background: #792DCF;
+}
+
+.bows_T11_BLOOD > .pixel.x6y0 {
+    background: #F7E26B;
+}
+.bows_T11_BLOOD > .pixel.x7y0 {
+    background: #CE001F;
+}
+.bows_T11_BLOOD > .pixel.x5y1 {
+    background: #F7E26B;
+}
+.bows_T11_BLOOD > .pixel.x7y1 {
+    background: #CE001F;
+}
+.bows_T11_BLOOD > .pixel.x4y2 {
+    background: #F7E26B;
+}
+.bows_T11_BLOOD > .pixel.x7y2 {
+    background: #CE001F;
+}
+.bows_T11_BLOOD > .pixel.x3y3 {
+    background: #F7E26B;
+}
+.bows_T11_BLOOD > .pixel.x6y3 {
+    background: #CE001F;
+}
+.bows_T11_BLOOD > .pixel.x2y4 {
+    background: #F7E26B;
+}
+.bows_T11_BLOOD > .pixel.x6y4 {
+    background: #CE001F;
+}
+.bows_T11_BLOOD > .pixel.x1y5 {
+    background: #F7E26B;
+}
+.bows_T11_BLOOD > .pixel.x5y5 {
+    background: #CE001F;
+}
+.bows_T11_BLOOD > .pixel.x0y6 {
+    background: #F7E26B;
+}
+.bows_T11_BLOOD > .pixel.x3y6 {
+    background: #CE001F;
+}
+.bows_T11_BLOOD > .pixel.x4y6 {
+    background: #CE001F;
+}
+.bows_T11_BLOOD > .pixel.x0y7 {
+    background: #CE001F;
+}
+.bows_T11_BLOOD > .pixel.x1y7 {
+    background: #CE001F;
+}
+.bows_T11_BLOOD > .pixel.x2y7 {
+    background: #CE001F;
+}
+
+.bows_T12_COVERT > .pixel.x6y0 {
+    background: #FFFFFF;
+}
+.bows_T12_COVERT > .pixel.x7y0 {
+    background: #5A6FFF;
+}
+.bows_T12_COVERT > .pixel.x5y1 {
+    background: #FFFFFF;
+}
+.bows_T12_COVERT > .pixel.x7y1 {
+    background: #5A6FFF;
+}
+.bows_T12_COVERT > .pixel.x4y2 {
+    background: #FFFFFF;
+}
+.bows_T12_COVERT > .pixel.x7y2 {
+    background: #5A6FFF;
+}
+.bows_T12_COVERT > .pixel.x3y3 {
+    background: #FFFFFF;
+}
+.bows_T12_COVERT > .pixel.x6y3 {
+    background: #5A6FFF;
+}
+.bows_T12_COVERT > .pixel.x2y4 {
+    background: #FFFFFF;
+}
+.bows_T12_COVERT > .pixel.x6y4 {
+    background: #5A6FFF;
+}
+.bows_T12_COVERT > .pixel.x1y5 {
+    background: #FFFFFF;
+}
+.bows_T12_COVERT > .pixel.x5y5 {
+    background: #5A6FFF;
+}
+.bows_T12_COVERT > .pixel.x0y6 {
+    background: #FFFFFF;
+}
+.bows_T12_COVERT > .pixel.x3y6 {
+    background: #5A6FFF;
+}
+.bows_T12_COVERT > .pixel.x4y6 {
+    background: #5A6FFF;
+}
+.bows_T12_COVERT > .pixel.x0y7 {
+    background: #5A6FFF;
+}
+.bows_T12_COVERT > .pixel.x1y7 {
+    background: #5A6FFF;
+}
+.bows_T12_COVERT > .pixel.x2y7 {
+    background: #5A6FFF;
+}
+
+.bows_UT_LEAF > .pixel.x6y0 {
+    background: #A56122;
+}
+.bows_UT_LEAF > .pixel.x7y0 {
+    background: #A56122;
+}
+.bows_UT_LEAF > .pixel.x5y1 {
+    background: #659400;
+}
+.bows_UT_LEAF > .pixel.x7y1 {
+    background: #C46E28;
+}
+.bows_UT_LEAF > .pixel.x4y2 {
+    background: #659400;
+}
+.bows_UT_LEAF > .pixel.x7y2 {
+    background: #A56122;
+}
+.bows_UT_LEAF > .pixel.x3y3 {
+    background: #659400;
+}
+.bows_UT_LEAF > .pixel.x6y3 {
+    background: #C46E28;
+}
+.bows_UT_LEAF > .pixel.x7y3 {
+    background: #A56122;
+}
+.bows_UT_LEAF > .pixel.x2y4 {
+    background: #659400;
+}
+.bows_UT_LEAF > .pixel.x5y4 {
+    background: #A56122;
+}
+.bows_UT_LEAF > .pixel.x1y5 {
+    background: #659400;
+}
+.bows_UT_LEAF > .pixel.x4y5 {
+    background: #A56122;
+}
+.bows_UT_LEAF > .pixel.x0y6 {
+    background: #A56122;
+}
+.bows_UT_LEAF > .pixel.x3y6 {
+    background: #C46E28;
+}
+.bows_UT_LEAF > .pixel.x0y7 {
+    background: #A56122;
+}
+.bows_UT_LEAF > .pixel.x1y7 {
+    background: #C46E28;
+}
+.bows_UT_LEAF > .pixel.x2y7 {
+    background: #A56122;
+}
+.bows_UT_LEAF > .pixel.x3y7 {
+    background: #A56122;
+}
+
+.bows_UT_DOOM > .pixel.x6y0 {
+    background: #000000;
+}
+.bows_UT_DOOM > .pixel.x7y0 {
     background: #EEEEEE;
 }
-.bows_UT_DOOMBOW > .pixel.x5y1 {
+.bows_UT_DOOM > .pixel.x5y1 {
     background: #262626;
 }
-.bows_UT_DOOMBOW > .pixel.x7y1 {
+.bows_UT_DOOM > .pixel.x7y1 {
     background: #EEEEEE;
 }
-.bows_UT_DOOMBOW > .pixel.x4y2 {
+.bows_UT_DOOM > .pixel.x4y2 {
     background: #262626;
 }
-.bows_UT_DOOMBOW > .pixel.x7y2 {
+.bows_UT_DOOM > .pixel.x7y2 {
     background: #000000;
 }
-.bows_UT_DOOMBOW > .pixel.x3y3 {
+.bows_UT_DOOM > .pixel.x3y3 {
     background: #000000;
 }
-.bows_UT_DOOMBOW > .pixel.x6y3 {
+.bows_UT_DOOM > .pixel.x6y3 {
     background: #BFBFBF;
 }
-.bows_UT_DOOMBOW > .pixel.x7y3 {
+.bows_UT_DOOM > .pixel.x7y3 {
     background: #000000;
 }
-.bows_UT_DOOMBOW > .pixel.x2y4 {
+.bows_UT_DOOM > .pixel.x2y4 {
     background: #262626;
 }
-.bows_UT_DOOMBOW > .pixel.x4y4 {
+.bows_UT_DOOM > .pixel.x4y4 {
     background: #D8D8D8;
 }
-.bows_UT_DOOMBOW > .pixel.x5y4 {
+.bows_UT_DOOM > .pixel.x5y4 {
     background: #EEEEEE;
 }
-.bows_UT_DOOMBOW > .pixel.x1y5 {
+.bows_UT_DOOM > .pixel.x1y5 {
     background: #262626;
 }
-.bows_UT_DOOMBOW > .pixel.x4y5 {
+.bows_UT_DOOM > .pixel.x4y5 {
     background: #EEEEEE;
 }
-.bows_UT_DOOMBOW > .pixel.x5y5 {
+.bows_UT_DOOM > .pixel.x5y5 {
     background: #000000;
 }
-.bows_UT_DOOMBOW > .pixel.x0y6 {
+.bows_UT_DOOM > .pixel.x0y6 {
     background: #000000;
 }
-.bows_UT_DOOMBOW > .pixel.x3y6 {
+.bows_UT_DOOM > .pixel.x3y6 {
     background: #BFBFBF;
 }
-.bows_UT_DOOMBOW > .pixel.x0y7 {
+.bows_UT_DOOM > .pixel.x0y7 {
     background: #EEEEEE;
 }
-.bows_UT_DOOMBOW > .pixel.x1y7 {
+.bows_UT_DOOM > .pixel.x1y7 {
     background: #EEEEEE;
 }
-.bows_UT_DOOMBOW > .pixel.x2y7 {
+.bows_UT_DOOM > .pixel.x2y7 {
     background: #000000;
 }
-.bows_UT_DOOMBOW > .pixel.x3y7 {
+.bows_UT_DOOM > .pixel.x3y7 {
     background: #000000;
 }
 
-.bows_UT_CORALBOW > .pixel.x6y0 {
+.bows_UT_CORAL > .pixel.x6y0 {
     background: #FF2DB6;
 }
-.bows_UT_CORALBOW > .pixel.x7y0 {
+.bows_UT_CORAL > .pixel.x7y0 {
     background: #C825C8;
 }
-.bows_UT_CORALBOW > .pixel.x5y1 {
+.bows_UT_CORAL > .pixel.x5y1 {
     background: #FF2DB6;
 }
-.bows_UT_CORALBOW > .pixel.x7y1 {
+.bows_UT_CORAL > .pixel.x7y1 {
     background: #C825C8;
 }
-.bows_UT_CORALBOW > .pixel.x4y2 {
+.bows_UT_CORAL > .pixel.x4y2 {
     background: #FF2DB6;
 }
-.bows_UT_CORALBOW > .pixel.x7y2 {
+.bows_UT_CORAL > .pixel.x7y2 {
     background: #8333AF;
 }
-.bows_UT_CORALBOW > .pixel.x3y3 {
+.bows_UT_CORAL > .pixel.x3y3 {
     background: #FF2DB6;
 }
-.bows_UT_CORALBOW > .pixel.x7y3 {
+.bows_UT_CORAL > .pixel.x7y3 {
     background: #8333AF;
 }
-.bows_UT_CORALBOW > .pixel.x2y4 {
+.bows_UT_CORAL > .pixel.x2y4 {
     background: #FF2DB6;
 }
-.bows_UT_CORALBOW > .pixel.x5y4 {
+.bows_UT_CORAL > .pixel.x5y4 {
     background: #8333AF;
 }
-.bows_UT_CORALBOW > .pixel.x6y4 {
+.bows_UT_CORAL > .pixel.x6y4 {
     background: #8333AF;
 }
-.bows_UT_CORALBOW > .pixel.x1y5 {
+.bows_UT_CORAL > .pixel.x1y5 {
     background: #FF2DB6;
 }
-.bows_UT_CORALBOW > .pixel.x4y5 {
+.bows_UT_CORAL > .pixel.x4y5 {
     background: #8333AF;
 }
-.bows_UT_CORALBOW > .pixel.x5y5 {
+.bows_UT_CORAL > .pixel.x5y5 {
     background: #D231D3;
 }
-.bows_UT_CORALBOW > .pixel.x0y6 {
+.bows_UT_CORAL > .pixel.x0y6 {
     background: #FF2DB6;
 }
-.bows_UT_CORALBOW > .pixel.x4y6 {
+.bows_UT_CORAL > .pixel.x4y6 {
     background: #8333AF;
 }
-.bows_UT_CORALBOW > .pixel.x0y7 {
+.bows_UT_CORAL > .pixel.x0y7 {
     background: #C825C8;
 }
-.bows_UT_CORALBOW > .pixel.x1y7 {
+.bows_UT_CORAL > .pixel.x1y7 {
     background: #C825C8;
 }
-.bows_UT_CORALBOW > .pixel.x2y7 {
+.bows_UT_CORAL > .pixel.x2y7 {
     background: #8333AF;
 }
-.bows_UT_CORALBOW > .pixel.x3y7 {
+.bows_UT_CORAL > .pixel.x3y7 {
     background: #8333AF;
+}
+
+.staves_T0_ENERGY > .pixel.x6y0 {
+    background: #B5B5B5;
+}
+.staves_T0_ENERGY > .pixel.x7y0 {
+    background: #FFFFFF;
+}
+.staves_T0_ENERGY > .pixel.x5y1 {
+    background: #AC6A34;
+}
+.staves_T0_ENERGY > .pixel.x6y1 {
+    background: #FFFFFF;
+}
+.staves_T0_ENERGY > .pixel.x7y1 {
+    background: #B5B5B5;
+}
+.staves_T0_ENERGY > .pixel.x4y2 {
+    background: #AC6A34;
+}
+.staves_T0_ENERGY > .pixel.x5y2 {
+    background: #B5B5B5;
+}
+.staves_T0_ENERGY > .pixel.x6y2 {
+    background: #AC6A34;
+}
+.staves_T0_ENERGY > .pixel.x4y3 {
+    background: #AC6A34;
+}
+.staves_T0_ENERGY > .pixel.x5y3 {
+    background: #AC6A34;
+}
+.staves_T0_ENERGY > .pixel.x3y4 {
+    background: #AC6A34;
+}
+.staves_T0_ENERGY > .pixel.x2y5 {
+    background: #AC6A34;
+}
+.staves_T0_ENERGY > .pixel.x1y6 {
+    background: #AC6A34;
+}
+.staves_T0_ENERGY > .pixel.x0y7 {
+    background: #AC6A34;
+}
+
+.staves_T1_FIREBRAND > .pixel.x6y0 {
+    background: #B14A35;
+}
+.staves_T1_FIREBRAND > .pixel.x7y0 {
+    background: #DE9D90;
+}
+.staves_T1_FIREBRAND > .pixel.x5y1 {
+    background: #AC6A34;
+}
+.staves_T1_FIREBRAND > .pixel.x6y1 {
+    background: #DE9D90;
+}
+.staves_T1_FIREBRAND > .pixel.x7y1 {
+    background: #B14A35;
+}
+.staves_T1_FIREBRAND > .pixel.x4y2 {
+    background: #AC6A34;
+}
+.staves_T1_FIREBRAND > .pixel.x5y2 {
+    background: #B14A35;
+}
+.staves_T1_FIREBRAND > .pixel.x6y2 {
+    background: #AC6A34;
+}
+.staves_T1_FIREBRAND > .pixel.x4y3 {
+    background: #AC6A34;
+}
+.staves_T1_FIREBRAND > .pixel.x5y3 {
+    background: #AC6A34;
+}
+.staves_T1_FIREBRAND > .pixel.x3y4 {
+    background: #AC6A34;
+}
+.staves_T1_FIREBRAND > .pixel.x2y5 {
+    background: #AC6A34;
+}
+.staves_T1_FIREBRAND > .pixel.x1y6 {
+    background: #AC6A34;
+}
+.staves_T1_FIREBRAND > .pixel.x0y7 {
+    background: #AC6A34;
+}
+
+.staves_T2_COMET > .pixel.x6y0 {
+    background: #626288;
+}
+.staves_T2_COMET > .pixel.x7y0 {
+    background: #A9A9CF;
+}
+.staves_T2_COMET > .pixel.x5y1 {
+    background: #AC6A34;
+}
+.staves_T2_COMET > .pixel.x6y1 {
+    background: #A9A9CF;
+}
+.staves_T2_COMET > .pixel.x7y1 {
+    background: #626288;
+}
+.staves_T2_COMET > .pixel.x4y2 {
+    background: #AC6A34;
+}
+.staves_T2_COMET > .pixel.x5y2 {
+    background: #626288;
+}
+.staves_T2_COMET > .pixel.x6y2 {
+    background: #AC6A34;
+}
+.staves_T2_COMET > .pixel.x4y3 {
+    background: #AC6A34;
+}
+.staves_T2_COMET > .pixel.x5y3 {
+    background: #AC6A34;
+}
+.staves_T2_COMET > .pixel.x3y4 {
+    background: #AC6A34;
+}
+.staves_T2_COMET > .pixel.x2y5 {
+    background: #AC6A34;
+}
+.staves_T2_COMET > .pixel.x1y6 {
+    background: #AC6A34;
+}
+.staves_T2_COMET > .pixel.x0y7 {
+    background: #AC6A34;
+}
+
+.staves_T3_SERPENTINE > .pixel.x6y0 {
+    background: #20D465;
+}
+.staves_T3_SERPENTINE > .pixel.x7y0 {
+    background: #B2F4CE;
+}
+.staves_T3_SERPENTINE > .pixel.x5y1 {
+    background: #AC6A34;
+}
+.staves_T3_SERPENTINE > .pixel.x6y1 {
+    background: #B2F4CE;
+}
+.staves_T3_SERPENTINE > .pixel.x7y1 {
+    background: #20D465;
+}
+.staves_T3_SERPENTINE > .pixel.x4y2 {
+    background: #AC6A34;
+}
+.staves_T3_SERPENTINE > .pixel.x5y2 {
+    background: #20D465;
+}
+.staves_T3_SERPENTINE > .pixel.x6y2 {
+    background: #AC6A34;
+}
+.staves_T3_SERPENTINE > .pixel.x4y3 {
+    background: #AC6A34;
+}
+.staves_T3_SERPENTINE > .pixel.x5y3 {
+    background: #AC6A34;
+}
+.staves_T3_SERPENTINE > .pixel.x3y4 {
+    background: #AC6A34;
+}
+.staves_T3_SERPENTINE > .pixel.x2y5 {
+    background: #AC6A34;
+}
+.staves_T3_SERPENTINE > .pixel.x1y6 {
+    background: #AC6A34;
+}
+.staves_T3_SERPENTINE > .pixel.x0y7 {
+    background: #AC6A34;
+}
+
+.staves_T4_METEOR > .pixel.x6y0 {
+    background: #FFD400;
+}
+.staves_T4_METEOR > .pixel.x7y0 {
+    background: #F6ECB3;
+}
+.staves_T4_METEOR > .pixel.x5y1 {
+    background: #AC6A34;
+}
+.staves_T4_METEOR > .pixel.x6y1 {
+    background: #F6ECB3;
+}
+.staves_T4_METEOR > .pixel.x7y1 {
+    background: #FFD400;
+}
+.staves_T4_METEOR > .pixel.x4y2 {
+    background: #AC6A34;
+}
+.staves_T4_METEOR > .pixel.x5y2 {
+    background: #FFD400;
+}
+.staves_T4_METEOR > .pixel.x6y2 {
+    background: #AC6A34;
+}
+.staves_T4_METEOR > .pixel.x4y3 {
+    background: #AC6A34;
+}
+.staves_T4_METEOR > .pixel.x5y3 {
+    background: #AC6A34;
+}
+.staves_T4_METEOR > .pixel.x3y4 {
+    background: #AC6A34;
+}
+.staves_T4_METEOR > .pixel.x2y5 {
+    background: #AC6A34;
+}
+.staves_T4_METEOR > .pixel.x1y6 {
+    background: #AC6A34;
+}
+.staves_T4_METEOR > .pixel.x0y7 {
+    background: #AC6A34;
+}
+
+.staves_T5_SLAYER > .pixel.x6y0 {
+    background: #FF4242;
+}
+.staves_T5_SLAYER > .pixel.x7y0 {
+    background: #FFB1B1;
+}
+.staves_T5_SLAYER > .pixel.x5y1 {
+    background: #AC6A34;
+}
+.staves_T5_SLAYER > .pixel.x6y1 {
+    background: #FFB1B1;
+}
+.staves_T5_SLAYER > .pixel.x7y1 {
+    background: #FF4242;
+}
+.staves_T5_SLAYER > .pixel.x4y2 {
+    background: #AC6A34;
+}
+.staves_T5_SLAYER > .pixel.x5y2 {
+    background: #FF4242;
+}
+.staves_T5_SLAYER > .pixel.x6y2 {
+    background: #AC6A34;
+}
+.staves_T5_SLAYER > .pixel.x4y3 {
+    background: #AC6A34;
+}
+.staves_T5_SLAYER > .pixel.x5y3 {
+    background: #AC6A34;
+}
+.staves_T5_SLAYER > .pixel.x3y4 {
+    background: #AC6A34;
+}
+.staves_T5_SLAYER > .pixel.x2y5 {
+    background: #AC6A34;
+}
+.staves_T5_SLAYER > .pixel.x1y6 {
+    background: #AC6A34;
+}
+.staves_T5_SLAYER > .pixel.x0y7 {
+    background: #AC6A34;
+}
+
+.staves_T6_AVENGER > .pixel.x6y0 {
+    background: #AB1AB1;
+}
+.staves_T6_AVENGER > .pixel.x7y0 {
+    background: #FDC1FF;
+}
+.staves_T6_AVENGER > .pixel.x5y1 {
+    background: #AC6A34;
+}
+.staves_T6_AVENGER > .pixel.x6y1 {
+    background: #FDC1FF;
+}
+.staves_T6_AVENGER > .pixel.x7y1 {
+    background: #AB1AB1;
+}
+.staves_T6_AVENGER > .pixel.x4y2 {
+    background: #AC6A34;
+}
+.staves_T6_AVENGER > .pixel.x5y2 {
+    background: #AB1AB1;
+}
+.staves_T6_AVENGER > .pixel.x6y2 {
+    background: #AC6A34;
+}
+.staves_T6_AVENGER > .pixel.x4y3 {
+    background: #AC6A34;
+}
+.staves_T6_AVENGER > .pixel.x5y3 {
+    background: #AC6A34;
+}
+.staves_T6_AVENGER > .pixel.x3y4 {
+    background: #AC6A34;
+}
+.staves_T6_AVENGER > .pixel.x2y5 {
+    background: #AC6A34;
+}
+.staves_T6_AVENGER > .pixel.x1y6 {
+    background: #AC6A34;
+}
+.staves_T6_AVENGER > .pixel.x0y7 {
+    background: #AC6A34;
+}
+
+.staves_T7_DESTRUCTION > .pixel.x6y0 {
+    background: #CE001F;
+}
+.staves_T7_DESTRUCTION > .pixel.x7y0 {
+    background: #FFC4CD;
+}
+.staves_T7_DESTRUCTION > .pixel.x5y1 {
+    background: #AC6A34;
+}
+.staves_T7_DESTRUCTION > .pixel.x6y1 {
+    background: #FFC4CD;
+}
+.staves_T7_DESTRUCTION > .pixel.x7y1 {
+    background: #CE001F;
+}
+.staves_T7_DESTRUCTION > .pixel.x4y2 {
+    background: #AC6A34;
+}
+.staves_T7_DESTRUCTION > .pixel.x5y2 {
+    background: #CE001F;
+}
+.staves_T7_DESTRUCTION > .pixel.x6y2 {
+    background: #AC6A34;
+}
+.staves_T7_DESTRUCTION > .pixel.x4y3 {
+    background: #AC6A34;
+}
+.staves_T7_DESTRUCTION > .pixel.x5y3 {
+    background: #AC6A34;
+}
+.staves_T7_DESTRUCTION > .pixel.x3y4 {
+    background: #AC6A34;
+}
+.staves_T7_DESTRUCTION > .pixel.x2y5 {
+    background: #AC6A34;
+}
+.staves_T7_DESTRUCTION > .pixel.x1y6 {
+    background: #AC6A34;
+}
+.staves_T7_DESTRUCTION > .pixel.x0y7 {
+    background: #AC6A34;
+}
+
+.staves_T8_HORROR > .pixel.x6y0 {
+    background: #003CFF;
+}
+.staves_T8_HORROR > .pixel.x7y0 {
+    background: #B2C4FF;
+}
+.staves_T8_HORROR > .pixel.x5y1 {
+    background: #AC6A34;
+}
+.staves_T8_HORROR > .pixel.x6y1 {
+    background: #B2C4FF;
+}
+.staves_T8_HORROR > .pixel.x7y1 {
+    background: #003CFF;
+}
+.staves_T8_HORROR > .pixel.x4y2 {
+    background: #AC6A34;
+}
+.staves_T8_HORROR > .pixel.x5y2 {
+    background: #003CFF;
+}
+.staves_T8_HORROR > .pixel.x6y2 {
+    background: #AC6A34;
+}
+.staves_T8_HORROR > .pixel.x4y3 {
+    background: #AC6A34;
+}
+.staves_T8_HORROR > .pixel.x5y3 {
+    background: #AC6A34;
+}
+.staves_T8_HORROR > .pixel.x3y4 {
+    background: #AC6A34;
+}
+.staves_T8_HORROR > .pixel.x2y5 {
+    background: #AC6A34;
+}
+.staves_T8_HORROR > .pixel.x1y6 {
+    background: #AC6A34;
+}
+.staves_T8_HORROR > .pixel.x0y7 {
+    background: #AC6A34;
+}
+
+.staves_T9_NECROTIC > .pixel.x6y0 {
+    background: #B5B5B5;
+}
+.staves_T9_NECROTIC > .pixel.x7y0 {
+    background: #FFFFFF;
+}
+.staves_T9_NECROTIC > .pixel.x5y1 {
+    background: #F7E26B;
+}
+.staves_T9_NECROTIC > .pixel.x6y1 {
+    background: #FFFFFF;
+}
+.staves_T9_NECROTIC > .pixel.x7y1 {
+    background: #B5B5B5;
+}
+.staves_T9_NECROTIC > .pixel.x4y2 {
+    background: #F7E26B;
+}
+.staves_T9_NECROTIC > .pixel.x5y2 {
+    background: #B5B5B5;
+}
+.staves_T9_NECROTIC > .pixel.x6y2 {
+    background: #F7E26B;
+}
+.staves_T9_NECROTIC > .pixel.x4y3 {
+    background: #F7E26B;
+}
+.staves_T9_NECROTIC > .pixel.x5y3 {
+    background: #F7E26B;
+}
+.staves_T9_NECROTIC > .pixel.x3y4 {
+    background: #F7E26B;
+}
+.staves_T9_NECROTIC > .pixel.x2y5 {
+    background: #F7E26B;
+}
+.staves_T9_NECROTIC > .pixel.x1y6 {
+    background: #F7E26B;
+}
+.staves_T9_NECROTIC > .pixel.x0y7 {
+    background: #F7E26B;
+}
+
+.staves_T10_DIABOLIC > .pixel.x6y0 {
+    background: #710DB1;
+}
+.staves_T10_DIABOLIC > .pixel.x7y0 {
+    background: #D088FF;
+}
+.staves_T10_DIABOLIC > .pixel.x5y1 {
+    background: #F7E26B;
+}
+.staves_T10_DIABOLIC > .pixel.x6y1 {
+    background: #D088FF;
+}
+.staves_T10_DIABOLIC > .pixel.x7y1 {
+    background: #710DB1;
+}
+.staves_T10_DIABOLIC > .pixel.x4y2 {
+    background: #F7E26B;
+}
+.staves_T10_DIABOLIC > .pixel.x5y2 {
+    background: #710DB1;
+}
+.staves_T10_DIABOLIC > .pixel.x6y2 {
+    background: #F7E26B;
+}
+.staves_T10_DIABOLIC > .pixel.x4y3 {
+    background: #F7E26B;
+}
+.staves_T10_DIABOLIC > .pixel.x5y3 {
+    background: #F7E26B;
+}
+.staves_T10_DIABOLIC > .pixel.x3y4 {
+    background: #F7E26B;
+}
+.staves_T10_DIABOLIC > .pixel.x2y5 {
+    background: #F7E26B;
+}
+.staves_T10_DIABOLIC > .pixel.x1y6 {
+    background: #F7E26B;
+}
+.staves_T10_DIABOLIC > .pixel.x0y7 {
+    background: #F7E26B;
+}
+
+.staves_T11_ASTRAL > .pixel.x6y0 {
+    background: #2BAB86;
+}
+.staves_T11_ASTRAL > .pixel.x7y0 {
+    background: #C4FFEE;
+}
+.staves_T11_ASTRAL > .pixel.x5y1 {
+    background: #F7E26B;
+}
+.staves_T11_ASTRAL > .pixel.x6y1 {
+    background: #C4FFEE;
+}
+.staves_T11_ASTRAL > .pixel.x7y1 {
+    background: #2BAB86;
+}
+.staves_T11_ASTRAL > .pixel.x4y2 {
+    background: #F7E26B;
+}
+.staves_T11_ASTRAL > .pixel.x5y2 {
+    background: #2BAB86;
+}
+.staves_T11_ASTRAL > .pixel.x6y2 {
+    background: #F7E26B;
+}
+.staves_T11_ASTRAL > .pixel.x4y3 {
+    background: #F7E26B;
+}
+.staves_T11_ASTRAL > .pixel.x5y3 {
+    background: #F7E26B;
+}
+.staves_T11_ASTRAL > .pixel.x3y4 {
+    background: #F7E26B;
+}
+.staves_T11_ASTRAL > .pixel.x2y5 {
+    background: #F7E26B;
+}
+.staves_T11_ASTRAL > .pixel.x1y6 {
+    background: #F7E26B;
+}
+.staves_T11_ASTRAL > .pixel.x0y7 {
+    background: #F7E26B;
+}
+
+.staves_T12_COSMIC > .pixel.x6y0 {
+    background: #E42525;
+}
+.staves_T12_COSMIC > .pixel.x7y0 {
+    background: #E48E8E;
+}
+.staves_T12_COSMIC > .pixel.x5y1 {
+    background: #FFFFFF;
+}
+.staves_T12_COSMIC > .pixel.x6y1 {
+    background: #E48E8E;
+}
+.staves_T12_COSMIC > .pixel.x7y1 {
+    background: #E42525;
+}
+.staves_T12_COSMIC > .pixel.x4y2 {
+    background: #FFFFFF;
+}
+.staves_T12_COSMIC > .pixel.x5y2 {
+    background: #E42525;
+}
+.staves_T12_COSMIC > .pixel.x6y2 {
+    background: #FFFFFF;
+}
+.staves_T12_COSMIC > .pixel.x4y3 {
+    background: #F7E26B;
+}
+.staves_T12_COSMIC > .pixel.x5y3 {
+    background: #FFFFFF;
+}
+.staves_T12_COSMIC > .pixel.x3y4 {
+    background: #F7E26B;
+}
+.staves_T12_COSMIC > .pixel.x2y5 {
+    background: #F7E26B;
+}
+.staves_T12_COSMIC > .pixel.x1y6 {
+    background: #F7E26B;
+}
+.staves_T12_COSMIC > .pixel.x0y7 {
+    background: #F7E26B;
+}
+
+.staves_UT_CRYSTAL > .pixel.x6y0 {
+    background: #6D25FF;
+}
+.staves_UT_CRYSTAL > .pixel.x7y0 {
+    background: #CB11FF;
+}
+.staves_UT_CRYSTAL > .pixel.x5y1 {
+    background: #FFB305;
+}
+.staves_UT_CRYSTAL > .pixel.x6y1 {
+    background: #CB11FF;
+}
+.staves_UT_CRYSTAL > .pixel.x7y1 {
+    background: #6D25FF;
+}
+.staves_UT_CRYSTAL > .pixel.x4y2 {
+    background: #FFB305;
+}
+.staves_UT_CRYSTAL > .pixel.x5y2 {
+    background: #6D25FF;
+}
+.staves_UT_CRYSTAL > .pixel.x6y2 {
+    background: #FFB305;
+}
+.staves_UT_CRYSTAL > .pixel.x4y3 {
+    background: #EB8730;
+}
+.staves_UT_CRYSTAL > .pixel.x5y3 {
+    background: #FFB305;
+}
+.staves_UT_CRYSTAL > .pixel.x3y4 {
+    background: #EB8730;
+}
+.staves_UT_CRYSTAL > .pixel.x2y5 {
+    background: #EB8730;
+}
+.staves_UT_CRYSTAL > .pixel.x1y6 {
+    background: #A15F29;
+}
+.staves_UT_CRYSTAL > .pixel.x0y7 {
+    background: #A15F29;
+}
+
+.staves_UT_PREJUDICE > .pixel.x3y0 {
+    background: #E80000;
+}
+.staves_UT_PREJUDICE > .pixel.x6y0 {
+    background: #BFBFBD;
+}
+.staves_UT_PREJUDICE > .pixel.x7y0 {
+    background: #F2EEE6;
+}
+.staves_UT_PREJUDICE > .pixel.x3y1 {
+    background: #B50000;
+}
+.staves_UT_PREJUDICE > .pixel.x5y1 {
+    background: #350000;
+}
+.staves_UT_PREJUDICE > .pixel.x6y1 {
+    background: #F2EEE6;
+}
+.staves_UT_PREJUDICE > .pixel.x7y1 {
+    background: #BFBFBD;
+}
+.staves_UT_PREJUDICE > .pixel.x4y2 {
+    background: #FF0000;
+}
+.staves_UT_PREJUDICE > .pixel.x5y2 {
+    background: #FFFAF2;
+}
+.staves_UT_PREJUDICE > .pixel.x6y2 {
+    background: #350000;
+}
+.staves_UT_PREJUDICE > .pixel.x4y3 {
+    background: #000000;
+}
+.staves_UT_PREJUDICE > .pixel.x5y3 {
+    background: #FF0000;
+}
+.staves_UT_PREJUDICE > .pixel.x3y4 {
+    background: #000000;
+}
+.staves_UT_PREJUDICE > .pixel.x6y4 {
+    background: #B50000;
+}
+.staves_UT_PREJUDICE > .pixel.x7y4 {
+    background: #E80000;
+}
+.staves_UT_PREJUDICE > .pixel.x2y5 {
+    background: #212121;
+}
+.staves_UT_PREJUDICE > .pixel.x1y6 {
+    background: #424242;
+}
+.staves_UT_PREJUDICE > .pixel.x0y7 {
+    background: #5F5F5F;
+}
+
+.wands_T0_FIRE > .pixel.x5y0 {
+    background: #AD912B;
+}
+.wands_T0_FIRE > .pixel.x6y0 {
+    background: #AD912B;
+}
+.wands_T0_FIRE > .pixel.x7y0 {
+    background: #AD912B;
+}
+.wands_T0_FIRE > .pixel.x5y1 {
+    background: #AD912B;
+}
+.wands_T0_FIRE > .pixel.x6y1 {
+    background: #EFD05D;
+}
+.wands_T0_FIRE > .pixel.x7y1 {
+    background: #AD912B;
+}
+.wands_T0_FIRE > .pixel.x4y2 {
+    background: #492D16;
+}
+.wands_T0_FIRE > .pixel.x5y2 {
+    background: #AD912B;
+}
+.wands_T0_FIRE > .pixel.x6y2 {
+    background: #AD912B;
+}
+.wands_T0_FIRE > .pixel.x7y2 {
+    background: #AD912B;
+}
+.wands_T0_FIRE > .pixel.x3y3 {
+    background: #492D16;
+}
+.wands_T0_FIRE > .pixel.x4y3 {
+    background: #AC6A34;
+}
+.wands_T0_FIRE > .pixel.x5y3 {
+    background: #492D16;
+}
+.wands_T0_FIRE > .pixel.x2y4 {
+    background: #492D16;
+}
+.wands_T0_FIRE > .pixel.x3y4 {
+    background: #AC6A34;
+}
+.wands_T0_FIRE > .pixel.x4y4 {
+    background: #492D16;
+}
+.wands_T0_FIRE > .pixel.x1y5 {
+    background: #492D16;
+}
+.wands_T0_FIRE > .pixel.x2y5 {
+    background: #AC6A34;
+}
+.wands_T0_FIRE > .pixel.x3y5 {
+    background: #492D16;
+}
+.wands_T0_FIRE > .pixel.x0y6 {
+    background: #492D16;
+}
+.wands_T0_FIRE > .pixel.x1y6 {
+    background: #AC6A34;
+}
+.wands_T0_FIRE > .pixel.x2y6 {
+    background: #492D16;
+}
+.wands_T0_FIRE > .pixel.x0y7 {
+    background: #AC6A34;
+}
+.wands_T0_FIRE > .pixel.x1y7 {
+    background: #492D16;
+}
+
+.wands_T1_FORCE > .pixel.x5y0 {
+    background: #FFD400;
+}
+.wands_T1_FORCE > .pixel.x6y0 {
+    background: #FFD400;
+}
+.wands_T1_FORCE > .pixel.x7y0 {
+    background: #FFD400;
+}
+.wands_T1_FORCE > .pixel.x5y1 {
+    background: #FFD400;
+}
+.wands_T1_FORCE > .pixel.x6y1 {
+    background: #FF0000;
+}
+.wands_T1_FORCE > .pixel.x7y1 {
+    background: #FFD400;
+}
+.wands_T1_FORCE > .pixel.x4y2 {
+    background: #2D2D2C;
+}
+.wands_T1_FORCE > .pixel.x5y2 {
+    background: #FFD400;
+}
+.wands_T1_FORCE > .pixel.x6y2 {
+    background: #FFD400;
+}
+.wands_T1_FORCE > .pixel.x7y2 {
+    background: #FFD400;
+}
+.wands_T1_FORCE > .pixel.x3y3 {
+    background: #2D2D2C;
+}
+.wands_T1_FORCE > .pixel.x4y3 {
+    background: #717171;
+}
+.wands_T1_FORCE > .pixel.x5y3 {
+    background: #2D2D2C;
+}
+.wands_T1_FORCE > .pixel.x2y4 {
+    background: #2D2D2C;
+}
+.wands_T1_FORCE > .pixel.x3y4 {
+    background: #717171;
+}
+.wands_T1_FORCE > .pixel.x4y4 {
+    background: #2D2D2C;
+}
+.wands_T1_FORCE > .pixel.x1y5 {
+    background: #2D2D2C;
+}
+.wands_T1_FORCE > .pixel.x2y5 {
+    background: #717171;
+}
+.wands_T1_FORCE > .pixel.x3y5 {
+    background: #2D2D2C;
+}
+.wands_T1_FORCE > .pixel.x0y6 {
+    background: #2D2D2C;
+}
+.wands_T1_FORCE > .pixel.x1y6 {
+    background: #717171;
+}
+.wands_T1_FORCE > .pixel.x2y6 {
+    background: #2D2D2C;
+}
+.wands_T1_FORCE > .pixel.x0y7 {
+    background: #717171;
+}
+.wands_T1_FORCE > .pixel.x1y7 {
+    background: #2D2D2C;
+}
+
+.wands_T2_POWER > .pixel.x5y0 {
+    background: #20D465;
+}
+.wands_T2_POWER > .pixel.x6y0 {
+    background: #20D465;
+}
+.wands_T2_POWER > .pixel.x7y0 {
+    background: #20D465;
+}
+.wands_T2_POWER > .pixel.x5y1 {
+    background: #20D465;
+}
+.wands_T2_POWER > .pixel.x6y1 {
+    background: #702F22;
+}
+.wands_T2_POWER > .pixel.x7y1 {
+    background: #20D465;
+}
+.wands_T2_POWER > .pixel.x4y2 {
+    background: #492D16;
+}
+.wands_T2_POWER > .pixel.x5y2 {
+    background: #20D465;
+}
+.wands_T2_POWER > .pixel.x6y2 {
+    background: #20D465;
+}
+.wands_T2_POWER > .pixel.x7y2 {
+    background: #20D465;
+}
+.wands_T2_POWER > .pixel.x3y3 {
+    background: #492D16;
+}
+.wands_T2_POWER > .pixel.x4y3 {
+    background: #AC6A34;
+}
+.wands_T2_POWER > .pixel.x5y3 {
+    background: #492D16;
+}
+.wands_T2_POWER > .pixel.x2y4 {
+    background: #492D16;
+}
+.wands_T2_POWER > .pixel.x3y4 {
+    background: #AC6A34;
+}
+.wands_T2_POWER > .pixel.x4y4 {
+    background: #492D16;
+}
+.wands_T2_POWER > .pixel.x1y5 {
+    background: #492D16;
+}
+.wands_T2_POWER > .pixel.x2y5 {
+    background: #AC6A34;
+}
+.wands_T2_POWER > .pixel.x3y5 {
+    background: #492D16;
+}
+.wands_T2_POWER > .pixel.x0y6 {
+    background: #492D16;
+}
+.wands_T2_POWER > .pixel.x1y6 {
+    background: #AC6A34;
+}
+.wands_T2_POWER > .pixel.x2y6 {
+    background: #492D16;
+}
+.wands_T2_POWER > .pixel.x0y7 {
+    background: #AC6A34;
+}
+.wands_T2_POWER > .pixel.x1y7 {
+    background: #492D16;
+}
+
+.wands_T3_MISSILE > .pixel.x5y0 {
+    background: #5A6FFF;
+}
+.wands_T3_MISSILE > .pixel.x6y0 {
+    background: #5A6FFF;
+}
+.wands_T3_MISSILE > .pixel.x7y0 {
+    background: #5A6FFF;
+}
+.wands_T3_MISSILE > .pixel.x5y1 {
+    background: #5A6FFF;
+}
+.wands_T3_MISSILE > .pixel.x6y1 {
+    background: #A2AFF8;
+}
+.wands_T3_MISSILE > .pixel.x7y1 {
+    background: #5A6FFF;
+}
+.wands_T3_MISSILE > .pixel.x4y2 {
+    background: #492D16;
+}
+.wands_T3_MISSILE > .pixel.x5y2 {
+    background: #5A6FFF;
+}
+.wands_T3_MISSILE > .pixel.x6y2 {
+    background: #5A6FFF;
+}
+.wands_T3_MISSILE > .pixel.x7y2 {
+    background: #5A6FFF;
+}
+.wands_T3_MISSILE > .pixel.x3y3 {
+    background: #492D16;
+}
+.wands_T3_MISSILE > .pixel.x4y3 {
+    background: #AC6A34;
+}
+.wands_T3_MISSILE > .pixel.x5y3 {
+    background: #492D16;
+}
+.wands_T3_MISSILE > .pixel.x2y4 {
+    background: #492D16;
+}
+.wands_T3_MISSILE > .pixel.x3y4 {
+    background: #AC6A34;
+}
+.wands_T3_MISSILE > .pixel.x4y4 {
+    background: #492D16;
+}
+.wands_T3_MISSILE > .pixel.x1y5 {
+    background: #492D16;
+}
+.wands_T3_MISSILE > .pixel.x2y5 {
+    background: #AC6A34;
+}
+.wands_T3_MISSILE > .pixel.x3y5 {
+    background: #492D16;
+}
+.wands_T3_MISSILE > .pixel.x0y6 {
+    background: #492D16;
+}
+.wands_T3_MISSILE > .pixel.x1y6 {
+    background: #AC6A34;
+}
+.wands_T3_MISSILE > .pixel.x2y6 {
+    background: #492D16;
+}
+.wands_T3_MISSILE > .pixel.x0y7 {
+    background: #AC6A34;
+}
+.wands_T3_MISSILE > .pixel.x1y7 {
+    background: #492D16;
+}
+
+.wands_T4_ELDRITCH > .pixel.x5y0 {
+    background: #FF4242;
+}
+.wands_T4_ELDRITCH > .pixel.x6y0 {
+    background: #FF4242;
+}
+.wands_T4_ELDRITCH > .pixel.x7y0 {
+    background: #FF4242;
+}
+.wands_T4_ELDRITCH > .pixel.x5y1 {
+    background: #FF4242;
+}
+.wands_T4_ELDRITCH > .pixel.x6y1 {
+    background: #AB1AB1;
+}
+.wands_T4_ELDRITCH > .pixel.x7y1 {
+    background: #FF4242;
+}
+.wands_T4_ELDRITCH > .pixel.x4y2 {
+    background: #2D2D2C;
+}
+.wands_T4_ELDRITCH > .pixel.x5y2 {
+    background: #FF4242;
+}
+.wands_T4_ELDRITCH > .pixel.x6y2 {
+    background: #FF4242;
+}
+.wands_T4_ELDRITCH > .pixel.x7y2 {
+    background: #FF4242;
+}
+.wands_T4_ELDRITCH > .pixel.x3y3 {
+    background: #2D2D2C;
+}
+.wands_T4_ELDRITCH > .pixel.x4y3 {
+    background: #717171;
+}
+.wands_T4_ELDRITCH > .pixel.x5y3 {
+    background: #2D2D2C;
+}
+.wands_T4_ELDRITCH > .pixel.x2y4 {
+    background: #2D2D2C;
+}
+.wands_T4_ELDRITCH > .pixel.x3y4 {
+    background: #717171;
+}
+.wands_T4_ELDRITCH > .pixel.x4y4 {
+    background: #2D2D2C;
+}
+.wands_T4_ELDRITCH > .pixel.x1y5 {
+    background: #2D2D2C;
+}
+.wands_T4_ELDRITCH > .pixel.x2y5 {
+    background: #717171;
+}
+.wands_T4_ELDRITCH > .pixel.x3y5 {
+    background: #2D2D2C;
+}
+.wands_T4_ELDRITCH > .pixel.x0y6 {
+    background: #2D2D2C;
+}
+.wands_T4_ELDRITCH > .pixel.x1y6 {
+    background: #717171;
+}
+.wands_T4_ELDRITCH > .pixel.x2y6 {
+    background: #2D2D2C;
+}
+.wands_T4_ELDRITCH > .pixel.x0y7 {
+    background: #717171;
+}
+.wands_T4_ELDRITCH > .pixel.x1y7 {
+    background: #2D2D2C;
+}
+
+.wands_T5_HELLSFIRE > .pixel.x5y0 {
+    background: #FF0000;
+}
+.wands_T5_HELLSFIRE > .pixel.x6y0 {
+    background: #FF0000;
+}
+.wands_T5_HELLSFIRE > .pixel.x7y0 {
+    background: #FF0000;
+}
+.wands_T5_HELLSFIRE > .pixel.x5y1 {
+    background: #FF0000;
+}
+.wands_T5_HELLSFIRE > .pixel.x6y1 {
+    background: #FFD400;
+}
+.wands_T5_HELLSFIRE > .pixel.x7y1 {
+    background: #FF0000;
+}
+.wands_T5_HELLSFIRE > .pixel.x4y2 {
+    background: #2D2D2C;
+}
+.wands_T5_HELLSFIRE > .pixel.x5y2 {
+    background: #FF0000;
+}
+.wands_T5_HELLSFIRE > .pixel.x6y2 {
+    background: #FF0000;
+}
+.wands_T5_HELLSFIRE > .pixel.x7y2 {
+    background: #FF0000;
+}
+.wands_T5_HELLSFIRE > .pixel.x3y3 {
+    background: #2D2D2C;
+}
+.wands_T5_HELLSFIRE > .pixel.x4y3 {
+    background: #717171;
+}
+.wands_T5_HELLSFIRE > .pixel.x5y3 {
+    background: #2D2D2C;
+}
+.wands_T5_HELLSFIRE > .pixel.x2y4 {
+    background: #2D2D2C;
+}
+.wands_T5_HELLSFIRE > .pixel.x3y4 {
+    background: #717171;
+}
+.wands_T5_HELLSFIRE > .pixel.x4y4 {
+    background: #2D2D2C;
+}
+.wands_T5_HELLSFIRE > .pixel.x1y5 {
+    background: #2D2D2C;
+}
+.wands_T5_HELLSFIRE > .pixel.x2y5 {
+    background: #717171;
+}
+.wands_T5_HELLSFIRE > .pixel.x3y5 {
+    background: #2D2D2C;
+}
+.wands_T5_HELLSFIRE > .pixel.x0y6 {
+    background: #2D2D2C;
+}
+.wands_T5_HELLSFIRE > .pixel.x1y6 {
+    background: #717171;
+}
+.wands_T5_HELLSFIRE > .pixel.x2y6 {
+    background: #2D2D2C;
+}
+.wands_T5_HELLSFIRE > .pixel.x0y7 {
+    background: #717171;
+}
+.wands_T5_HELLSFIRE > .pixel.x1y7 {
+    background: #2D2D2C;
+}
+
+.wands_T6_DARKMAGIC > .pixel.x5y0 {
+    background: #DF42FF;
+}
+.wands_T6_DARKMAGIC > .pixel.x6y0 {
+    background: #DF42FF;
+}
+.wands_T6_DARKMAGIC > .pixel.x7y0 {
+    background: #DF42FF;
+}
+.wands_T6_DARKMAGIC > .pixel.x5y1 {
+    background: #DF42FF;
+}
+.wands_T6_DARKMAGIC > .pixel.x6y1 {
+    background: #F9D9FF;
+}
+.wands_T6_DARKMAGIC > .pixel.x7y1 {
+    background: #DF42FF;
+}
+.wands_T6_DARKMAGIC > .pixel.x4y2 {
+    background: #2D2D2C;
+}
+.wands_T6_DARKMAGIC > .pixel.x5y2 {
+    background: #DF42FF;
+}
+.wands_T6_DARKMAGIC > .pixel.x6y2 {
+    background: #DF42FF;
+}
+.wands_T6_DARKMAGIC > .pixel.x7y2 {
+    background: #DF42FF;
+}
+.wands_T6_DARKMAGIC > .pixel.x3y3 {
+    background: #2D2D2C;
+}
+.wands_T6_DARKMAGIC > .pixel.x4y3 {
+    background: #717171;
+}
+.wands_T6_DARKMAGIC > .pixel.x5y3 {
+    background: #2D2D2C;
+}
+.wands_T6_DARKMAGIC > .pixel.x2y4 {
+    background: #2D2D2C;
+}
+.wands_T6_DARKMAGIC > .pixel.x3y4 {
+    background: #717171;
+}
+.wands_T6_DARKMAGIC > .pixel.x4y4 {
+    background: #2D2D2C;
+}
+.wands_T6_DARKMAGIC > .pixel.x1y5 {
+    background: #2D2D2C;
+}
+.wands_T6_DARKMAGIC > .pixel.x2y5 {
+    background: #717171;
+}
+.wands_T6_DARKMAGIC > .pixel.x3y5 {
+    background: #2D2D2C;
+}
+.wands_T6_DARKMAGIC > .pixel.x0y6 {
+    background: #2D2D2C;
+}
+.wands_T6_DARKMAGIC > .pixel.x1y6 {
+    background: #717171;
+}
+.wands_T6_DARKMAGIC > .pixel.x2y6 {
+    background: #2D2D2C;
+}
+.wands_T6_DARKMAGIC > .pixel.x0y7 {
+    background: #717171;
+}
+.wands_T6_DARKMAGIC > .pixel.x1y7 {
+    background: #2D2D2C;
+}
+
+.wands_T7_ARCANE > .pixel.x5y0 {
+    background: #CE001F;
+}
+.wands_T7_ARCANE > .pixel.x6y0 {
+    background: #CE001F;
+}
+.wands_T7_ARCANE > .pixel.x7y0 {
+    background: #CE001F;
+}
+.wands_T7_ARCANE > .pixel.x5y1 {
+    background: #CE001F;
+}
+.wands_T7_ARCANE > .pixel.x6y1 {
+    background: #EB8931;
+}
+.wands_T7_ARCANE > .pixel.x7y1 {
+    background: #CE001F;
+}
+.wands_T7_ARCANE > .pixel.x4y2 {
+    background: #9D8512;
+}
+.wands_T7_ARCANE > .pixel.x5y2 {
+    background: #CE001F;
+}
+.wands_T7_ARCANE > .pixel.x6y2 {
+    background: #CE001F;
+}
+.wands_T7_ARCANE > .pixel.x7y2 {
+    background: #CE001F;
+}
+.wands_T7_ARCANE > .pixel.x3y3 {
+    background: #9D8512;
+}
+.wands_T7_ARCANE > .pixel.x4y3 {
+    background: #F7E26B;
+}
+.wands_T7_ARCANE > .pixel.x5y3 {
+    background: #9D8512;
+}
+.wands_T7_ARCANE > .pixel.x2y4 {
+    background: #9D8512;
+}
+.wands_T7_ARCANE > .pixel.x3y4 {
+    background: #F7E26B;
+}
+.wands_T7_ARCANE > .pixel.x4y4 {
+    background: #9D8512;
+}
+.wands_T7_ARCANE > .pixel.x1y5 {
+    background: #9D8512;
+}
+.wands_T7_ARCANE > .pixel.x2y5 {
+    background: #F7E26B;
+}
+.wands_T7_ARCANE > .pixel.x3y5 {
+    background: #9D8512;
+}
+.wands_T7_ARCANE > .pixel.x0y6 {
+    background: #9D8512;
+}
+.wands_T7_ARCANE > .pixel.x1y6 {
+    background: #F7E26B;
+}
+.wands_T7_ARCANE > .pixel.x2y6 {
+    background: #9D8512;
+}
+.wands_T7_ARCANE > .pixel.x0y7 {
+    background: #F7E26B;
+}
+.wands_T7_ARCANE > .pixel.x1y7 {
+    background: #9D8512;
+}
+
+.wands_T8_DEATH > .pixel.x5y0 {
+    background: #21AA63;
+}
+.wands_T8_DEATH > .pixel.x6y0 {
+    background: #21AA63;
+}
+.wands_T8_DEATH > .pixel.x7y0 {
+    background: #21AA63;
+}
+.wands_T8_DEATH > .pixel.x5y1 {
+    background: #21AA63;
+}
+.wands_T8_DEATH > .pixel.x6y1 {
+    background: #68EAA0;
+}
+.wands_T8_DEATH > .pixel.x7y1 {
+    background: #21AA63;
+}
+.wands_T8_DEATH > .pixel.x4y2 {
+    background: #2D2D2C;
+}
+.wands_T8_DEATH > .pixel.x5y2 {
+    background: #21AA63;
+}
+.wands_T8_DEATH > .pixel.x6y2 {
+    background: #21AA63;
+}
+.wands_T8_DEATH > .pixel.x7y2 {
+    background: #21AA63;
+}
+.wands_T8_DEATH > .pixel.x3y3 {
+    background: #2D2D2C;
+}
+.wands_T8_DEATH > .pixel.x4y3 {
+    background: #717171;
+}
+.wands_T8_DEATH > .pixel.x5y3 {
+    background: #2D2D2C;
+}
+.wands_T8_DEATH > .pixel.x2y4 {
+    background: #2D2D2C;
+}
+.wands_T8_DEATH > .pixel.x3y4 {
+    background: #717171;
+}
+.wands_T8_DEATH > .pixel.x4y4 {
+    background: #2D2D2C;
+}
+.wands_T8_DEATH > .pixel.x1y5 {
+    background: #2D2D2C;
+}
+.wands_T8_DEATH > .pixel.x2y5 {
+    background: #717171;
+}
+.wands_T8_DEATH > .pixel.x3y5 {
+    background: #2D2D2C;
+}
+.wands_T8_DEATH > .pixel.x0y6 {
+    background: #2D2D2C;
+}
+.wands_T8_DEATH > .pixel.x1y6 {
+    background: #717171;
+}
+.wands_T8_DEATH > .pixel.x2y6 {
+    background: #2D2D2C;
+}
+.wands_T8_DEATH > .pixel.x0y7 {
+    background: #717171;
+}
+.wands_T8_DEATH > .pixel.x1y7 {
+    background: #2D2D2C;
+}
+
+.wands_T9_DEEPSORC > .pixel.x5y0 {
+    background: #EB8931;
+}
+.wands_T9_DEEPSORC > .pixel.x6y0 {
+    background: #EB8931;
+}
+.wands_T9_DEEPSORC > .pixel.x7y0 {
+    background: #EB8931;
+}
+.wands_T9_DEEPSORC > .pixel.x5y1 {
+    background: #EB8931;
+}
+.wands_T9_DEEPSORC > .pixel.x6y1 {
+    background: #7E5A26;
+}
+.wands_T9_DEEPSORC > .pixel.x7y1 {
+    background: #EB8931;
+}
+.wands_T9_DEEPSORC > .pixel.x4y2 {
+    background: #2D2D2C;
+}
+.wands_T9_DEEPSORC > .pixel.x5y2 {
+    background: #EB8931;
+}
+.wands_T9_DEEPSORC > .pixel.x6y2 {
+    background: #EB8931;
+}
+.wands_T9_DEEPSORC > .pixel.x7y2 {
+    background: #EB8931;
+}
+.wands_T9_DEEPSORC > .pixel.x3y3 {
+    background: #2D2D2C;
+}
+.wands_T9_DEEPSORC > .pixel.x4y3 {
+    background: #717171;
+}
+.wands_T9_DEEPSORC > .pixel.x5y3 {
+    background: #2D2D2C;
+}
+.wands_T9_DEEPSORC > .pixel.x2y4 {
+    background: #2D2D2C;
+}
+.wands_T9_DEEPSORC > .pixel.x3y4 {
+    background: #717171;
+}
+.wands_T9_DEEPSORC > .pixel.x4y4 {
+    background: #2D2D2C;
+}
+.wands_T9_DEEPSORC > .pixel.x1y5 {
+    background: #2D2D2C;
+}
+.wands_T9_DEEPSORC > .pixel.x2y5 {
+    background: #717171;
+}
+.wands_T9_DEEPSORC > .pixel.x3y5 {
+    background: #2D2D2C;
+}
+.wands_T9_DEEPSORC > .pixel.x0y6 {
+    background: #2D2D2C;
+}
+.wands_T9_DEEPSORC > .pixel.x1y6 {
+    background: #717171;
+}
+.wands_T9_DEEPSORC > .pixel.x2y6 {
+    background: #2D2D2C;
+}
+.wands_T9_DEEPSORC > .pixel.x0y7 {
+    background: #717171;
+}
+.wands_T9_DEEPSORC > .pixel.x1y7 {
+    background: #2D2D2C;
+}
+
+.wands_T10_SHADOW > .pixel.x5y0 {
+    background: #5A6FFF;
+}
+.wands_T10_SHADOW > .pixel.x6y0 {
+    background: #5A6FFF;
+}
+.wands_T10_SHADOW > .pixel.x7y0 {
+    background: #5A6FFF;
+}
+.wands_T10_SHADOW > .pixel.x5y1 {
+    background: #5A6FFF;
+}
+.wands_T10_SHADOW > .pixel.x6y1 {
+    background: #B14A35;
+}
+.wands_T10_SHADOW > .pixel.x7y1 {
+    background: #5A6FFF;
+}
+.wands_T10_SHADOW > .pixel.x4y2 {
+    background: #492D16;
+}
+.wands_T10_SHADOW > .pixel.x5y2 {
+    background: #5A6FFF;
+}
+.wands_T10_SHADOW > .pixel.x6y2 {
+    background: #5A6FFF;
+}
+.wands_T10_SHADOW > .pixel.x7y2 {
+    background: #5A6FFF;
+}
+.wands_T10_SHADOW > .pixel.x3y3 {
+    background: #492D16;
+}
+.wands_T10_SHADOW > .pixel.x4y3 {
+    background: #AC6A34;
+}
+.wands_T10_SHADOW > .pixel.x5y3 {
+    background: #492D16;
+}
+.wands_T10_SHADOW > .pixel.x2y4 {
+    background: #492D16;
+}
+.wands_T10_SHADOW > .pixel.x3y4 {
+    background: #AC6A34;
+}
+.wands_T10_SHADOW > .pixel.x4y4 {
+    background: #492D16;
+}
+.wands_T10_SHADOW > .pixel.x1y5 {
+    background: #492D16;
+}
+.wands_T10_SHADOW > .pixel.x2y5 {
+    background: #AC6A34;
+}
+.wands_T10_SHADOW > .pixel.x3y5 {
+    background: #492D16;
+}
+.wands_T10_SHADOW > .pixel.x0y6 {
+    background: #492D16;
+}
+.wands_T10_SHADOW > .pixel.x1y6 {
+    background: #AC6A34;
+}
+.wands_T10_SHADOW > .pixel.x2y6 {
+    background: #492D16;
+}
+.wands_T10_SHADOW > .pixel.x0y7 {
+    background: #AC6A34;
+}
+.wands_T10_SHADOW > .pixel.x1y7 {
+    background: #492D16;
+}
+
+.wands_T11_ANCIENT > .pixel.x5y0 {
+    background: #60E463;
+}
+.wands_T11_ANCIENT > .pixel.x6y0 {
+    background: #60E463;
+}
+.wands_T11_ANCIENT > .pixel.x7y0 {
+    background: #60E463;
+}
+.wands_T11_ANCIENT > .pixel.x5y1 {
+    background: #60E463;
+}
+.wands_T11_ANCIENT > .pixel.x6y1 {
+    background: #DD5AF0;
+}
+.wands_T11_ANCIENT > .pixel.x7y1 {
+    background: #60E463;
+}
+.wands_T11_ANCIENT > .pixel.x4y2 {
+    background: #2D2D2C;
+}
+.wands_T11_ANCIENT > .pixel.x5y2 {
+    background: #60E463;
+}
+.wands_T11_ANCIENT > .pixel.x6y2 {
+    background: #60E463;
+}
+.wands_T11_ANCIENT > .pixel.x7y2 {
+    background: #60E463;
+}
+.wands_T11_ANCIENT > .pixel.x3y3 {
+    background: #2D2D2C;
+}
+.wands_T11_ANCIENT > .pixel.x4y3 {
+    background: #717171;
+}
+.wands_T11_ANCIENT > .pixel.x5y3 {
+    background: #2D2D2C;
+}
+.wands_T11_ANCIENT > .pixel.x2y4 {
+    background: #2D2D2C;
+}
+.wands_T11_ANCIENT > .pixel.x3y4 {
+    background: #717171;
+}
+.wands_T11_ANCIENT > .pixel.x4y4 {
+    background: #2D2D2C;
+}
+.wands_T11_ANCIENT > .pixel.x1y5 {
+    background: #2D2D2C;
+}
+.wands_T11_ANCIENT > .pixel.x2y5 {
+    background: #717171;
+}
+.wands_T11_ANCIENT > .pixel.x3y5 {
+    background: #2D2D2C;
+}
+.wands_T11_ANCIENT > .pixel.x0y6 {
+    background: #2D2D2C;
+}
+.wands_T11_ANCIENT > .pixel.x1y6 {
+    background: #717171;
+}
+.wands_T11_ANCIENT > .pixel.x2y6 {
+    background: #2D2D2C;
+}
+.wands_T11_ANCIENT > .pixel.x0y7 {
+    background: #717171;
+}
+.wands_T11_ANCIENT > .pixel.x1y7 {
+    background: #2D2D2C;
+}
+
+.wands_T12_RECOMPENSE > .pixel.x5y0 {
+    background: #003CFF;
+}
+.wands_T12_RECOMPENSE > .pixel.x6y0 {
+    background: #003CFF;
+}
+.wands_T12_RECOMPENSE > .pixel.x7y0 {
+    background: #003CFF;
+}
+.wands_T12_RECOMPENSE > .pixel.x5y1 {
+    background: #003CFF;
+}
+.wands_T12_RECOMPENSE > .pixel.x6y1 {
+    background: #6781D6;
+}
+.wands_T12_RECOMPENSE > .pixel.x7y1 {
+    background: #003CFF;
+}
+.wands_T12_RECOMPENSE > .pixel.x4y2 {
+    background: #9D8512;
+}
+.wands_T12_RECOMPENSE > .pixel.x5y2 {
+    background: #003CFF;
+}
+.wands_T12_RECOMPENSE > .pixel.x6y2 {
+    background: #003CFF;
+}
+.wands_T12_RECOMPENSE > .pixel.x7y2 {
+    background: #003CFF;
+}
+.wands_T12_RECOMPENSE > .pixel.x3y3 {
+    background: #9D8512;
+}
+.wands_T12_RECOMPENSE > .pixel.x4y3 {
+    background: #F7E26B;
+}
+.wands_T12_RECOMPENSE > .pixel.x5y3 {
+    background: #9D8512;
+}
+.wands_T12_RECOMPENSE > .pixel.x2y4 {
+    background: #9D8512;
+}
+.wands_T12_RECOMPENSE > .pixel.x3y4 {
+    background: #F7E26B;
+}
+.wands_T12_RECOMPENSE > .pixel.x4y4 {
+    background: #9D8512;
+}
+.wands_T12_RECOMPENSE > .pixel.x1y5 {
+    background: #9D8512;
+}
+.wands_T12_RECOMPENSE > .pixel.x2y5 {
+    background: #F7E26B;
+}
+.wands_T12_RECOMPENSE > .pixel.x3y5 {
+    background: #9D8512;
+}
+.wands_T12_RECOMPENSE > .pixel.x0y6 {
+    background: #9D8512;
+}
+.wands_T12_RECOMPENSE > .pixel.x1y6 {
+    background: #F7E26B;
+}
+.wands_T12_RECOMPENSE > .pixel.x2y6 {
+    background: #9D8512;
+}
+.wands_T12_RECOMPENSE > .pixel.x0y7 {
+    background: #F7E26B;
+}
+.wands_T12_RECOMPENSE > .pixel.x1y7 {
+    background: #9D8512;
+}
+
+.wands_UT_SPRITE > .pixel.x6y0 {
+    background: #4063E3;
+}
+.wands_UT_SPRITE > .pixel.x7y0 {
+    background: #809BFF;
+}
+.wands_UT_SPRITE > .pixel.x5y1 {
+    background: #4063E3;
+}
+.wands_UT_SPRITE > .pixel.x6y1 {
+    background: #809BFF;
+}
+.wands_UT_SPRITE > .pixel.x7y1 {
+    background: #4063E3;
+}
+.wands_UT_SPRITE > .pixel.x4y2 {
+    background: #4063E3;
+}
+.wands_UT_SPRITE > .pixel.x5y2 {
+    background: #809BFF;
+}
+.wands_UT_SPRITE > .pixel.x6y2 {
+    background: #4063E3;
+}
+.wands_UT_SPRITE > .pixel.x3y3 {
+    background: #4063E3;
+}
+.wands_UT_SPRITE > .pixel.x4y3 {
+    background: #809BFF;
+}
+.wands_UT_SPRITE > .pixel.x5y3 {
+    background: #4063E3;
+}
+.wands_UT_SPRITE > .pixel.x2y4 {
+    background: #4063E3;
+}
+.wands_UT_SPRITE > .pixel.x3y4 {
+    background: #809BFF;
+}
+.wands_UT_SPRITE > .pixel.x4y4 {
+    background: #4063E3;
+}
+.wands_UT_SPRITE > .pixel.x1y5 {
+    background: #4063E3;
+}
+.wands_UT_SPRITE > .pixel.x2y5 {
+    background: #809BFF;
+}
+.wands_UT_SPRITE > .pixel.x3y5 {
+    background: #4063E3;
+}
+.wands_UT_SPRITE > .pixel.x0y6 {
+    background: #4063E3;
+}
+.wands_UT_SPRITE > .pixel.x1y6 {
+    background: #809BFF;
+}
+.wands_UT_SPRITE > .pixel.x2y6 {
+    background: #4063E3;
+}
+.wands_UT_SPRITE > .pixel.x0y7 {
+    background: #809BFF;
+}
+.wands_UT_SPRITE > .pixel.x1y7 {
+    background: #4063E3;
+}
+
+.wands_UT_ABRAHAM > .pixel.x5y0 {
+    background: #FFD000;
+}
+.wands_UT_ABRAHAM > .pixel.x6y0 {
+    background: #FFD000;
+}
+.wands_UT_ABRAHAM > .pixel.x7y0 {
+    background: #FFD000;
+}
+.wands_UT_ABRAHAM > .pixel.x2y1 {
+    background: #FFD000;
+}
+.wands_UT_ABRAHAM > .pixel.x3y1 {
+    background: #D6D6D6;
+}
+.wands_UT_ABRAHAM > .pixel.x5y1 {
+    background: #FFD000;
+}
+.wands_UT_ABRAHAM > .pixel.x6y1 {
+    background: #FF0000;
+}
+.wands_UT_ABRAHAM > .pixel.x7y1 {
+    background: #FFD000;
+}
+.wands_UT_ABRAHAM > .pixel.x2y2 {
+    background: #D6D6D6;
+}
+.wands_UT_ABRAHAM > .pixel.x3y2 {
+    background: #F7F7F7;
+}
+.wands_UT_ABRAHAM > .pixel.x4y2 {
+    background: #D6D6D6;
+}
+.wands_UT_ABRAHAM > .pixel.x5y2 {
+    background: #F7F7F7;
+}
+.wands_UT_ABRAHAM > .pixel.x6y2 {
+    background: #FFD000;
+}
+.wands_UT_ABRAHAM > .pixel.x7y2 {
+    background: #FFD000;
+}
+.wands_UT_ABRAHAM > .pixel.x3y3 {
+    background: #D6D6D6;
+}
+.wands_UT_ABRAHAM > .pixel.x4y3 {
+    background: #FF0000;
+}
+.wands_UT_ABRAHAM > .pixel.x5y3 {
+    background: #D6D6D6;
+}
+.wands_UT_ABRAHAM > .pixel.x2y4 {
+    background: #D5D5D5;
+}
+.wands_UT_ABRAHAM > .pixel.x3y4 {
+    background: #F7F7F7;
+}
+.wands_UT_ABRAHAM > .pixel.x4y4 {
+    background: #D6D6D6;
+}
+.wands_UT_ABRAHAM > .pixel.x5y4 {
+    background: #F6F6F6;
+}
+.wands_UT_ABRAHAM > .pixel.x6y4 {
+    background: #D6D6D6;
+}
+.wands_UT_ABRAHAM > .pixel.x1y5 {
+    background: #D5D5D5;
+}
+.wands_UT_ABRAHAM > .pixel.x2y5 {
+    background: #FFD000;
+}
+.wands_UT_ABRAHAM > .pixel.x3y5 {
+    background: #D5D5D5;
+}
+.wands_UT_ABRAHAM > .pixel.x5y5 {
+    background: #D5D5D5;
+}
+.wands_UT_ABRAHAM > .pixel.x6y5 {
+    background: #FFD000;
+}
+.wands_UT_ABRAHAM > .pixel.x0y6 {
+    background: #D5D5D5;
+}
+.wands_UT_ABRAHAM > .pixel.x1y6 {
+    background: #F7F7F7;
+}
+.wands_UT_ABRAHAM > .pixel.x2y6 {
+    background: #D5D5D5;
+}
+.wands_UT_ABRAHAM > .pixel.x0y7 {
+    background: #F7F7F7;
+}
+.wands_UT_ABRAHAM > .pixel.x1y7 {
+    background: #D5D5D5;
 }
 
 .quivers_T6_ELVISH > .pixel.x5y0 {

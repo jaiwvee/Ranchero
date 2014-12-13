@@ -17,6 +17,7 @@ html,
 body {
     background: #303030;
     position: absolute;
+    overflow: scroll;
     z-index: 0;
     padding: 0;
     margin: 0;
@@ -119,7 +120,7 @@ body {
     border: 
         1px solid transparent;
     box-sizing: border-box;
-    height: 23px;
+    height: 22px;
     width: 234px;
 }
 
@@ -136,7 +137,7 @@ body {
 
 #mule-list-item-name {
     margin: 3px 0 0 7px;
-    line-height: 16px;
+    line-height: 15px;
     float: left;
     font-family: 
         Avenir-Light,
@@ -146,13 +147,16 @@ body {
 }
 
 input#mule-list-item-name {
-    margin: 2px 0 0 7px;
     background: none;
+    margin: 2px 0 0 7px;
+    height: 16px;
+    min-width: 0;
     font-family: 
         Avenir-Light,
         Arial;
     float: left;
     padding: 0;
+    width: 218px;
     font-size: 12px;
     color: #4A90E2;
     border: none;
@@ -179,7 +183,6 @@ input#mule-list-item-name:focus {
 #mule-list-item-count {
     display: block;
 }
-
 
 #left-di-list {
     position: absolute;
@@ -395,81 +398,131 @@ input#mule-list-item-name:focus {
     background: #525457;
 }
 
-#right-interface-window-storage {
-    -moz-box-shadow: 0px 0px 8px 4px rgba(0,0,0,0.14);
-         box-shadow: 0px 0px 8px 4px rgba(0,0,0,0.14);
-    border-radius: 3px;
-    background: #505457;
+#add-item-button {
+    box-sizing: border-box;
+    font-family: 
+        Avenir-Light,
+        Arial;
+    border: 
+        1px solid #6A6E73;
+    background: #5E6266;
+    text-align: center;
+    border-radius: 8px;
     position: absolute;
-    height: 106px;
-    width: 406px;
-    z-index: 0;
-    left: 69px;
-    top: 124px;
-    
-    
-    
-    /* delete me to show storage again */
-    display: none;
-    
-    
-    
-    
+    font-size: 10px;
+    color: #FFFFFF;
+    height: 16px;
+    width: 54px;
+    top: 180px;
+    left: 40px;
 }
 
-#block-container {
+#add-item-button:hover {
+    cursor: pointer;
+}
+
+#add-item-button:active {
+    background: #525457;
+}
+
+#del-item-button {
+    box-sizing: border-box;
+    font-family: 
+        Avenir-Light,
+        Arial;
+    border: 
+        1px solid #6A6E73;
+    background: #5E6266;
+    text-align: center;
+    border-radius: 8px;
     position: absolute;
+    font-size: 10px;
+    color: #FFFFFF;
+    display: none;
+    height: 16px;
+    width: 65px;
+    float: left;
+    left: 102px;
+    top: 180px;
+}
+
+#del-item-button:hover {
+    cursor: pointer;
+}
+
+#del-item-button:active {
+    background: #525457;
+}
+
+#item-storage {
+    position: relative;
+    overflow-x: scroll;
+    white-space: nowrap;
+    height: 56px;
+    width: 464px;
     z-index: 0;
-    left: 0;
-    top: 0;
-    margin: 6px;
-    height: 94px;
-    width: 394px;
+    left: 40px;
+    top: 120px;
+}
+
+#item-storage::-webkit-scrollbar {
+    display: none;
+}
+ 
+#item-storage::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+#item-storage::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 
 .slot {
-    position: relative;
-    background: #3B3D40;
+    border: 1px solid #5E6266;
     box-sizing: border-box;
-    border-radius: 3px;
+    display: inline-block;
+    background: #525659;
+    position: relative;
+    margin-right: 1px;
+    height: 48px;
+    width: 48px;
     z-index: 0;
-    display: block;
-    float: left;
-    height: 44px;
-    width: 44px;
 }
+
 .slot:hover {
-    background: #505457 url('resources/img/cross.png');
-    background-size: contain;
+    border: 1px solid #6A6E73;
+    background: #5B5F63;
     cursor: pointer;
 }
-.slot.occupied:hover {
-    background: #505457;
+
+.slot.active {
+    border: 1px solid #6A6E73;
+    background: #5B5F63;
 }
 
-#block-container > .slot:nth-child(1),
-#block-container > .slot:nth-child(2),
-#block-container > .slot:nth-child(3),
-#block-container > .slot:nth-child(4),
-#block-container > .slot:nth-child(5),
-#block-container > .slot:nth-child(6),
-#block-container > .slot:nth-child(7) {
-    margin-right: 6px;
+.slot-alt {
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    display: inline-block;
+    background: none;
+    position: relative;
+    margin-right: 1px;
+    height: 48px;
+    width: 48px;
+    z-index: 0;
 }
 
-#block-container > .slot:nth-child(9),
-#block-container > .slot:nth-child(10),
-#block-container > .slot:nth-child(11),
-#block-container > .slot:nth-child(12),
-#block-container > .slot:nth-child(13),
-#block-container > .slot:nth-child(14),
-#block-container > .slot:nth-child(15) {
-    margin-right: 6px;
-    margin-top: 6px;
+.slot-alt:hover {
+    border: 1px solid #5E6266;
+    background: #525659;
+    cursor: pointer;
 }
 
-#block-container > .slot:nth-child(16) {
-    margin-top: 6px;
+.slot-alt.active {
+    border: 1px solid #6A6E73;
+    background: #5B5F63;
 }
 
 .noselect {
@@ -492,4 +545,35 @@ input#mule-list-item-name:focus {
 ::-moz-selection {
     background: rgba(255,255,255,0.2);
     background: rgba(74,144,226,0.2);
+}
+
+#add-item-wrapper {
+    position: absolute;
+    overflow: scroll;
+    background: none;
+    width: 464px;
+    height: 522px;
+    top: 40px;
+    left: 40px;
+}
+
+.wrapper-separator {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    font-family: 
+        Avenir-Light,
+        Arial;
+    font-size: 12px;
+    width: 422px;
+    margin-left: 10px;
+}
+
+.wrapper-separator > .main {
+    display: inline;
+    color: #FFFFFF;
+}
+
+.wrapper-separator > .sub {
+    display: inline;
+    color: #6A6E73;
 }

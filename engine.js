@@ -142,11 +142,17 @@ function PropertyStore(name) {
         for (i = 0; i < this.targets.length; i += 1) {
             this.targets[i].addEventListener(this.catalyst, this.callback, false);
         }
+        if (!this.targets.length) {
+            this.targets.addEventListener(this.catalyst, this.callback, false);
+        }
     };
     InputResponders.prototype.deactivate = function () {
         var i;
         for (i = 0; i < this.targets.length; i += 1) {
             this.targets[i].removeEventListener(this.catalyst, this.callback, false);
+        }
+        if (!this.targets.length) {
+            this.targets.removeEventListener(this.catalyst, this.callback, false);
         }
     };
     // InputResponders Lib. Advanced Constructor Methods
